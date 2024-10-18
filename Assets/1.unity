@@ -616,7 +616,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 311007205}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2045294757}
+        m_TargetAssemblyTypeName: BattleSystem, Assembly-CSharp
+        m_MethodName: OnHealButton
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &311007205
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2035,7 +2047,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1579521940}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2045294757}
+        m_TargetAssemblyTypeName: BattleSystem, Assembly-CSharp
+        m_MethodName: OnAttackButton
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1579521940
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2732,8 +2756,8 @@ MonoBehaviour:
   playerBattleStation: {fileID: 2217054249352891645, guid: 3448c01fea7623c49a3d95c7d9dcd17f, type: 3}
   enemyBattleStation: {fileID: 4251215054959533725, guid: 1f6c61cc408f86448804df77d64e4797, type: 3}
   dialogueText: {fileID: 1142368429}
-  playerHUD: {fileID: 0}
-  enemyHUD: {fileID: 0}
+  playerHUD: {fileID: 1319003661}
+  enemyHUD: {fileID: 1819983716}
   status: 0
 --- !u!1001 &430090089195251055
 PrefabInstance:
