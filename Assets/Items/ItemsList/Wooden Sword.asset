@@ -16,7 +16,7 @@ MonoBehaviour:
   itemName: Wooden Sword
   quality: common
   SetName: Wood
-  icon: {fileID: 21300000, guid: 063bf7e18a883854c93a90ca50df5d4e, type: 3}
+  icon: {fileID: 1947468806, guid: bf082b038119cb34280f1bb447f1952d, type: 3}
   price: 9000000000
   dmg: 12
   critChance: 2
