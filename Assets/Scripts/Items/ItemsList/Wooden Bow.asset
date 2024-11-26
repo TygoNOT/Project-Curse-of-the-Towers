@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b318d420e5e63324aa10dc769940755d, type: 3}
-  m_Name: Wooden Sword
+  m_Name: Wooden Bow
   m_EditorClassIdentifier: 
-  id: 1
-  itemName: Wooden Sword
+  id: 6
+  itemName: Wooden Bow
   quality: Common
   SetName: Wood
   icon: {fileID: 709652728, guid: bf082b038119cb34280f1bb447f1952d, type: 3}

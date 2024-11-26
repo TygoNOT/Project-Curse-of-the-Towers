@@ -10,14 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b318d420e5e63324aa10dc769940755d, type: 3}
-  m_Name: Wooden Sword
+  m_Name: Diamond Sword 3
   m_EditorClassIdentifier: 
-  id: 1
-  itemName: Wooden Sword
-  quality: Common
-  SetName: Wood
+  id: 4
+  itemName: Dimond sword
+  quality: Legendary
+  SetName: Dimond
   icon: {fileID: 709652728, guid: bf082b038119cb34280f1bb447f1952d, type: 3}
-  price: 10
+  price: 100
   dmg: 12
   critChance: 2
   critDmg: 2

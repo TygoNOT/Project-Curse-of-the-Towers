@@ -8,7 +8,7 @@ public class Item : ScriptableObject
     public string quality;
     public string SetName;
     public Sprite icon;
-    public long price;
+    public int price;
     public int dmg;
     public int critChance;
     public int critDmg;
