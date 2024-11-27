@@ -18,3 +18,4 @@ MonoBehaviour:
   speed: 2
   critDmg: 25
   critChance: 3
+  itemSprite: {fileID: 21300000, guid: 1ba4cc20b1594cc4dbcad40a27d00e1a, type: 3}
