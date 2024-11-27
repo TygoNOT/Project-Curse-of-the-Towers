@@ -2,7 +2,7 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 
-public enum BattleStatus {START, PLAYERTURN, ENEMYTURN, WON, LOST }
+public enum BattleStatus { START, PLAYERTURN, ENEMYTURN, WON, LOST }
 public class BattleSystem : MonoBehaviour
 {
     [Header("References")]
@@ -30,7 +30,7 @@ public class BattleSystem : MonoBehaviour
         GameObject playerGo = Instantiate(playerPref, playerBattleStation);
         playerUnit = playerGo.GetComponent<Unit>();
 
-        GameObject enemyGo = Instantiate(enemyPref, enemyBattleStation);
+        GameObject enemyGo = Instantiate(enemyPref);
         enemyUnit = enemyGo.GetComponent<Unit>();
 
         dialogueText.text = "O this is a creppy " + enemyUnit.unitName;
@@ -51,7 +51,7 @@ public class BattleSystem : MonoBehaviour
 
         yield return new WaitForSeconds(2);
 
-        if(isDead)
+        if (isDead)
         {
             status = BattleStatus.WON;
             EndBattle();
@@ -65,10 +65,11 @@ public class BattleSystem : MonoBehaviour
 
     void EndBattle()
     {
-        if(status == BattleStatus.WON)
+        if (status == BattleStatus.WON)
         {
             dialogueText.text = "You won the battle!";
-        } else if (status == BattleStatus.LOST)
+        }
+        else if (status == BattleStatus.LOST)
         {
             dialogueText.text = "You Dead!";
         }
