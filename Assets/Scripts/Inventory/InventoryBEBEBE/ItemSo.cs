@@ -6,6 +6,7 @@ using UnityEngine;
 public class ItemSo : ScriptableObject
 {
     public string itemName;
+    public int id;
     public StatToChange statToChange= new StatToChange();
     public int amountToChangeStat;
     public AttributesToChange attributesToChange= new AttributesToChange();
@@ -16,7 +17,6 @@ public class ItemSo : ScriptableObject
     {
         if (statToChange == StatToChange.health)
         {
-            Debug.Log("HUI HUI HUI");
             return true;
             
            // GameObject.Find("HealthManager").GetComponent<PlayerHealth>().ChangeHealth(amountToChangeStat);

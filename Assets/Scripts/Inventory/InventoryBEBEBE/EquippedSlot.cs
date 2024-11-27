@@ -61,7 +61,7 @@ public class EquippedSlot : MonoBehaviour, IPointerClickHandler
             thisItemSelected = true;
             for (int i = 0; i < equipmentSOLibrary.equipmentSO.Length; i++)
             {
-                if (equipmentSOLibrary.equipmentSO[i].itemName == this.itemName)
+                if (slotInUse)
                     equipmentSOLibrary.equipmentSO[i].PreviewEquipment();
             }
         }
@@ -90,20 +90,23 @@ public class EquippedSlot : MonoBehaviour, IPointerClickHandler
     }
     public void UnEquipGear()
     {
-        inventoryManager.DeselectAllSlots();
-
-        inventoryManager.AddItem(itemName, 1, itemSprite, itemDescription, itemType);
-        this.itemSprite = emptySprite;
-        slotImage.sprite = this.emptySprite;
-        slotName.enabled= true;
-
-        for (int i = 0; i < equipmentSOLibrary.equipmentSO.Length; i++)
+        if (slotInUse)
         {
-            if (equipmentSOLibrary.equipmentSO[i].itemName == this.itemName)
-                equipmentSOLibrary.equipmentSO[i].UnEquipItem();
-        }
-        slotInUse = false;
+            inventoryManager.DeselectAllSlots();
 
-        GameObject.Find("StatsManager").GetComponent<PlayerStats>().TurnOffPreviewStats();
+            inventoryManager.AddItem(itemName, 1, itemSprite, itemDescription, itemType);
+            this.itemSprite = emptySprite;
+            slotImage.sprite = this.emptySprite;
+            slotName.enabled = true;
+
+            for (int i = 0; i < equipmentSOLibrary.equipmentSO.Length; i++)
+            {
+                if (equipmentSOLibrary.equipmentSO[i].itemName == this.itemName)
+                    equipmentSOLibrary.equipmentSO[i].UnEquipItem();
+            }
+            slotInUse = false;
+
+            GameObject.Find("StatsManager").GetComponent<PlayerStats>().TurnOffPreviewStats();
+        }
     }
 }

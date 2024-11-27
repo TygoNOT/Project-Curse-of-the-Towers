@@ -10,16 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5692d28b37a5e1c4aae76fdb638d3e31, type: 3}
-  m_Name: Sword
+  m_Name: ChestArmor
   m_EditorClassIdentifier: 
-  itemName: Sword2
-  id: 31746925db179684e92bbc9db958f42c
+  itemName: 
+  id: 
   setName: 
   price: 0
-  attack: 25
+  attack: 0
   hp: 0
-  speed: 2
-  critDmg: 25
-  critChance: 3
-  rarity: 3
-  itemSprite: {fileID: 21300000, guid: 1ba4cc20b1594cc4dbcad40a27d00e1a, type: 3}
+  speed: 0
+  critDmg: 0
+  critChance: 0
+  itemSprite: {fileID: 0}

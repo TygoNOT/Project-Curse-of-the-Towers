@@ -36,8 +36,55 @@ public class PlayerStats : MonoBehaviour
         critChanceText.text = critChance.ToString();
     }
 
-    public void PreviewEquipmentStats(int attack, int hp, int speed, int critDmg, int critChance, Sprite itemSprite)
+    public void PreviewEquipmentStats(int attack, int hp, int speed, int critDmg, int critChance, Sprite itemSprite, Rarity rarity)
     {
+        if (rarity == Rarity.common)
+        {
+            attackPreText.color = Color.gray;
+            hpPreText.color = Color.gray;
+            speedPreText.color = Color.gray;
+            critDmgPreText.color = Color.gray;
+            critChancePreText.color = Color.gray;
+        } else if (rarity == Rarity.uncommon)
+        {
+            attackPreText.color = Color.green;
+            hpPreText.color = Color.green;
+            speedPreText.color = Color.green;
+            critDmgPreText.color = Color.green;
+            critChancePreText.color = Color.green;
+        }
+        else if (rarity == Rarity.rare)
+        {
+            attackPreText.color = Color.blue;
+            hpPreText.color = Color.blue;
+            speedPreText.color = Color.blue;
+            critDmgPreText.color = Color.blue;
+            critChancePreText.color = Color.blue;
+        }
+        else if (rarity == Rarity.epic)
+        {
+            attackPreText.color = new Color32(128, 0, 128, 255); ;
+            hpPreText.color = new Color32(128, 0, 128, 255); ;
+            speedPreText.color = new Color32(128, 0, 128, 255); ;
+            critDmgPreText.color = new Color32(128, 0, 128, 255); ;
+            critChancePreText.color = new Color32(128, 0, 128, 255); ;
+        }
+        else if (rarity == Rarity.legendary)
+        {
+            attackPreText.color = Color.yellow;
+            hpPreText.color = Color.yellow;
+            speedPreText.color = Color.yellow;
+            critDmgPreText.color = Color.yellow;
+            critChancePreText.color = Color.yellow;
+        }
+        else if (rarity == Rarity.mythic)
+        {
+            attackPreText.color = Color.red;
+            hpPreText.color = Color.red;
+            speedPreText.color = Color.red;
+            critDmgPreText.color = Color.red;
+            critChancePreText.color = Color.red;
+        }
         attackPreText.text = attack.ToString();
         hpPreText.text = hp.ToString();
         speedPreText.text = speed.ToString();

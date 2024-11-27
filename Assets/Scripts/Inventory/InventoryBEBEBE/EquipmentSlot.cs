@@ -20,6 +20,7 @@ public class EquipmentSlot : MonoBehaviour, IPointerClickHandler
     public Sprite emptySprite;
     public ItemType itemType;
 
+    public string slotName;
 
     [SerializeField]
     private Image itemImage;
@@ -31,6 +32,7 @@ public class EquipmentSlot : MonoBehaviour, IPointerClickHandler
     public bool thisItemSelected;
     private InventoryManager inventoryManager;
     private EquipmentSOLibrary equipmentSOLibrary;
+    public GameObject deleteAcceptance;
 
     private void Start()
     {
@@ -51,7 +53,7 @@ public class EquipmentSlot : MonoBehaviour, IPointerClickHandler
     }
     public void OnLeftClick()
     {
-        if (isFull)
+        if (isFull && !deleteAcceptance.activeSelf)
         {
             if (thisItemSelected)
             {
@@ -103,26 +105,45 @@ public class EquipmentSlot : MonoBehaviour, IPointerClickHandler
 
     public void OnRightClick()
     {
-        GameObject itemToDrop = new GameObject(itemName);
-        Item newItem = itemToDrop.AddComponent<Item>();
-        newItem.quantity = 1;
-        newItem.itemName = itemName;
-        newItem.sprite = itemSprite;
-        newItem.itemDescription = itemDescription;
+        //GameObject itemToDrop = new GameObject(itemName);
+        //Item newItem = itemToDrop.AddComponent<Item>();
+        //newItem.quantity = 1;
+        //newItem.itemName = itemName;
+        //newItem.sprite = itemSprite;
+        //newItem.itemDescription = itemDescription;
 
-        SpriteRenderer sr = itemToDrop.AddComponent<SpriteRenderer>();
-        sr.sprite = itemSprite;
-        sr.sortingOrder = 5;
-        sr.sortingLayerName = "Ground";
+        //SpriteRenderer sr = itemToDrop.AddComponent<SpriteRenderer>();
+        //sr.sprite = itemSprite;
+        //sr.sortingOrder = 5;
+        //sr.sortingLayerName = "Ground";
 
-        itemToDrop.AddComponent<BoxCollider2D>();
+        //itemToDrop.AddComponent<BoxCollider2D>();
 
-        itemToDrop.transform.position = GameObject.FindWithTag("Player").transform.position + new Vector3(1, 0, 0);
-        itemToDrop.transform.localScale = new Vector3(.5f, .5f, .5f);
+        //itemToDrop.transform.position = GameObject.FindWithTag("Player").transform.position + new Vector3(1, 0, 0);
+        //itemToDrop.transform.localScale = new Vector3(.5f, .5f, .5f);
+        if (isFull)
+        {
+            for (int i = 0; i < inventoryManager.equipmentSlot.Length; i++)
+            {
+                if (inventoryManager.equipmentSlot[i].isFull && inventoryManager.equipmentSlot[i].selectedShader.activeSelf)
+                {
+                    this.slotName = inventoryManager.equipmentSlot[i].name;
+                    deleteAcceptance.SetActive(true);
+                    GameObject.Find("AcceptButton").GetComponent<DeleteAcceptButton>().slotName = this.slotName;
+                }
+            }
+        }
+    }
+    public void dropItem()
+    {
         this.quantity -= 1;
         if (this.quantity <= 0)
         {
             EmptySlot();
+            deleteAcceptance.SetActive(false);
+            GameObject.Find("StatsManager").GetComponent<PlayerStats>().TurnOffPreviewStats();
+            inventoryManager.DeselectAllSlots();
+            thisItemSelected = false;
         }
     }
     public int AddItem(string itemName, int quantity, Sprite itemSprite, string itemDescription, ItemType itemType)
