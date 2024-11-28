@@ -2001,10 +2001,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 2
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 800, y: 600}
+  m_ReferenceResolution: {x: 1920, y: 1080}
   m_ScreenMatchMode: 0
   m_MatchWidthOrHeight: 0
   m_PhysicalUnit: 3
@@ -2021,7 +2021,7 @@ Canvas:
   m_GameObject: {fileID: 529202641}
   m_Enabled: 1
   serializedVersion: 3
-  m_RenderMode: 1
+  m_RenderMode: 0
   m_Camera: {fileID: 987738761}
   m_PlaneDistance: 100
   m_PixelPerfect: 0
@@ -2106,35 +2106,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c6a1f657b56b81d458b05fc76e52866c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  money: {fileID: 1384305117}
-  inventoryManager: {fileID: 102006823}
-  itemDatabase: {fileID: 11400000, guid: 7f122dd838a97c44886998b3bdcdac6d, type: 2}
-  ShopItem:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  itemNames:
-  - {fileID: 2117128337}
-  - {fileID: 1026413821}
-  - {fileID: 768884747}
-  - {fileID: 662545}
-  - {fileID: 1248949997}
-  itemPrices:
-  - {fileID: 525638099}
-  - {fileID: 414750042}
-  - {fileID: 5204485}
-  - {fileID: 1999431843}
-  - {fileID: 430500644}
-  buyButtons:
-  - {fileID: 67957402}
-  - {fileID: 1327625971}
-  - {fileID: 109984754}
-  - {fileID: 437707809}
-  - {fileID: 376647145}
-  RestockPrice: {fileID: 527177416}
-  RestockPriceValue: 0
 --- !u!4 &715133937
 Transform:
   m_ObjectHideFlags: 0
@@ -2594,7 +2565,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -53.110016, y: 98.4}
+  m_AnchoredPosition: {x: -53.109985, y: 98.399994}
   m_SizeDelta: {x: 43.6579, y: 15.093}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1040126720
