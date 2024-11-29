@@ -36,7 +36,7 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler
     public TMP_Text ItemDescriptionText;
 
 
-
+    public GameObject inventoryDescription;
     public GameObject selectedShader;
     public bool thisItemSelected;
     private InventoryManager inventoryManager;
@@ -75,15 +75,29 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler
         }
         else
         {
-            inventoryManager.DeselectAllSlots();
-            selectedShader.SetActive(true);
-            thisItemSelected = true;
-            ItemDescriptionNameText.text = itemName;
-            ItemDescriptionText.text = itemDescription;
-            ItemDescriptionImage.sprite = itemSprite;
-            if (ItemDescriptionImage.sprite == null)
+            if (this.quantity > 0)
             {
+                inventoryManager.DeselectAllSlots();
+                selectedShader.SetActive(true);
+                thisItemSelected = true;
+                inventoryDescription.SetActive(true);
+                ItemDescriptionNameText.text = itemName;
+                ItemDescriptionText.text = itemDescription;
+                ItemDescriptionImage.sprite = itemSprite;
+                if (ItemDescriptionImage.sprite == null)
+                {
+                    ItemDescriptionImage.sprite = emptySprite;
+                }
+            }
+            else
+            {
+                inventoryManager.DeselectAllSlots();
+                selectedShader.SetActive(true);
+                thisItemSelected = true;
+                ItemDescriptionNameText.text = "";
+                ItemDescriptionText.text = "";
                 ItemDescriptionImage.sprite = emptySprite;
+                inventoryDescription.SetActive(false);
             }
         }
     }
@@ -99,6 +113,7 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler
         ItemDescriptionNameText.text = "";
         ItemDescriptionText.text = "";
         ItemDescriptionImage.sprite = emptySprite;
+        inventoryDescription.SetActive(false);
     }
 
     public void OnRightClick()
