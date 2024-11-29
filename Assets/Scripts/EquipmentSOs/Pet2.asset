@@ -12,14 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5692d28b37a5e1c4aae76fdb638d3e31, type: 3}
   m_Name: Pet2
   m_EditorClassIdentifier: 
-  itemName: 
-  id: 
+  itemName: Pet2
+  id: cf3612cb453c71d48b739ef33987d831
   setName: 
   price: 0
-  attack: 0
+  attack: 5345
   hp: 0
   speed: 0
   critDmg: 0
   critChance: 0
-  rarity: 0
-  itemSprite: {fileID: 0}
+  rarity: 2
+  itemSprite: {fileID: 712684130, guid: 4df49e54c5e3b59419d00ca3ff15842e, type: 3}
