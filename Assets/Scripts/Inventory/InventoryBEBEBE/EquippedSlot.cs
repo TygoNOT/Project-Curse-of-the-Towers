@@ -11,7 +11,7 @@ public class EquippedSlot : MonoBehaviour, IPointerClickHandler
     private Image slotImage;
 
     [SerializeField]
-    private TMP_Text slotName;
+    private TMP_Text sloTName;
 
     [SerializeField]
     private ItemType itemType = new ItemType();
@@ -23,6 +23,8 @@ public class EquippedSlot : MonoBehaviour, IPointerClickHandler
     private InventoryManager inventoryManager;
     private EquipmentSOLibrary equipmentSOLibrary;
 
+    public GameObject petMenu;
+    public GameObject equipmentPanel;
 
     private bool slotInUse;
 
@@ -81,17 +83,53 @@ public class EquippedSlot : MonoBehaviour, IPointerClickHandler
             UnEquipGear();
         this.itemSprite = itemSprite;
         slotImage.sprite = this.itemSprite;
-        slotName.enabled = false;
-
+        sloTName.enabled = false;
         this.itemName = itemName;
         this.itemDescription = itemDescription;
-        
         for (int i = 0; i < equipmentSOLibrary.equipmentSO.Length; i++)
         {
             if (equipmentSOLibrary.equipmentSO[i].itemName == this.itemName)
+            {
                 equipmentSOLibrary.equipmentSO[i].EquipItem();
+            }
         }
         slotInUse = true;
+        
+    }
+    private void Update()
+    {
+        if(equipmentPanel.activeSelf)
+        {
+            for (int j = 0; j < inventoryManager.equipmentSlot.Length; j++)
+            {
+                if (inventoryManager.equipmentSlot[j].name != "" && !inventoryManager.equipmentSlot[j].isFull)
+                {
+                    inventoryManager.equipmentSlot[j].itemName = "";
+                    inventoryManager.equipmentSlot[j].itemDescription = "";
+                    inventoryManager.equipmentSlot[j].itemSprite = emptySprite;
+                    inventoryManager.equipmentSlot[j].quantity = 0;
+                    inventoryManager.equipmentSlot[j].isFull = false;
+                    inventoryManager.equipmentSlot[j].thisItemSelected = false;
+                }
+
+            }
+        }
+        if (petMenu.activeSelf)
+        {
+            for (int j = 0; j < inventoryManager.petSlot.Length; j++)
+            {
+                if (inventoryManager.petSlot[j].name != "" && !inventoryManager.petSlot[j].isFull)
+                {
+                    inventoryManager.petSlot[j].itemName = "";
+                    inventoryManager.petSlot[j].itemDescription = "";
+                    inventoryManager.petSlot[j].itemSprite = emptySprite;
+                    inventoryManager.petSlot[j].quantity = 0;
+                    inventoryManager.petSlot[j].isFull = false;
+                    inventoryManager.petSlot[j].thisItemSelected = false;
+                }
+
+            }
+        }
     }
     public void UnEquipGear()
     {
@@ -102,7 +140,7 @@ public class EquippedSlot : MonoBehaviour, IPointerClickHandler
             inventoryManager.AddItem(itemName, 1, itemSprite, itemDescription, itemType);
             this.itemSprite = emptySprite;
             slotImage.sprite = this.emptySprite;
-            slotName.enabled = true;
+            sloTName.enabled = true;
 
             for (int i = 0; i < equipmentSOLibrary.equipmentSO.Length; i++)
             {

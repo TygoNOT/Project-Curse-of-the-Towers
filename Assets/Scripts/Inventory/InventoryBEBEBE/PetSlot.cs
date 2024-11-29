@@ -71,7 +71,7 @@ public class PetSlot : MonoBehaviour, IPointerClickHandler
                 }
             }
         }
-        else
+        else if(!isFull && !deleteAcceptance.activeSelf)
         {
             GameObject.Find("StatsManager").GetComponent<PlayerStats>().TurnOffPreviewStats();
             inventoryManager.DeselectAllSlots();
@@ -91,6 +91,19 @@ public class PetSlot : MonoBehaviour, IPointerClickHandler
     {
         itemImage.sprite = emptySprite;
         isFull = false;
+        for (int i = 0; i < inventoryManager.equipmentSlot.Length; i++)
+        {
+            if (inventoryManager.petSlot[i].selectedShader.activeSelf)
+            {
+                inventoryManager.petSlot[i].itemName = "";
+                inventoryManager.petSlot[i].itemDescription = "";
+                inventoryManager.petSlot[i].itemSprite = emptySprite;
+                inventoryManager.petSlot[i].quantity = 0;
+                inventoryManager.petSlot[i].isFull = false;
+                inventoryManager.petSlot[i].thisItemSelected = false;
+            }
+
+        }
     }
 
     public void OnRightClick()

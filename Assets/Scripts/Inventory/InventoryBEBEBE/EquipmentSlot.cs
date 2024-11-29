@@ -125,9 +125,9 @@ public class EquipmentSlot : MonoBehaviour, IPointerClickHandler
             {
                 if (inventoryManager.equipmentSlot[i].isFull && inventoryManager.equipmentSlot[i].selectedShader.activeSelf)
                 {
-                    this.slotName = inventoryManager.equipmentSlot[i].name;
+                    slotName = inventoryManager.equipmentSlot[i].name;
                     deleteAcceptance.SetActive(true);
-                    GameObject.Find("AcceptButton").GetComponent<DeleteAcceptButton>().slotName = this.slotName;
+                    GameObject.Find("AcceptButton").GetComponent<DeleteAcceptButton>().slotName = slotName;
                 }
             }
         }
