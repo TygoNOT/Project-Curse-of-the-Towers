@@ -93,7 +93,7 @@ public class InventoryManager : MonoBehaviour
             }
             return quantity;
         }
-        else if(itemType == ItemType.consumable)
+        if(itemType == ItemType.consumable)
         {
             for (int i = 0; i < itemSlot.Length; i++)
             {
@@ -107,7 +107,7 @@ public class InventoryManager : MonoBehaviour
             }
             return quantity;
         }
-        else if (itemType == ItemType.pet)
+        if (itemType == ItemType.pet)
         {
             for (int i = 0; i < petSlot.Length; i++)
             {

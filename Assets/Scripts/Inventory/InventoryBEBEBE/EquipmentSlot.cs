@@ -26,7 +26,7 @@ public class EquipmentSlot : MonoBehaviour, IPointerClickHandler
     private Image itemImage;
 
     [SerializeField]
-    private EquippedSlot headArmorSlot, chestArmorSlot, legsArmorSlot, footArmorSlot, weaponSlot, petSlot;
+    private EquippedSlot headArmorSlot, chestArmorSlot, legsArmorSlot, footArmorSlot, weaponSlot;
 
     public GameObject selectedShader;
     public bool thisItemSelected;
@@ -91,8 +91,6 @@ public class EquipmentSlot : MonoBehaviour, IPointerClickHandler
             footArmorSlot.EquipGear(itemSprite, itemName, itemDescription);
         if (itemType == ItemType.weapon)
             weaponSlot.EquipGear(itemSprite, itemName, itemDescription);
-        if (itemType == ItemType.pet)
-            petSlot.EquipGear(itemSprite, itemName, itemDescription);
 
         EmptySlot();
     }

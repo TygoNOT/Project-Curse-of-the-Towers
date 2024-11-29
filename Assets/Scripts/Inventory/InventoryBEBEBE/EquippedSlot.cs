@@ -52,18 +52,23 @@ public class EquippedSlot : MonoBehaviour, IPointerClickHandler
     }
     void OnLeftClick()
     {
-        if (thisItemSelected && slotInUse)
-            UnEquipGear();
-        else
+        if (slotInUse)
         {
             inventoryManager.DeselectAllSlots();
             selectedShader.SetActive(true);
             thisItemSelected = true;
             for (int i = 0; i < equipmentSOLibrary.equipmentSO.Length; i++)
             {
-                if (slotInUse)
+                if (slotInUse && this.itemName == equipmentSOLibrary.equipmentSO[i].itemName)
                     equipmentSOLibrary.equipmentSO[i].PreviewEquipment();
             }
+        }
+        else
+        {
+            inventoryManager.DeselectAllSlots();
+            selectedShader.SetActive(true);
+            thisItemSelected = true;
+            GameObject.Find("StatsManager").GetComponent<PlayerStats>().TurnOffPreviewStats();
         }
     }
     void OnRightClick()

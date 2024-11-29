@@ -81,6 +81,7 @@ public class PetSlot : MonoBehaviour, IPointerClickHandler
     }
     private void EquipGear()
     {
+        if(itemType== ItemType.pet)
             petSlot.EquipGear(itemSprite, itemName, itemDescription);
 
         EmptySlot();
