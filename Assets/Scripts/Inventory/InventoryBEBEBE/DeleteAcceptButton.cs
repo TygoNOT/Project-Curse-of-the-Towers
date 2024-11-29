@@ -6,17 +6,20 @@ public class DeleteAcceptButton : MonoBehaviour
 {
     public string slotName;
 
-
     public EquipmentSlot equipmentSlot;
 
-
     public PetSlot petSlot;
+
+    public ItemSlot itemSlot;
 
     [SerializeField]
     public GameObject equipmentPanel;
 
     [SerializeField]
     public GameObject petMenu;
+
+    [SerializeField]
+    public GameObject inventoryMenu;
 
     public InventoryManager inventoryManager;
 
@@ -39,6 +42,18 @@ public class DeleteAcceptButton : MonoBehaviour
                 }
             }
         }
-        
+        else if (inventoryMenu.activeSelf)
+        {
+            foreach (ItemSlot itemSl in inventoryManager.itemSlot)
+            {
+                if (itemSl.name == slotName)
+                {
+                    itemSlot = GameObject.Find(slotName).GetComponent<ItemSlot>();
+                    itemSlot.dropItem();
+                }
+            }
+        }
+
+
     }
 }

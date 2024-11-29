@@ -11,11 +11,12 @@ public class ItemSo : ScriptableObject
     public int amountToChangeStat;
     public AttributesToChange attributesToChange= new AttributesToChange();
     public int amountToChangeAttribute;
+    public ItemType itemType = new ItemType();
 
 
     public bool UseItem()
     {
-        if (statToChange == StatToChange.health)
+        if (itemType == ItemType.consumable)
         {
             return true;
             
