@@ -7,7 +7,7 @@ public class MenuController : MonoBehaviour
 {
     void Start()
     {
-        SceneManager.LoadScene("Inventory");
+        
     }
 
     void Update()
