@@ -6,10 +6,12 @@ public class InventoryManager : MonoBehaviour
 {
     public GameObject InventoryMenu;
     public GameObject EquipmentMenu;
+    public GameObject PetMenu;
     public ItemSlot[] itemSlot;
     public ItemSo[] itemSOs;
     public EquipmentSlot[] equipmentSlot;
     public EquippedSlot[] equippedSlot;
+    public PetSlot[] petSlot;
     void Start()
     {
         
@@ -30,12 +32,21 @@ public class InventoryManager : MonoBehaviour
             Time.timeScale = 1;
             InventoryMenu.SetActive(false);
             EquipmentMenu.SetActive(false);
+            PetMenu.SetActive(false);
         }
-        else
+        if (EquipmentMenu.activeSelf)
         {
             Time.timeScale = 0;
             InventoryMenu.SetActive(true);
             EquipmentMenu.SetActive(false);
+            PetMenu.SetActive(false);
+        }
+        if (PetMenu.activeSelf)
+        {
+            Time.timeScale = 0;
+            InventoryMenu.SetActive(true);
+            EquipmentMenu.SetActive(false);
+            PetMenu.SetActive(false);
         }
     }
     void Equipment()
@@ -67,7 +78,7 @@ public class InventoryManager : MonoBehaviour
     }
     public int AddItem(string itemName, int quantity, Sprite itemSprite, string itemDescription, ItemType itemType)
     {
-        if (itemType == ItemType.weapon || itemType == ItemType.pet || itemType == ItemType.headArmor || itemType == ItemType.chestArmor || itemType == ItemType.legsArmor || itemType == ItemType.footArmor)
+        if (itemType == ItemType.weapon || itemType == ItemType.headArmor || itemType == ItemType.chestArmor || itemType == ItemType.legsArmor || itemType == ItemType.footArmor)
         {
 
             for (int i = 0; i < equipmentSlot.Length; i++)
@@ -82,7 +93,7 @@ public class InventoryManager : MonoBehaviour
             }
             return quantity;
         }
-        else
+        else if(itemType == ItemType.consumable)
         {
             for (int i = 0; i < itemSlot.Length; i++)
             {
@@ -96,6 +107,21 @@ public class InventoryManager : MonoBehaviour
             }
             return quantity;
         }
+        else if (itemType == ItemType.pet)
+        {
+            for (int i = 0; i < petSlot.Length; i++)
+            {
+                if (petSlot[i].isFull == false && petSlot[i].itemName == itemName || petSlot[i].quantity == 0)
+                {
+                    int leftOverItems = petSlot[i].AddItem(itemName, quantity, itemSprite, itemDescription, itemType);
+                    if (leftOverItems > 0)
+                        leftOverItems = AddItem(itemName, leftOverItems, itemSprite, itemDescription, itemType);
+                    return leftOverItems;
+                }
+            }
+            return quantity;
+        }
+        return 0;
     }
     public void DeselectAllSlots()
     {
@@ -113,6 +139,11 @@ public class InventoryManager : MonoBehaviour
         {
             equippedSlot[i].selectedShader.SetActive(false);
             equippedSlot[i].thisItemSelected = false;
+        }
+        for (int i = 0; i < petSlot.Length; i++)
+        {
+            petSlot[i].selectedShader.SetActive(false);
+            petSlot[i].thisItemSelected = false;
         }
     }
 }
