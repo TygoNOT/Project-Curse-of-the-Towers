@@ -18810,6 +18810,7 @@ GameObject:
   - component: {fileID: 1853766711}
   - component: {fileID: 1853766710}
   - component: {fileID: 1853766715}
+  - component: {fileID: 1853766716}
   m_Layer: 5
   m_Name: InventoryCanvas
   m_TagString: Untagged
@@ -19006,6 +19007,19 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 31746925db179684e92bbc9db958f42c, type: 2}
   - {fileID: 11400000, guid: bc0297c383de5dd44b68b586d12d26e3, type: 2}
   - {fileID: 11400000, guid: cf3612cb453c71d48b739ef33987d831, type: 2}
+--- !u!114 &1853766716
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1853766709}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fc7d4938baa6864bbcc7d4dd95a8fdd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nicknameDisplayText: {fileID: 1502351087}
 --- !u!1 &1856660660
 GameObject:
   m_ObjectHideFlags: 0
