@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: ChestArmor
   m_EditorClassIdentifier: 
   itemName: 
-  id: 
+  id: 213a24755fc85da4e956b41df3ad1b23
   setName: 
   price: 0
   attack: 0
@@ -21,4 +21,5 @@ MonoBehaviour:
   speed: 0
   critDmg: 0
   critChance: 0
-  itemSprite: {fileID: 0}
+  rarity: 0
+  itemSprite: {fileID: 21300000, guid: 2e4402499edf3ef46b1ce3fed2de3b1c, type: 3}
