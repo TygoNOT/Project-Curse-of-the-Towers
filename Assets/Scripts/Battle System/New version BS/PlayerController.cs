@@ -1,58 +1,134 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using System.Linq;
+using System.Collections;
 
 public class PlayerController : MonoBehaviour
 {
     [Header("Attribute")]
     public string playername;
-    public int maxhealth = 100;
     public Image healthBar;
+    private int actionselected = 0;
+    private float originalHealthBarWidth;
+
+    [Header("Stats")]
+    public int maxhealth = 100;
     public int currentHP = 100;
     public int numberofHPrecovery = 20;
     public int minBaseDamage = 8;
     public int maxBaseDamage = 15;
     public int critChance = 2;
-    private int actionselected = 0;
-    private float originalHealthBarWidth;
+    public float critDamage = 1.5f;
+    public int speed = 10;
+    private CombatController combatController;
+
+    [Header("Effect")]
+    private bool isParalyzed = false;
+    private bool isBurned = false;
+    private bool isPoisoned = false;
+    private bool isSilenced = false;
+    private bool isFrozen = false;
+    private float originalSpeed;
+    private float originalDamage;
+    private int frozenTurns = 0;
+    private int maxFrozenTurns = 4;
+
 
     private void Start()
     {
         originalHealthBarWidth = healthBar.GetComponent<RectTransform>().rect.width;
+        combatController = FindObjectOfType<CombatController>();
     }
+
     public void selectAction(int action)
     {
         actionselected = action;
+        ExecuteAction();
     }
 
-    public void Attack(GameObject enemy)
+    public void Attack(GameObject enemy) 
     {
-        int crit = Random.Range(0, 100);
-        if (actionselected == 0)
+        if (IsActionBlocked())
         {
-            if (crit <= critChance)
-            {
-                float min = minBaseDamage * 1.5f;
-                float max = minBaseDamage * 1.5f;
-                minBaseDamage = Mathf.RoundToInt(min);
-                maxBaseDamage = Mathf.RoundToInt(max);
-            }
-            int dmg = Random.Range(minBaseDamage, maxBaseDamage);
-            Debug.Log("Player damage: " + dmg);
+            Debug.Log("Player action not performed due to paralysis!");
+            combatController.TogglePlayerTurn();
+            return;
+        }
 
-            enemy.GetComponent<EnemyController>().TakeDamage(dmg);
-        }
-        else if (actionselected == 1)
+        if (IsActionBlocked())
         {
-            Heal();
+            Debug.Log("Player action not performed due to freeze!");
+            combatController.TogglePlayerTurn();
+            return;
         }
+
+        int crit = Random.Range(0, 100);
+        if (crit <= critChance) 
+        { 
+            minBaseDamage = Mathf.RoundToInt(minBaseDamage * critDamage);
+            maxBaseDamage = Mathf.RoundToInt(maxBaseDamage * critDamage); 
+        } 
+        int dmg = Random.Range(minBaseDamage, maxBaseDamage);
+        Debug.Log("Player damage: " + dmg); 
+        enemy.GetComponent<EnemyController>().TakeDamage(dmg);
+        StartCoroutine(UpdateHealthBarDelayed(enemy));
+    }
+
+    private IEnumerator UpdateHealthBarDelayed(GameObject enemy)
+    {
+        yield return new WaitForSeconds(0.5f);  
+
+        enemy.GetComponent<EnemyController>().UpdateHealthBar();
+    }
+
+    public void ExecuteAction()
+    {
+        Debug.Log("ExecuteAction called.");
+        if (IsActionBlocked()) 
+        {
+            Debug.Log("Player action not performed due to paralysis!");
+            combatController.TogglePlayerTurn();
+            return;
+        }
+
+        if (IsSilenced() && (actionselected == 1 || actionselected == 2))
+        {
+            Debug.Log("Player cannot perform this action due to Silence!");
+            combatController.TogglePlayerTurn();
+            return;
+        }
+
+        if (IsActionBlocked())
+        {
+            Debug.Log("Player action not performed due to freeze!");
+            combatController.TogglePlayerTurn();
+            return;
+        }
+
         else
         {
-            Debug.Log("You have not selected any action!");
+            if (actionselected == 0)
+            {
+                Debug.Log("Player attacks");
+                GameObject targetEnemy = combatController.enemies.First(e => e.gameObject.activeSelf).gameObject;
+                Attack(targetEnemy);
+            }
+            else if (actionselected == 1)
+            {
+                Heal();
+            }
+            else if (actionselected == 2)
+            {
+                AttemptEscape();
+            }
+            else
+            {
+                Debug.Log("You have not selected any action!");
+            }
+            combatController.TogglePlayerTurn();
         }
     }
-
-
 
     public void TakeDamage(int dmgTaken)
     {
@@ -80,7 +156,6 @@ public class PlayerController : MonoBehaviour
         healthBar.GetComponent<RectTransform>().sizeDelta = new Vector2(newWidth, healthBar.GetComponent<RectTransform>().sizeDelta.y);
 
         FindObjectOfType<CombatController>().TogglePlayerTurn();
-
     }
 
     public void CheckDeath()
@@ -95,27 +170,158 @@ public class PlayerController : MonoBehaviour
 
     public void AttemptEscape()
     {
-        int escapeChance = Random.Range(0, 100); 
-        int requiredChance = 50; 
+        int escapeChance = Random.Range(0, 100);
+        int requiredChance = 50;
 
         CombatController combatController = FindObjectOfType<CombatController>();
 
         if (escapeChance < requiredChance)
         {
             Debug.Log("Escape failed! Enemy turn begins.");
-            combatController.combatState.text = "Escape failed! Enemy turn begins."; 
-            combatController.TogglePlayerTurn(); 
+            combatController.combatState.text = "Escape failed! Enemy turn begins.";
+            combatController.TogglePlayerTurn();
         }
         else
         {
             Debug.Log("Escape successful! Loading new scene...");
-            combatController.combatState.text = "Escape successful!"; 
+            combatController.combatState.text = "Escape successful!";
             Invoke("LoadEscapeScene", 1f);
         }
     }
 
     private void LoadEscapeScene()
     {
-        SceneManager.LoadScene("SampleScene"); 
+        SceneManager.LoadScene("SampleScene");
+    }
+
+    public void ApplyParalysis()
+    {
+        if (isPoisoned || isParalyzed || isBurned || isSilenced) return; 
+
+        Debug.Log($"{playername} subject to paralysis!");
+        isParalyzed = true;
+        originalSpeed = speed;
+        speed = Mathf.RoundToInt(speed * 0.5f); 
+    }
+
+    public bool IsActionBlocked()
+    {
+        if (isFrozen)
+        {
+            Debug.Log($"{playername} is frozen and cannot act!");
+            return true; 
+        }
+
+        if (isParalyzed && Random.Range(0, 100) < 20)
+        {
+            Debug.Log($"{playername}'s Your action is blocked!");
+            return true;
+        }
+        return false;
+    }
+
+    public void ApplyBurn()
+    {
+        if (isPoisoned || isParalyzed || isBurned || isSilenced) return;  
+
+        Debug.Log($"{playername} is burned!");
+        isBurned = true;
+
+        originalDamage = (minBaseDamage + maxBaseDamage) / 2;  
+        minBaseDamage = Mathf.RoundToInt(minBaseDamage * 0.5f);
+        maxBaseDamage = Mathf.RoundToInt(maxBaseDamage * 0.5f);
+
+    }
+
+    public void InflictBurnDamage()
+    {
+        if (isBurned)
+        {
+            currentHP -= 2;
+            Debug.Log($"{playername} takes 2 burn damage due to Burn effect!");
+            CheckDeath();
+        }
+    }
+
+    public void ApplyPoison()
+    {
+        if (isPoisoned || isParalyzed || isBurned || isSilenced) return; 
+
+        Debug.Log($"{playername} is poisoned!");
+        isPoisoned = true;
+    }
+
+    public void InflictPoisonDamage()
+    {
+        if (isPoisoned)
+        {
+            currentHP -= 10;
+            Debug.Log($"{playername} takes 10 poison damage due to Poison effect!");
+            CheckDeath();
+        }
+    }
+
+    public void ApplySilence()
+    {
+        if (isSilenced || isParalyzed || isBurned || isPoisoned) return; 
+
+        Debug.Log($"{playername} is silenced!");
+        isSilenced = true;
+    }
+
+    public bool IsSilenced()
+    {
+        return isSilenced;
+    }
+
+    public void ApplyFreeze()
+    {
+        if (isFrozen) return; 
+
+        Debug.Log($"{playername} is frozen!");
+        isFrozen = true;
+        frozenTurns = Random.Range(1, maxFrozenTurns + 1); 
+    }
+
+    public void EndFreezeTurn()
+    {
+        if (isFrozen)
+        {
+            frozenTurns--; 
+
+            if (frozenTurns <= 0)
+            {
+                isFrozen = false;
+                Debug.Log($"{playername} is no longer frozen!");
+            }
+        }
+    }
+
+    public void RemoveEffects()
+    {
+        if (isPoisoned) Debug.Log($"{playername} is no longer poisoned!");
+        if (isSilenced) Debug.Log($"{playername} is no longer silenced!");
+        if (isBurned) Debug.Log($"{playername} is no longer burned!");
+        if (isParalyzed) Debug.Log($"{playername} is no longer paralyzed!");
+
+        isPoisoned = false;
+        isSilenced = false;
+        isBurned = false;
+        isParalyzed = false;
+
+        speed = Mathf.RoundToInt(originalSpeed);
+        minBaseDamage = Mathf.RoundToInt(originalDamage * 0.5f);
+        maxBaseDamage = Mathf.RoundToInt(originalDamage * 0.5f);
+    }
+
+    public void ApplyEndTurnEffects()
+    {
+        if (isFrozen)
+        {
+            EndFreezeTurn(); 
+        }
+
+        if (isBurned) InflictBurnDamage();
+        if (isPoisoned) InflictPoisonDamage();
     }
 }

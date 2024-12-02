@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Enemy
   - PetSlot
+  - LevelButton
   layers:
   - Default
   - TransparentFX
@@ -13,7 +14,7 @@ TagManager:
   - Player
   - Water
   - UI
-  - 
+  - StopMovment
   - 
   - 
   - 
