@@ -66,23 +66,39 @@ public class CombatController : MonoBehaviour
         turnOrder = turnOrder.OrderByDescending(e => e is EnemyController ? ((EnemyController)e).speed : playerController.speed).ToList();
         Debug.Log("Starting ResolveTurnOrder");
 
-        bool enemyActionsCompleted = false; 
+        bool enemyActionsCompleted = false;
         foreach (var entity in turnOrder)
         {
             if (entity is EnemyController enemy)
             {
-                if (enemy.gameObject.activeSelf)
+                if (enemy.isFrozen)
+                {
+                    Debug.Log($"{enemy.EnemyName} is frozen and cannot act this turn.");
+                    enemy.freezeTurns--;
+                    if (enemy.freezeTurns <= 0)
+                    {
+                        enemy.isFrozen = false;
+                        Debug.Log($"{enemy.EnemyName} is no longer frozen.");
+                    }
+                }
+                else if (enemy.gameObject.activeSelf && enemy.CanAct())
                 {
                     Debug.Log(enemy.EnemyName + " attacks");
                     enemy.Attack();
+                    enemy.EndTurnEffects();
                     yield return new WaitForSeconds(3f);
                     yield return null;
                 }
+                else if (!enemy.CanAct())
+                {
+                    Debug.Log(enemy.EnemyName + " skips the turn due to paralysis.");
+                }
+
             }
             else if (entity is PlayerController player)
             {
                 Debug.Log("Waiting for enemies to finish their turns before player takes action.");
-                yield return new WaitUntil(() => enemyActionsCompleted);  
+                yield return new WaitUntil(() => enemyActionsCompleted);
 
                 Debug.Log("Player takes action");
                 ActionPanel.SetActive(true);
@@ -95,6 +111,7 @@ public class CombatController : MonoBehaviour
             enemyActionsCompleted = true;
         }
         playerController.ApplyEndTurnEffects();
+        playerController.ApplyPetRegeneration();
         TogglePlayerTurn();
         Debug.Log("ResolveTurnOrder completed");
     }
@@ -137,9 +154,9 @@ public class CombatController : MonoBehaviour
         combatState.text = "";
         ec.Attack();
         yield return new WaitForSeconds(3f);
-        if (ec.health <= 0)  
+        if (ec.health <= 0)
         {
-            ec.gameObject.SetActive(false);  
+            ec.gameObject.SetActive(false);
         }
         yield return new WaitForSeconds(1f);
         NextEnemy();
@@ -239,4 +256,3 @@ public class CombatController : MonoBehaviour
         SceneManager.LoadScene("LvlMenuTower1");
     }
 }
-

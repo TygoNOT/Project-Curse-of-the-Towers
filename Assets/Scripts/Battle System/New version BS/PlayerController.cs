@@ -10,7 +10,7 @@ public class PlayerController : MonoBehaviour
     public string playername;
     public Image healthBar;
     private int actionselected = 0;
-    private float originalHealthBarWidth;
+    public float originalHealthBarWidth;
 
     [Header("Stats")]
     public int maxhealth = 100;
@@ -20,10 +20,14 @@ public class PlayerController : MonoBehaviour
     public int maxBaseDamage = 15;
     public int critChance = 2;
     public float critDamage = 1.5f;
+    private float originalCritDamage;
+    private int originalCritChance;
+    private int originalspeed;
     public int speed = 10;
-    private CombatController combatController;
+    public CombatController combatController;
 
     [Header("Effect")]
+    public bool Windbuff = false;
     private bool isParalyzed = false;
     private bool isBurned = false;
     private bool isPoisoned = false;
@@ -33,7 +37,10 @@ public class PlayerController : MonoBehaviour
     private float originalDamage;
     private int frozenTurns = 0;
     private int maxFrozenTurns = 4;
+    private int windBuffTurns;
 
+    [Header("Pet")]
+    public PetController petController;
 
     private void Start()
     {
@@ -47,7 +54,7 @@ public class PlayerController : MonoBehaviour
         ExecuteAction();
     }
 
-    public void Attack(GameObject enemy) 
+    public void Attack(GameObject enemy)
     {
         if (IsActionBlocked())
         {
@@ -64,20 +71,20 @@ public class PlayerController : MonoBehaviour
         }
 
         int crit = Random.Range(0, 100);
-        if (crit <= critChance) 
-        { 
+        if (crit <= critChance)
+        {
             minBaseDamage = Mathf.RoundToInt(minBaseDamage * critDamage);
-            maxBaseDamage = Mathf.RoundToInt(maxBaseDamage * critDamage); 
-        } 
+            maxBaseDamage = Mathf.RoundToInt(maxBaseDamage * critDamage);
+        }
         int dmg = Random.Range(minBaseDamage, maxBaseDamage);
-        Debug.Log("Player damage: " + dmg); 
+        Debug.Log("Player damage: " + dmg);
         enemy.GetComponent<EnemyController>().TakeDamage(dmg);
         StartCoroutine(UpdateHealthBarDelayed(enemy));
     }
 
     private IEnumerator UpdateHealthBarDelayed(GameObject enemy)
     {
-        yield return new WaitForSeconds(0.5f);  
+        yield return new WaitForSeconds(0.5f);
 
         enemy.GetComponent<EnemyController>().UpdateHealthBar();
     }
@@ -85,7 +92,7 @@ public class PlayerController : MonoBehaviour
     public void ExecuteAction()
     {
         Debug.Log("ExecuteAction called.");
-        if (IsActionBlocked()) 
+        if (IsActionBlocked())
         {
             Debug.Log("Player action not performed due to paralysis!");
             combatController.TogglePlayerTurn();
@@ -122,6 +129,11 @@ public class PlayerController : MonoBehaviour
             {
                 AttemptEscape();
             }
+            else if (actionselected == 3) 
+            {
+                petController.UseAbility(this);
+                combatController.ActionPanel.SetActive(false);
+            }
             else
             {
                 Debug.Log("You have not selected any action!");
@@ -135,9 +147,9 @@ public class PlayerController : MonoBehaviour
         currentHP -= dmgTaken;
         if (currentHP < 0) currentHP = 0;
         float healthPercentage = (float)currentHP / maxhealth;
-        float maxBarWidth = healthBar.GetComponent<RectTransform>().rect.width;
+        float newWidth = healthPercentage * originalHealthBarWidth;
         healthBar.GetComponent<RectTransform>().sizeDelta = new Vector2(
-            maxBarWidth * healthPercentage,
+            newWidth,
             healthBar.GetComponent<RectTransform>().sizeDelta.y
         );
 
@@ -196,12 +208,12 @@ public class PlayerController : MonoBehaviour
 
     public void ApplyParalysis()
     {
-        if (isPoisoned || isParalyzed || isBurned || isSilenced) return; 
+        if (isPoisoned || isParalyzed || isBurned || isSilenced) return;
 
         Debug.Log($"{playername} subject to paralysis!");
         isParalyzed = true;
         originalSpeed = speed;
-        speed = Mathf.RoundToInt(speed * 0.5f); 
+        speed = Mathf.RoundToInt(speed * 0.5f);
     }
 
     public bool IsActionBlocked()
@@ -209,7 +221,7 @@ public class PlayerController : MonoBehaviour
         if (isFrozen)
         {
             Debug.Log($"{playername} is frozen and cannot act!");
-            return true; 
+            return true;
         }
 
         if (isParalyzed && Random.Range(0, 100) < 20)
@@ -222,12 +234,12 @@ public class PlayerController : MonoBehaviour
 
     public void ApplyBurn()
     {
-        if (isPoisoned || isParalyzed || isBurned || isSilenced) return;  
+        if (isPoisoned || isParalyzed || isBurned || isSilenced) return;
 
         Debug.Log($"{playername} is burned!");
         isBurned = true;
 
-        originalDamage = (minBaseDamage + maxBaseDamage) / 2;  
+        originalDamage = (minBaseDamage + maxBaseDamage) / 2;
         minBaseDamage = Mathf.RoundToInt(minBaseDamage * 0.5f);
         maxBaseDamage = Mathf.RoundToInt(maxBaseDamage * 0.5f);
 
@@ -245,7 +257,7 @@ public class PlayerController : MonoBehaviour
 
     public void ApplyPoison()
     {
-        if (isPoisoned || isParalyzed || isBurned || isSilenced) return; 
+        if (isPoisoned || isParalyzed || isBurned || isSilenced) return;
 
         Debug.Log($"{playername} is poisoned!");
         isPoisoned = true;
@@ -263,7 +275,7 @@ public class PlayerController : MonoBehaviour
 
     public void ApplySilence()
     {
-        if (isSilenced || isParalyzed || isBurned || isPoisoned) return; 
+        if (isSilenced || isParalyzed || isBurned || isPoisoned) return;
 
         Debug.Log($"{playername} is silenced!");
         isSilenced = true;
@@ -276,18 +288,18 @@ public class PlayerController : MonoBehaviour
 
     public void ApplyFreeze()
     {
-        if (isFrozen) return; 
+        if (isFrozen) return;
 
         Debug.Log($"{playername} is frozen!");
         isFrozen = true;
-        frozenTurns = Random.Range(1, maxFrozenTurns + 1); 
+        frozenTurns = Random.Range(1, maxFrozenTurns + 1);
     }
 
     public void EndFreezeTurn()
     {
         if (isFrozen)
         {
-            frozenTurns--; 
+            frozenTurns--;
 
             if (frozenTurns <= 0)
             {
@@ -318,10 +330,66 @@ public class PlayerController : MonoBehaviour
     {
         if (isFrozen)
         {
-            EndFreezeTurn(); 
+            EndFreezeTurn();
         }
 
         if (isBurned) InflictBurnDamage();
         if (isPoisoned) InflictPoisonDamage();
+        UpdateWindBuff();
+    }
+
+    public void ApplyPetRegeneration()
+    {
+        if (petController != null && petController is PetHealer healerPet)
+        {
+            healerPet.ApplyRegeneration(this); 
+        }
+    }
+
+    public void EndTurnEffects()
+    {
+        if (petController != null)
+        {
+            petController.EndTurn();
+        }
+    }
+
+    public void ApplyWindBuff(int duration, float speedMultiplier, int critChanceIncrease, float critDamageMultiplier)
+    {
+
+        if (!Windbuff)
+        {
+            Windbuff = true;
+            windBuffTurns = duration;
+
+            originalSpeed = speed;
+            originalCritChance = critChance;
+            originalCritDamage = critDamage;
+
+            speed = Mathf.RoundToInt(speed * speedMultiplier);
+            critChance += critChanceIncrease;
+            critDamage *= critDamageMultiplier;
+            Debug.Log($"Wind buff applied: +{speedMultiplier}x speed, +{critChanceIncrease}% crit chance, +{critDamageMultiplier}x crit damage for {duration} turns.");
+
+        }
+    }
+
+
+    public void UpdateWindBuff()
+    {
+        if (windBuffTurns > 0)
+        {
+            windBuffTurns--;
+
+            if (windBuffTurns <= 0)
+            {
+                Windbuff = false;
+
+                speed = Mathf.RoundToInt(originalSpeed);
+                critChance = originalCritChance;
+                critDamage = originalCritDamage;
+                Debug.Log($"{playername} is no longer have Wind Buff!");
+            }
+        }
     }
 }
