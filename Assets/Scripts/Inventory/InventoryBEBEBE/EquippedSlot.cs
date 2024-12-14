@@ -15,7 +15,7 @@ public class EquippedSlot : MonoBehaviour, IPointerClickHandler
 
     [SerializeField]
     private ItemType itemType = new ItemType();
-
+    private Attribute attribute = new Attribute();
     private Sprite itemSprite;
     private string itemName;
     private string itemDescription;
@@ -137,7 +137,7 @@ public class EquippedSlot : MonoBehaviour, IPointerClickHandler
         {
             inventoryManager.DeselectAllSlots();
 
-            inventoryManager.AddItem(itemName, 1, itemSprite, itemDescription, itemType);
+            inventoryManager.AddItem(itemName, 1, itemSprite, itemDescription, itemType, attribute);
             this.itemSprite = emptySprite;
             slotImage.sprite = this.emptySprite;
             sloTName.enabled = true;

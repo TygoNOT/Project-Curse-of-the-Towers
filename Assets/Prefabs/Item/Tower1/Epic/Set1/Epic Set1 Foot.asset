@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5692d28b37a5e1c4aae76fdb638d3e31, type: 3}
+  m_Name: Epic Set1 Foot
+  m_EditorClassIdentifier: 
+  itemName: Epic Set1 Foot
+  id: 8ac5b322ec5d4ed49b2dcbed6caecf14
+  setName: Epic Set1
+  price: 14
+  attack: 0
+  hp: 5
+  speed: 6
+  critChance: 0
+  critDmg: 0
+  attribute: 0
+  rarity: 2
+  itemType: 5
+  itemSprite: {fileID: 21300000, guid: 603f3c7931f8b6241bca1d1b1f2c3ede, type: 3}

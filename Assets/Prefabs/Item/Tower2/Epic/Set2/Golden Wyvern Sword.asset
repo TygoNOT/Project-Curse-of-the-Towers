@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5692d28b37a5e1c4aae76fdb638d3e31, type: 3}
+  m_Name: Golden Wyvern Sword
+  m_EditorClassIdentifier: 
+  itemName: Golden Wyvern Sword
+  id: 0e1e8dc943bcbaa468e7b15efcb1c824
+  setName: Golden Wyvern
+  price: 15
+  attack: 8
+  hp: 1
+  speed: 0
+  critChance: 30
+  critDmg: 1.5
+  attribute: 3
+  rarity: 2
+  itemType: 6
+  itemSprite: {fileID: 21300000, guid: b1206ff4e6a7db9418cdc10c2808af30, type: 3}

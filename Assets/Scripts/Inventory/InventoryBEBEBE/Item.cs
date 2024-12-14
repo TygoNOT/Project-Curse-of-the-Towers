@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
+
 public class Item : MonoBehaviour
 {
     [SerializeField]
@@ -18,9 +19,12 @@ public class Item : MonoBehaviour
     [SerializeField]
     public string itemDescription;
 
+    [SerializeField] public EffectType effectToRemove = EffectType.None;
+
     private InventoryManager inventoryManager;
 
     public ItemType itemType;
+    public Attribute weaponAttribute;
 
     void Start()
     {
@@ -29,10 +33,11 @@ public class Item : MonoBehaviour
 
     private void OnMouseDown()
     {
-            int leftOverItems=inventoryManager.AddItem(itemName, quantity, sprite, itemDescription, itemType);
+            int leftOverItems=inventoryManager.AddItem(itemName, quantity, sprite, itemDescription, itemType, weaponAttribute);
         if(leftOverItems<=0)
             Destroy(gameObject);
         else 
             quantity = leftOverItems;
     }
+
 }

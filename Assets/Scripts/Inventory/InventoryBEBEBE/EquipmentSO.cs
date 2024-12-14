@@ -2,30 +2,41 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
+
+[SerializeField] public enum Attribute
+{
+    None,
+    Spirit, 
+    Darkness, 
+    Order, 
+    Chaos, 
+    Void 
+}
 [SerializeField] public enum Rarity
 {
     common,
-    uncommon,
     rare,
     epic,
     legendary,
     mythic,
 };
+
 [CreateAssetMenu]
 public class EquipmentSO : ScriptableObject
 {
     public string itemName, id, setName;
-    public int price, attack, hp, speed, critDmg, critChance;
-    
+    public int price, attack, hp, speed, critChance;
+    public float critDmg;
+    public Attribute attribute;
     public Rarity rarity;
-
+    [SerializeField] public ItemType itemType;
     [SerializeField]
     Sprite itemSprite;
 
     public void PreviewEquipment()
     {
         GameObject.Find("StatsManager").GetComponent<PlayerStats>().
-            PreviewEquipmentStats(attack, hp, speed, critDmg, critChance, itemSprite, rarity);
+            PreviewEquipmentStats(attack, hp, speed, critDmg, critChance, itemSprite, rarity, attribute);
     }
 
     public void EquipItem()
@@ -36,7 +47,7 @@ public class EquipmentSO : ScriptableObject
         playerStats.speed += speed;
         playerStats.critDmg += critDmg;
         playerStats.critChance += critChance;
-
+        playerStats.attribute = attribute;
         playerStats.UpdateEquipmentStats();
     }
 
@@ -48,7 +59,7 @@ public class EquipmentSO : ScriptableObject
         playerStats.speed -= speed;
         playerStats.critDmg -= critDmg;
         playerStats.critChance -= critChance;
-
+        playerStats.attribute -= attribute;
         playerStats.UpdateEquipmentStats();
     }
     public void OnValidate()

@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5692d28b37a5e1c4aae76fdb638d3e31, type: 3}
+  m_Name: Common Set3 Legs
+  m_EditorClassIdentifier: 
+  itemName: Common Set3 Legs
+  id: f990103c25e671348bf44fd7235e3fac
+  setName: Common Set3
+  price: 4
+  attack: 0
+  hp: 2
+  speed: 1
+  critDmg: 0
+  critChance: 0
+  attribute: 0
+  rarity: 0
+  itemType: 4
+  itemSprite: {fileID: 21300000, guid: 9dff6279140443d41a701d8d6caef569, type: 3}

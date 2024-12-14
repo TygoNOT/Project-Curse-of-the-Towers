@@ -18,6 +18,8 @@ public class EnemyController : MonoBehaviour
     public float critDamage = 1.5f;
     private int curentDamage;
     public int speed = 8;
+    public Attribute enemyAttribute;
+
 
     [Header("Effect")]
     public bool canApplyParalysis = false;
@@ -53,13 +55,16 @@ public class EnemyController : MonoBehaviour
 
     public void Attack()
     {
+        float damageMultiplier = playerController.CalculateAttributeDamageMultiplier(enemyAttribute, playerController.weaponAttribute);
+
+
         int crit = Random.Range(0, 100);
         if (crit <= critChance)
         {
             minBaseDamage = Mathf.RoundToInt(minBaseDamage * critDamage);
             maxBaseDamage = Mathf.RoundToInt(maxBaseDamage * critDamage);
         }
-        int dmg = Random.Range(minBaseDamage, maxBaseDamage);
+        int dmg = Mathf.RoundToInt(Random.Range(minBaseDamage, maxBaseDamage) * damageMultiplier); 
         Debug.Log(EnemyName + " " + dmg);
 
         TryApplyEffects();
