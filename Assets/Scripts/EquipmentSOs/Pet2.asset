@@ -15,11 +15,13 @@ MonoBehaviour:
   itemName: Pet2
   id: cf3612cb453c71d48b739ef33987d831
   setName: 
-  price: 0
+  itemDescription: Mush
+  price: 2000
   attack: 5345
   hp: 0
   speed: 0
   critDmg: 0
   critChance: 0
-  rarity: 2
+  rarity: 5
   itemSprite: {fileID: 712684130, guid: 4df49e54c5e3b59419d00ca3ff15842e, type: 3}
+  itemType: 7

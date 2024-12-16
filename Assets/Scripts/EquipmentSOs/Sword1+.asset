@@ -10,18 +10,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5692d28b37a5e1c4aae76fdb638d3e31, type: 3}
-  m_Name: Pet1
+  m_Name: Sword1+
   m_EditorClassIdentifier: 
-  itemName: Pet1
-  id: bc0297c383de5dd44b68b586d12d26e3
-  setName: 
-  itemDescription: Gob
-  price: 5000
+  itemName: Sword1+
+  id: 3f903922abc32114aaef1acaee53e585
+  setName: PlusSet
+  itemDescription: 
+  price: 50
   attack: 25
   hp: 0
-  speed: 0
-  critDmg: 0
-  critChance: 0
-  rarity: 5
-  itemSprite: {fileID: -961457783, guid: 45c524a2ebbc1a249be2d3ea057a7b92, type: 3}
-  itemType: 7
+  speed: 2
+  critDmg: 25
+  critChance: 3
+  rarity: 0
+  itemSprite: {fileID: 21300000, guid: 1ba4cc20b1594cc4dbcad40a27d00e1a, type: 3}
+  itemType: 6

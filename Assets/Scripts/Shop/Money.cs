@@ -19,9 +19,15 @@ public class Money : MonoBehaviour
         GoldAmount.text = "Gold: " + CurrentGold.ToString();
     }
 
-    public void GainGold(int amount)
+    public void SpawnGold(int amount)
     {
         amount = int.Parse(InputGold.text);
+        CurrentGold = CurrentGold + amount;
+        UpdateGoldAmount();
+    }
+
+    public void GainGold(int amount)
+    {
         CurrentGold = CurrentGold + amount;
         UpdateGoldAmount();
     }

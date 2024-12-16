@@ -10,18 +10,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5692d28b37a5e1c4aae76fdb638d3e31, type: 3}
-  m_Name: Pet1
+  m_Name: Stick
   m_EditorClassIdentifier: 
-  itemName: Pet1
-  id: bc0297c383de5dd44b68b586d12d26e3
+  itemName: Stick
+  id: 3ad158bb533e46f44a260691a47221e9
   setName: 
-  itemDescription: Gob
-  price: 5000
+  itemDescription: Plain stick
+  price: 10
   attack: 25
   hp: 0
-  speed: 0
-  critDmg: 0
-  critChance: 0
-  rarity: 5
-  itemSprite: {fileID: -961457783, guid: 45c524a2ebbc1a249be2d3ea057a7b92, type: 3}
-  itemType: 7
+  speed: 2
+  critDmg: 25
+  critChance: 3
+  rarity: 0
+  itemSprite: {fileID: 21300000, guid: 68160d428d370254483c1d5d6e0fe812, type: 3}
+  itemType: 6
