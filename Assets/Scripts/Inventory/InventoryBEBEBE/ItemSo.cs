@@ -16,7 +16,6 @@ public enum EffectType
 public class ItemSo : ScriptableObject
 {
     public string itemName;
-    public string itemDescription;
     public Sprite itemSprite;
     public int price;
     public int quantity;
@@ -29,7 +28,7 @@ public class ItemSo : ScriptableObject
 
     [Header("Item Use")]
     public EffectType effectToRemove = EffectType.None;
-
+    public Attribute attribute = Attribute.None;
     public bool isHealthPotion = false;
     public int hpRecovery = 10;
 

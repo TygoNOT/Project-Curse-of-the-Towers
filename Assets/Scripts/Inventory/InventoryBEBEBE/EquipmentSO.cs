@@ -25,11 +25,15 @@ using UnityEngine;
 public class EquipmentSO : ScriptableObject
 {
     public Rarity rarity;
+    public string itemName, id, setName;
+    public int price, attack, hp, speed, critChance;
+    public float critDmg;
+    public Attribute attribute;
     [SerializeField] public ItemType itemType;
     [SerializeField]
     public Sprite itemSprite;
-    public ItemType itemType = new ItemType();
-
+    [SerializeField]
+    public string itemDescription;
     public void PreviewEquipment()
     {
         GameObject.Find("StatsManager").GetComponent<PlayerStats>().
