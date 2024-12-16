@@ -16,6 +16,10 @@ public enum EffectType
 public class ItemSo : ScriptableObject
 {
     public string itemName;
+    public string itemDescription;
+    public Sprite itemSprite;
+    public int price;
+    public int quantity;
     public int id;
     public StatToChange statToChange= new StatToChange();
     public int amountToChangeStat;

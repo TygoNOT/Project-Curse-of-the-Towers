@@ -24,14 +24,11 @@ using UnityEngine;
 [CreateAssetMenu]
 public class EquipmentSO : ScriptableObject
 {
-    public string itemName, id, setName;
-    public int price, attack, hp, speed, critChance;
-    public float critDmg;
-    public Attribute attribute;
     public Rarity rarity;
     [SerializeField] public ItemType itemType;
     [SerializeField]
-    Sprite itemSprite;
+    public Sprite itemSprite;
+    public ItemType itemType = new ItemType();
 
     public void PreviewEquipment()
     {

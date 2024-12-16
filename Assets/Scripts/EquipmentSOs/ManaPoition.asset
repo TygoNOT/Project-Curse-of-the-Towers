@@ -13,6 +13,10 @@ MonoBehaviour:
   m_Name: ManaPoition
   m_EditorClassIdentifier: 
   itemName: ManaPoition
+  itemDescription: ooo
+  itemSprite: {fileID: -1838258807, guid: 45c524a2ebbc1a249be2d3ea057a7b92, type: 3}
+  price: 10
+  quantity: 100
   id: 0
   statToChange: 1
   amountToChangeStat: 5
