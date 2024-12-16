@@ -58,6 +58,11 @@ public class EquipmentSlot : MonoBehaviour, IPointerClickHandler
             if (thisItemSelected)
             {
                 EquipGear();
+                CombatController combatController = FindObjectOfType<CombatController>();
+                if (combatController != null)
+                {
+                    combatController.TogglePlayerTurn();
+                }
             }
             else
             {

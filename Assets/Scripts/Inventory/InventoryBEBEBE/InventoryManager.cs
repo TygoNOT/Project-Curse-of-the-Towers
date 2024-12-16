@@ -115,7 +115,7 @@ public class InventoryManager : MonoBehaviour
                 {
                     int leftOverItems = petSlot[i].AddItem(itemName, quantity, itemSprite, itemDescription, itemType);
                     if (leftOverItems > 0)
-                        leftOverItems = AddItem(itemName, leftOverItems, itemSprite, itemDescription, itemType, attribute);
+                        leftOverItems = AddItem(itemName, leftOverItems, itemSprite, itemDescription, itemType, attribute); 
                     return leftOverItems;
                 }
             }
@@ -123,6 +123,7 @@ public class InventoryManager : MonoBehaviour
         }
         return 0;
     }
+
     public void DeselectAllSlots()
     {
         for (int i=0; i<itemSlot.Length; i++)

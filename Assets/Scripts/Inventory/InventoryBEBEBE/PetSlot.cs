@@ -12,6 +12,7 @@ using UnityEngine.UI;
 public class PetSlot : MonoBehaviour, IPointerClickHandler
 {
 
+    public PetItemSO petSO;
     public string itemName;
     public int quantity;
     public Sprite itemSprite;
@@ -58,6 +59,11 @@ public class PetSlot : MonoBehaviour, IPointerClickHandler
             if (thisItemSelected)
             {
                 EquipGear();
+                CombatController combatController = FindObjectOfType<CombatController>();
+                if (combatController != null)
+                {
+                    combatController.TogglePlayerTurn();
+                }
             }
             else
             {

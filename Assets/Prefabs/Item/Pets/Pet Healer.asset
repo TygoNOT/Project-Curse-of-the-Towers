@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d7700561655c4a64f892ef2384d640ae, type: 3}
+  m_Name: Pet Healer
+  m_EditorClassIdentifier: 
+  itemName: Pet Healer
+  id: 31bd10912af31674ea81d76db2aad6a9
+  setName: 
+  price: 0
+  attack: 0
+  hp: 0
+  speed: 0
+  critChance: 0
+  critDmg: 0
+  attribute: 0
+  rarity: 0
+  itemType: 7
+  itemSprite: {fileID: 0}
+  petPrefab: {fileID: 7299776221147611747, guid: a9f05bb535345084d9fd21958d684e42, type: 3}
