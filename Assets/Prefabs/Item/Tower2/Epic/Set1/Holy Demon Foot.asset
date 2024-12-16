@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5692d28b37a5e1c4aae76fdb638d3e31, type: 3}
+  m_Name: Holy Demon Foot
+  m_EditorClassIdentifier: 
+  itemName: Holy Demon Foot
+  id: 0e927ef414546d946832e32cc19b843b
+  setName: Holy Demon Set
+  price: 15
+  attack: 0
+  hp: 8
+  speed: 4
+  critChance: 0
+  critDmg: 0
+  attribute: 0
+  rarity: 2
+  itemType: 5
+  itemSprite: {fileID: 21300000, guid: c573df088e994e54b8aa3c99027c5dd8, type: 3}

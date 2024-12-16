@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5692d28b37a5e1c4aae76fdb638d3e31, type: 3}
+  m_Name: Void Dragon Foot
+  m_EditorClassIdentifier: 
+  itemName: Void Dragon Foot
+  id: 38edc64fd50cf0b4ca3dcf40749ca85d
+  setName: Void Dragon
+  price: 30
+  attack: 1
+  hp: 8
+  speed: 12
+  critChance: 4
+  critDmg: 0
+  attribute: 0
+  rarity: 4
+  itemType: 5
+  itemSprite: {fileID: 21300000, guid: 851b4f782819ac0488feea4df64d2bc0, type: 3}

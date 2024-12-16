@@ -23,3 +23,9 @@ MonoBehaviour:
   attributesToChange: 3
   amountToChangeAttribute: 5
   itemType: 1
+  effectToRemove: 0
+  isHealthPotion: 0
+  hpRecovery: 10
+  isBandage: 0
+  smallheal: 4
+  isTeleportationScroll: 0

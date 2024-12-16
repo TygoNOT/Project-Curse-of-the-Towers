@@ -3,14 +3,18 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using System.Linq;
 using System.Collections;
+using System.Collections.Generic;
 
 public class PlayerController : MonoBehaviour
 {
+    [Header("Reference to PlayerStats")]
+    public PlayerStats playerStats;
+
     [Header("Attribute")]
     public string playername;
     public Image healthBar;
     private int actionselected = 0;
-    private float originalHealthBarWidth;
+    public float originalHealthBarWidth;
 
     [Header("Stats")]
     public int maxhealth = 100;
@@ -20,10 +24,15 @@ public class PlayerController : MonoBehaviour
     public int maxBaseDamage = 15;
     public int critChance = 2;
     public float critDamage = 1.5f;
+    private float originalCritDamage;
+    private int originalCritChance;
+    private int originalspeed;
     public int speed = 10;
-    private CombatController combatController;
+    public CombatController combatController;
+    public Attribute weaponAttribute;
 
     [Header("Effect")]
+    public bool Windbuff = false;
     private bool isParalyzed = false;
     private bool isBurned = false;
     private bool isPoisoned = false;
@@ -33,10 +42,22 @@ public class PlayerController : MonoBehaviour
     private float originalDamage;
     private int frozenTurns = 0;
     private int maxFrozenTurns = 4;
+    private int windBuffTurns;
 
+    public GameObject Burn;
+    public GameObject Paralyze;
+    public GameObject Poisen;
+    public GameObject Frozen;
+    public GameObject Silence;
+
+    [Header("Pet")]
+    public PetController petController;
+
+    public GameObject targetEnemy;
 
     private void Start()
     {
+        InitializeStats();
         originalHealthBarWidth = healthBar.GetComponent<RectTransform>().rect.width;
         combatController = FindObjectOfType<CombatController>();
     }
@@ -47,7 +68,7 @@ public class PlayerController : MonoBehaviour
         ExecuteAction();
     }
 
-    public void Attack(GameObject enemy) 
+    public void Attack(GameObject enemy)
     {
         if (IsActionBlocked())
         {
@@ -63,29 +84,37 @@ public class PlayerController : MonoBehaviour
             return;
         }
 
+        float damageMultiplier = CalculateAttributeDamageMultiplier(weaponAttribute, enemy.GetComponent<EnemyController>().enemyAttribute);
+
         int crit = Random.Range(0, 100);
-        if (crit <= critChance) 
-        { 
+        if (crit <= critChance)
+        {
             minBaseDamage = Mathf.RoundToInt(minBaseDamage * critDamage);
-            maxBaseDamage = Mathf.RoundToInt(maxBaseDamage * critDamage); 
-        } 
-        int dmg = Random.Range(minBaseDamage, maxBaseDamage);
-        Debug.Log("Player damage: " + dmg); 
+            maxBaseDamage = Mathf.RoundToInt(maxBaseDamage * critDamage);
+        }
+        int dmg = Mathf.RoundToInt(Random.Range(minBaseDamage, maxBaseDamage) * damageMultiplier);  
+        Debug.Log("Player damage: " + dmg);
         enemy.GetComponent<EnemyController>().TakeDamage(dmg);
         StartCoroutine(UpdateHealthBarDelayed(enemy));
     }
 
     private IEnumerator UpdateHealthBarDelayed(GameObject enemy)
     {
-        yield return new WaitForSeconds(0.5f);  
+        yield return new WaitForSeconds(0.5f);
 
         enemy.GetComponent<EnemyController>().UpdateHealthBar();
+    }
+
+    public void SelectTarget(GameObject enemy)
+    {
+        targetEnemy = enemy;
+        Debug.Log("Target selected: " + enemy.name);
     }
 
     public void ExecuteAction()
     {
         Debug.Log("ExecuteAction called.");
-        if (IsActionBlocked()) 
+        if (IsActionBlocked() && isParalyzed == true)
         {
             Debug.Log("Player action not performed due to paralysis!");
             combatController.TogglePlayerTurn();
@@ -99,7 +128,7 @@ public class PlayerController : MonoBehaviour
             return;
         }
 
-        if (IsActionBlocked())
+        if (IsActionBlocked() && isFrozen == true)
         {
             Debug.Log("Player action not performed due to freeze!");
             combatController.TogglePlayerTurn();
@@ -110,17 +139,24 @@ public class PlayerController : MonoBehaviour
         {
             if (actionselected == 0)
             {
-                Debug.Log("Player attacks");
-                GameObject targetEnemy = combatController.enemies.First(e => e.gameObject.activeSelf).gameObject;
-                Attack(targetEnemy);
+                if (targetEnemy != null)
+                {
+                    Debug.Log("Player attacks target: " + targetEnemy.name);
+                    Attack(targetEnemy);
+                }
             }
             else if (actionselected == 1)
             {
-                Heal();
+                Heal(numberofHPrecovery);
             }
             else if (actionselected == 2)
             {
                 AttemptEscape();
+            }
+            else if (actionselected == 3)
+            {
+                petController.UseAbility(this);
+                combatController.ActionPanel.SetActive(false);
             }
             else
             {
@@ -135,19 +171,19 @@ public class PlayerController : MonoBehaviour
         currentHP -= dmgTaken;
         if (currentHP < 0) currentHP = 0;
         float healthPercentage = (float)currentHP / maxhealth;
-        float maxBarWidth = healthBar.GetComponent<RectTransform>().rect.width;
+        float newWidth = healthPercentage * originalHealthBarWidth;
         healthBar.GetComponent<RectTransform>().sizeDelta = new Vector2(
-            maxBarWidth * healthPercentage,
+            newWidth,
             healthBar.GetComponent<RectTransform>().sizeDelta.y
         );
 
         CheckDeath();
     }
 
-    public void Heal()
+    public void Heal(int HPrecovery)
     {
         Debug.Log("Heal method called");
-        currentHP += numberofHPrecovery;
+        currentHP += HPrecovery;
         if (currentHP > maxhealth)
             currentHP = maxhealth;
 
@@ -188,6 +224,12 @@ public class PlayerController : MonoBehaviour
             Invoke("LoadEscapeScene", 1f);
         }
     }
+    public void TeleportationScroll()
+    {
+        Debug.Log("Escape successful! Loading new scene...");
+        combatController.combatState.text = "Escape successful!";
+        Invoke("LoadEscapeScene", 1f);
+    }
 
     private void LoadEscapeScene()
     {
@@ -196,12 +238,13 @@ public class PlayerController : MonoBehaviour
 
     public void ApplyParalysis()
     {
-        if (isPoisoned || isParalyzed || isBurned || isSilenced) return; 
+        if (isPoisoned || isParalyzed || isBurned || isSilenced) return;
 
         Debug.Log($"{playername} subject to paralysis!");
         isParalyzed = true;
+        Paralyze.SetActive(true);
         originalSpeed = speed;
-        speed = Mathf.RoundToInt(speed * 0.5f); 
+        speed = Mathf.RoundToInt(speed * 0.5f);
     }
 
     public bool IsActionBlocked()
@@ -209,7 +252,7 @@ public class PlayerController : MonoBehaviour
         if (isFrozen)
         {
             Debug.Log($"{playername} is frozen and cannot act!");
-            return true; 
+            return true;
         }
 
         if (isParalyzed && Random.Range(0, 100) < 20)
@@ -222,12 +265,12 @@ public class PlayerController : MonoBehaviour
 
     public void ApplyBurn()
     {
-        if (isPoisoned || isParalyzed || isBurned || isSilenced) return;  
+        if (isPoisoned || isParalyzed || isBurned || isSilenced) return;
 
         Debug.Log($"{playername} is burned!");
         isBurned = true;
-
-        originalDamage = (minBaseDamage + maxBaseDamage) / 2;  
+        Burn.SetActive(true);
+        originalDamage = (minBaseDamage + maxBaseDamage) / 2;
         minBaseDamage = Mathf.RoundToInt(minBaseDamage * 0.5f);
         maxBaseDamage = Mathf.RoundToInt(maxBaseDamage * 0.5f);
 
@@ -245,10 +288,11 @@ public class PlayerController : MonoBehaviour
 
     public void ApplyPoison()
     {
-        if (isPoisoned || isParalyzed || isBurned || isSilenced) return; 
+        if (isPoisoned || isParalyzed || isBurned || isSilenced) return;
 
         Debug.Log($"{playername} is poisoned!");
         isPoisoned = true;
+        Poisen.SetActive(true);
     }
 
     public void InflictPoisonDamage()
@@ -263,10 +307,11 @@ public class PlayerController : MonoBehaviour
 
     public void ApplySilence()
     {
-        if (isSilenced || isParalyzed || isBurned || isPoisoned) return; 
+        if (isSilenced || isParalyzed || isBurned || isPoisoned) return;
 
         Debug.Log($"{playername} is silenced!");
         isSilenced = true;
+        Silence.SetActive(true);
     }
 
     public bool IsSilenced()
@@ -276,22 +321,24 @@ public class PlayerController : MonoBehaviour
 
     public void ApplyFreeze()
     {
-        if (isFrozen) return; 
+        if (isFrozen) return;
 
         Debug.Log($"{playername} is frozen!");
         isFrozen = true;
-        frozenTurns = Random.Range(1, maxFrozenTurns + 1); 
+        Frozen.SetActive(true);
+        frozenTurns = Random.Range(1, maxFrozenTurns + 1);
     }
 
     public void EndFreezeTurn()
     {
         if (isFrozen)
         {
-            frozenTurns--; 
+            frozenTurns--;
 
             if (frozenTurns <= 0)
             {
                 isFrozen = false;
+                Frozen.SetActive(false);
                 Debug.Log($"{playername} is no longer frozen!");
             }
         }
@@ -309,6 +356,11 @@ public class PlayerController : MonoBehaviour
         isBurned = false;
         isParalyzed = false;
 
+        Poisen.SetActive(false);
+        Silence.SetActive(false);
+        Burn.SetActive(false);
+        Paralyze.SetActive(false);
+
         speed = Mathf.RoundToInt(originalSpeed);
         minBaseDamage = Mathf.RoundToInt(originalDamage * 0.5f);
         maxBaseDamage = Mathf.RoundToInt(originalDamage * 0.5f);
@@ -318,10 +370,189 @@ public class PlayerController : MonoBehaviour
     {
         if (isFrozen)
         {
-            EndFreezeTurn(); 
+            EndFreezeTurn();
         }
 
         if (isBurned) InflictBurnDamage();
         if (isPoisoned) InflictPoisonDamage();
+        UpdateWindBuff();
+    }
+
+    public void ApplyPetRegeneration()
+    {
+        if (petController != null && petController is PetHealer healerPet)
+        {
+            healerPet.ApplyRegeneration(this);
+        }
+    }
+
+    public void EndTurnEffects()
+    {
+        if (petController != null)
+        {
+            petController.EndTurn();
+        }
+    }
+
+    public void ApplyWindBuff(int duration, float speedMultiplier, int critChanceIncrease, float critDamageMultiplier)
+    {
+
+        if (!Windbuff)
+        {
+            Windbuff = true;
+            windBuffTurns = duration;
+
+            originalSpeed = speed;
+            originalCritChance = critChance;
+            originalCritDamage = critDamage;
+
+            speed = Mathf.RoundToInt(speed * speedMultiplier);
+            critChance += critChanceIncrease;
+            critDamage *= critDamageMultiplier;
+            Debug.Log($"Wind buff applied: +{speedMultiplier}x speed, +{critChanceIncrease}% crit chance, +{critDamageMultiplier}x crit damage for {duration} turns.");
+
+        }
+    }
+
+
+    public void UpdateWindBuff()
+    {
+        if (windBuffTurns > 0)
+        {
+            windBuffTurns--;
+
+            if (windBuffTurns <= 0)
+            {
+                Windbuff = false;
+
+                speed = Mathf.RoundToInt(originalSpeed);
+                critChance = originalCritChance;
+                critDamage = originalCritDamage;
+                Debug.Log($"{playername} is no longer have Wind Buff!");
+            }
+        }
+    }
+
+    public void InitializeStats()
+    {
+        if (playerStats == null)
+        {
+            playerStats = FindObjectOfType<PlayerStats>();
+        }
+
+        if (playerStats != null)
+        {
+            maxhealth = playerStats.hp;
+            currentHP = playerStats.hp;
+            speed = playerStats.speed;
+            minBaseDamage = playerStats.attack - 10;
+            maxBaseDamage = playerStats.attack;
+            critChance = playerStats.critChance;
+            critDamage = playerStats.critDmg;
+            weaponAttribute = playerStats.attribute;
+        }
+        else
+        {
+            Debug.LogWarning("PlayerStats не найден, используйте значения по умолчанию.");
+        }
+    }
+
+    private static readonly Dictionary<Attribute, Attribute> NeutralAttributes = new Dictionary<Attribute, Attribute>
+{
+    { Attribute.Chaos, Attribute.Darkness },
+    { Attribute.Darkness, Attribute.Chaos },
+    { Attribute.Spirit, Attribute.Order },
+    { Attribute.Order, Attribute.Spirit }
+};
+
+    public float CalculateAttributeDamageMultiplier(Attribute attacker, Attribute defender)
+    {
+        if (attacker == defender)
+        {
+            return 1f;
+        }
+
+        if ((attacker == Attribute.Spirit && defender == Attribute.Darkness) ||
+            (attacker == Attribute.Darkness && defender == Attribute.Order) ||
+            (attacker == Attribute.Order && defender == Attribute.Chaos) ||
+            (attacker == Attribute.Chaos && defender == Attribute.Spirit))
+        {
+            return 2f;
+        }
+        else if ((defender == Attribute.Spirit && attacker == Attribute.Darkness) ||
+                 (defender == Attribute.Darkness && attacker == Attribute.Order) ||
+                 (defender == Attribute.Order && attacker == Attribute.Chaos) ||
+                 (defender == Attribute.Chaos && attacker == Attribute.Spirit))
+        {
+            return 0.5f;
+        }
+        else if (NeutralAttributes.TryGetValue(attacker, out Attribute neutral) && neutral == defender)
+        {
+            return 1f; 
+        }
+        else
+        {
+            return 1f;
+        }
+
+    }
+    public void RemoveEffect(EffectType effectType)
+    {
+        switch (effectType)
+        {
+            case EffectType.Paralysis:
+                if (isParalyzed)
+                {
+                    isParalyzed = false;
+                    Paralyze.SetActive(false);
+                    speed = Mathf.RoundToInt(originalSpeed);
+                    Debug.Log($"{playername} больше не парализован!");
+                }
+                break;
+
+            case EffectType.Burn:
+                if (isBurned)
+                {
+                    isBurned = false;
+                    Burn.SetActive(false);
+                    minBaseDamage = Mathf.RoundToInt(originalDamage * 2);
+                    maxBaseDamage = Mathf.RoundToInt(originalDamage * 2);
+                    Debug.Log($"{playername} is no longer burned!");
+                }
+                break;
+
+            case EffectType.Freeze:
+                if (isFrozen)
+                {
+                    isFrozen = false;
+                    Frozen.SetActive(false);
+                    frozenTurns = 0;
+                    Debug.Log($"{playername} is no longer frozen!");
+                }
+                break;
+
+            case EffectType.Poison:
+                if (isPoisoned)
+                {
+                    isPoisoned = false;
+                    Poisen.SetActive(false);
+                    Debug.Log($"{playername} is no longer poisoned!");
+                }
+                break;
+
+            case EffectType.Silence:
+                if (isSilenced)
+                {
+                    isSilenced = false;
+                    Silence.SetActive(false);
+                    Debug.Log($"{playername} is no longer silenced!");
+                }
+                break;
+
+            default:
+                Debug.LogWarning("BEBE effect!!");
+                break;
+        }
+        FindObjectOfType<CombatController>().TogglePlayerTurn();
     }
 }

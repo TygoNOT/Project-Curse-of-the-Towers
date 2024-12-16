@@ -15,9 +15,11 @@ public class EnemyController : MonoBehaviour
     public int minBaseDamage = 8;
     public int maxBaseDamage = 15;
     public int critChance = 2;
-    public float critDamage = 1.5f; 
+    public float critDamage = 1.5f;
     private int curentDamage;
     public int speed = 8;
+    public Attribute enemyAttribute;
+
 
     [Header("Effect")]
     public bool canApplyParalysis = false;
@@ -35,6 +37,16 @@ public class EnemyController : MonoBehaviour
     public bool canApplyFreeze = false;
     public int freezeChance = 25;
 
+    [Header("Debuff")]
+    public bool isBurned = false;
+    public int burnTurns = 0;
+
+    public bool isFrozen = false;
+    public int freezeTurns = 0;
+
+    public bool isParalyzed = false;
+    public int paralysisTurns = 0;
+
     private void Start()
     {
         curentDamage = 0;
@@ -43,14 +55,17 @@ public class EnemyController : MonoBehaviour
 
     public void Attack()
     {
+        float damageMultiplier = playerController.CalculateAttributeDamageMultiplier(enemyAttribute, playerController.weaponAttribute);
+
+
         int crit = Random.Range(0, 100);
         if (crit <= critChance)
         {
             minBaseDamage = Mathf.RoundToInt(minBaseDamage * critDamage);
             maxBaseDamage = Mathf.RoundToInt(maxBaseDamage * critDamage);
         }
-        int dmg = Random.Range(minBaseDamage, maxBaseDamage);
-        Debug.Log(EnemyName + " "+ dmg);
+        int dmg = Mathf.RoundToInt(Random.Range(minBaseDamage, maxBaseDamage) * damageMultiplier); 
+        Debug.Log(EnemyName + " " + dmg);
 
         TryApplyEffects();
         curentDamage = 0;
@@ -133,11 +148,88 @@ public class EnemyController : MonoBehaviour
 
     public IEnumerator DeathDelay()
     {
-        yield return new WaitForSeconds(2f);  
+        yield return new WaitForSeconds(2f);
 
         gameObject.SetActive(false);
 
         FindObjectOfType<CombatController>().EnemyDefeated();
         FindObjectOfType<CombatController>().OnEnemyDefeated(this);
+    }
+
+    public void ApplyBurn(int duration)
+    {
+        if (!isBurned)
+        {
+            isBurned = true;
+            burnTurns = duration; 
+            Debug.Log($"{EnemyName} is burned for 3 turns!");
+        }
+    }
+
+    public void ApplyFreeze(int duration)
+    {
+        if (!isFrozen)
+        {
+            isFrozen = true;
+            freezeTurns = duration;
+            Debug.Log(EnemyName + " is now frozen for " + freezeTurns + " turns.");
+        }
+    }
+    public void ApplyParalysis(int duration)
+    {
+        if (!isParalyzed)
+        {
+            isParalyzed = true;
+            paralysisTurns = duration;
+            speed = Mathf.RoundToInt(speed * 0.5f);
+            Debug.Log(EnemyName + " is now paralyzed for " + paralysisTurns + " turns.");
+        }
+    }
+
+    public void EndTurnEffects()
+    {
+        if (isBurned && burnTurns > 0)
+        {
+            int burnDamage = 2;
+            TakeDamage(burnDamage);
+            burnTurns--;
+            Debug.Log($"{EnemyName} takes {burnDamage} burn damage!");
+
+            if (burnTurns <= 0)
+            {
+                isBurned = false;
+                Debug.Log($"{EnemyName} is no longer burned!");
+            }
+        }
+        else if(freezeTurns > 0)
+        {
+            freezeTurns--;
+            Debug.Log(EnemyName + " has " + freezeTurns + " turns left of freeze.");
+            if (freezeTurns == 0)
+            {
+                Debug.Log(EnemyName + " is no longer frozen!");
+            }
+            return;
+        }
+        else if(paralysisTurns > 0)
+        {
+            paralysisTurns--;
+            if (paralysisTurns == 0)
+            {
+                isParalyzed = false;
+                speed *= 2;
+                Debug.Log($"{EnemyName} is no longer paralyzed!");
+            }
+        }
+    }
+
+    public bool CanAct()
+    {
+        if (isParalyzed && Random.Range(0, 100) < 20)
+        {
+            Debug.Log($"{EnemyName} is paralyzed and cannot act this turn!");
+            return false;
+        }
+        return true;
     }
 }

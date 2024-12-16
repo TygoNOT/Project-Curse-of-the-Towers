@@ -19,7 +19,7 @@ public class EquipmentSlot : MonoBehaviour, IPointerClickHandler
     public string itemDescription;
     public Sprite emptySprite;
     public ItemType itemType;
-
+    public Attribute attribute;
     public string slotName;
 
     [SerializeField]
@@ -144,7 +144,7 @@ public class EquipmentSlot : MonoBehaviour, IPointerClickHandler
             thisItemSelected = false;
         }
     }
-    public int AddItem(string itemName, int quantity, Sprite itemSprite, string itemDescription, ItemType itemType)
+    public int AddItem(string itemName, int quantity, Sprite itemSprite, string itemDescription, ItemType itemType, Attribute attribute)
     {
         if (isFull)
             return quantity;
@@ -155,7 +155,7 @@ public class EquipmentSlot : MonoBehaviour, IPointerClickHandler
         itemImage.sprite = itemSprite;
         this.itemDescription = itemDescription;
         this.itemType = itemType;
-
+        this.attribute = attribute;
 
 
         this.quantity =1;

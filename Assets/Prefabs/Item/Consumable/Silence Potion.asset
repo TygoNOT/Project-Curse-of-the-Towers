@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c40618893667dd445887eda52557b359, type: 3}
+  m_Name: Silence Potion
+  m_EditorClassIdentifier: 
+  itemName: Silence Potion
+  id: 0
+  statToChange: 0
+  amountToChangeStat: 0
+  attributesToChange: 0
+  amountToChangeAttribute: 0
+  itemType: 0
+  effectToRemove: 2
+  isHealthPotion: 0
+  hpRecovery: 10
+  isBandage: 0
+  smallheal: 4
+  isTeleportationScroll: 0
+  itemDescription: Removes the silence effect from the player.
+  sprite: {fileID: 1371023039, guid: a30ee0e177b20dc4fb4fe54ec980bb04, type: 3}

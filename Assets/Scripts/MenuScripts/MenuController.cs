@@ -6,9 +6,10 @@ using UnityEngine.SceneManagement;
 
 public class MenuController : MonoBehaviour
 {
+    public string scenename;
     public void PlayGame()
     {
-        SceneManager.LoadSceneAsync("Inventory");
+        SceneManager.LoadSceneAsync(scenename);
     }
     public void QuitGame()
     {

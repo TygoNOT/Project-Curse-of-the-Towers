@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5692d28b37a5e1c4aae76fdb638d3e31, type: 3}
+  m_Name: Common Set5 Sword
+  m_EditorClassIdentifier: 
+  itemName: Common Set5 Sword
+  id: c42e8dfa51ae84849b87f90a3ea992f7
+  setName: Common Set5
+  price: 6
+  attack: 3
+  hp: 1
+  speed: 1
+  critChance: 0
+  critDmg: 0
+  attribute: 0
+  rarity: 0
+  itemType: 6
+  itemSprite: {fileID: 21300000, guid: 7873439a08d5e444687bdc92b43e9551, type: 3}

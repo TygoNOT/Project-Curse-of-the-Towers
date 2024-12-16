@@ -6,13 +6,14 @@ using UnityEngine.UI;
 
 public class PlayerStats : MonoBehaviour
 {
-    public int attack, hp, speed, critDmg, critChance;
+    public int attack, hp, speed, critChance;
+    public float critDmg;
+    public Attribute attribute;
+    [SerializeField]
+    private TMP_Text attackText, hpText, speedText, critDmgText, critChanceText, attributeText;
 
     [SerializeField]
-    private TMP_Text attackText, hpText, speedText, critDmgText, critChanceText;
-
-    [SerializeField]
-    private TMP_Text attackPreText, hpPreText, speedPreText, critDmgPreText, critChancePreText;
+    private TMP_Text attackPreText, hpPreText, speedPreText, critDmgPreText, critChancePreText, attributePreText;
 
     [SerializeField]
     private Image previewImage;
@@ -34,9 +35,16 @@ public class PlayerStats : MonoBehaviour
         speedText.text = speed.ToString();
         critDmgText.text = critDmg.ToString();
         critChanceText.text = critChance.ToString();
+        attributeText.text = attribute.ToString();
+        
+        var playerController = FindObjectOfType<PlayerController>();
+        if (playerController != null)
+        {
+            playerController.InitializeStats();
+        }
     }
 
-    public void PreviewEquipmentStats(int attack, int hp, int speed, int critDmg, int critChance, Sprite itemSprite, Rarity rarity)
+    public void PreviewEquipmentStats(int attack, int hp, int speed, float critDmg, int critChance, Sprite itemSprite, Rarity rarity, Attribute attribute)
     {
         if (rarity == Rarity.common)
         {
@@ -45,14 +53,7 @@ public class PlayerStats : MonoBehaviour
             speedPreText.color = Color.gray;
             critDmgPreText.color = Color.gray;
             critChancePreText.color = Color.gray;
-        } else if (rarity == Rarity.uncommon)
-        {
-            attackPreText.color = Color.green;
-            hpPreText.color = Color.green;
-            speedPreText.color = Color.green;
-            critDmgPreText.color = Color.green;
-            critChancePreText.color = Color.green;
-        }
+        } 
         else if (rarity == Rarity.rare)
         {
             attackPreText.color = Color.blue;
@@ -90,6 +91,7 @@ public class PlayerStats : MonoBehaviour
         speedPreText.text = speed.ToString();
         critDmgPreText.text = critDmg.ToString();
         critChancePreText.text = critChance.ToString();
+        attributePreText.text = attribute.ToString();
         previewImage.sprite = itemSprite;
         selectedItemImage.SetActive(true);
         selectedItemStats.SetActive(true);
