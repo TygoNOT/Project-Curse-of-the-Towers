@@ -25,7 +25,7 @@ public class PlayerStats : MonoBehaviour
     private GameObject selectedItemImage;
     void Start()
     {
-        UpdateEquipmentStats();
+        //UpdateEquipmentStats();
     }
 
     public void UpdateEquipmentStats()

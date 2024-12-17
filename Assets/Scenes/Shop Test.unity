@@ -2290,18 +2290,21 @@ MonoBehaviour:
   attack: 10
   hp: 100
   speed: 5
-  critDmg: 2
   critChance: 30
+  critDmg: 2
+  attribute: 0
   attackText: {fileID: 1808712143}
   hpText: {fileID: 573589869}
   speedText: {fileID: 2116356506}
   critDmgText: {fileID: 558766302}
   critChanceText: {fileID: 2142431357}
+  attributeText: {fileID: 0}
   attackPreText: {fileID: 449433232}
   hpPreText: {fileID: 1662334485}
   speedPreText: {fileID: 727575286}
   critDmgPreText: {fileID: 1754984980}
   critChancePreText: {fileID: 145747268}
+  attributePreText: {fileID: 0}
   previewImage: {fileID: 664585159}
   selectedItemStats: {fileID: 1945489035}
   selectedItemImage: {fileID: 664585157}
@@ -3059,7 +3062,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 2.87
-  m_Text: 100
+  m_Text: 10
 --- !u!222 &269862544
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -4000,7 +4003,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 68160d428d370254483c1d5d6e0fe812, type: 3}
+  m_Sprite: {fileID: 474774596, guid: a30ee0e177b20dc4fb4fe54ec980bb04, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -4074,7 +4077,9 @@ MonoBehaviour:
   quantity: 0
   sprite: {fileID: 0}
   itemDescription: 
+  effectToRemove: 0
   itemType: 0
+  weaponAttribute: 0
 --- !u!1001 &368616515
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4992,7 +4997,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 2.87
-  m_Text: 100
+  m_Text: 10
 --- !u!222 &462095240
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -8074,14 +8079,14 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   ConsShopItem:
-  - {fileID: 11400000, guid: 6308d38c83f110441bf65a9bf9c2369c, type: 2}
-  - {fileID: 11400000, guid: 6308d38c83f110441bf65a9bf9c2369c, type: 2}
-  - {fileID: 11400000, guid: 6308d38c83f110441bf65a9bf9c2369c, type: 2}
-  - {fileID: 11400000, guid: 6308d38c83f110441bf65a9bf9c2369c, type: 2}
-  - {fileID: 11400000, guid: 6308d38c83f110441bf65a9bf9c2369c, type: 2}
-  - {fileID: 11400000, guid: 6308d38c83f110441bf65a9bf9c2369c, type: 2}
-  - {fileID: 11400000, guid: 6308d38c83f110441bf65a9bf9c2369c, type: 2}
-  - {fileID: 11400000, guid: 6308d38c83f110441bf65a9bf9c2369c, type: 2}
+  - {fileID: 11400000, guid: b1c2ef1d97c29aa4c85d95d708933cfb, type: 2}
+  - {fileID: 11400000, guid: b68906b3c8e4ec34fac036057213a5b2, type: 2}
+  - {fileID: 11400000, guid: 9f978641d7610f64284d572e67d759d0, type: 2}
+  - {fileID: 11400000, guid: d808792776dfe0148beaaf4515d5d9ea, type: 2}
+  - {fileID: 11400000, guid: 96436d4fc66c6f443ac75f07c8d8e47c, type: 2}
+  - {fileID: 11400000, guid: 898d00c62bdfc03489c68829db9f52c8, type: 2}
+  - {fileID: 11400000, guid: 383170a357bf61e4daffc8b2303b0793, type: 2}
+  - {fileID: 11400000, guid: 2f6b8f94e893a4f48943b3e162613798, type: 2}
   SelectedItem: {fileID: 0}
   slots:
   - {fileID: 363227166}
@@ -8118,19 +8123,49 @@ MonoBehaviour:
   currentProgressionLevel: 1
   shopProgressionLevels:
   - level: 1
-    rarityChances: 410000000f0000000a000000050000000400000001000000
+    rarityChances: 41000000190000000a0000000000000000000000
     allowedSets:
-    - 
+    - Bebe Set
+    - Common Set2
+    - Common Set3
+    - Common Set4
+    - Rare Set1
+    - Rare Set2
+    - Epic Set1
   - level: 2
-    rarityChances: 320000000f0000000f0000000a0000000500000005000000
+    rarityChances: 2300000023000000140000000a00000000000000
     allowedSets:
-    - PlusSet
-    - 
+    - Bebe Set
+    - Common Set2
+    - Common Set3
+    - Common Set4
+    - Rare Set1
+    - Rare Set2
+    - Epic Set1
+    - Common Set5
+    - Golden Boy
+    - Demon Set
+    - Holy Demon Set
+    - Golden Wyvern
+    - Dark Knight
   - level: 3
-    rarityChances: 00000000000000000a00000000000000000000005a000000
+    rarityChances: 0a0000001900000023000000140000000a000000
     allowedSets:
-    - PlusSet
-    - 
+    - Bebe Set
+    - Common Set2
+    - Common Set3
+    - Common Set4
+    - Rare Set1
+    - Rare Set2
+    - Epic Set1
+    - Common Set5
+    - Golden Boy
+    - Demon Set
+    - Holy Demon Set
+    - Golden Wyvern
+    - Dark Knight
+    - Holy Knight
+    - Void Dragon
   DescriptionImage: {fileID: 1754518946}
   DescriptionName: {fileID: 1792674257}
   DescriptionType: {fileID: 1212020150}
@@ -8473,7 +8508,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 68160d428d370254483c1d5d6e0fe812, type: 3}
+  m_Sprite: {fileID: 1371023039, guid: a30ee0e177b20dc4fb4fe54ec980bb04, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -9124,7 +9159,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 2.87
-  m_Text: 100
+  m_Text: 10
 --- !u!222 &778111531
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -9966,7 +10001,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 68160d428d370254483c1d5d6e0fe812, type: 3}
+  m_Sprite: {fileID: 510165544, guid: a30ee0e177b20dc4fb4fe54ec980bb04, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -10054,7 +10089,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 2.87
-  m_Text: 100
+  m_Text: 10
 --- !u!222 &835816902
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -10404,7 +10439,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 68160d428d370254483c1d5d6e0fe812, type: 3}
+  m_Sprite: {fileID: 1711089113, guid: a30ee0e177b20dc4fb4fe54ec980bb04, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -10439,7 +10474,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &914548396
 RectTransform:
   m_ObjectHideFlags: 0
@@ -11855,7 +11890,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 2.87
-  m_Text: 100
+  m_Text: 10
 --- !u!222 &1019064753
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -13040,11 +13075,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f2a93dc68cfaa9f47a8c3e21039d54f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemName: 
-  quantity: 0
-  sprite: {fileID: 0}
-  itemDescription: 
-  itemType: 0
+  itemName: Health Potion
+  quantity: 10
+  sprite: {fileID: 1711089113, guid: a30ee0e177b20dc4fb4fe54ec980bb04, type: 3}
+  itemDescription: Restores 10 health to the player.
+  effectToRemove: 0
+  itemType: 1
+  weaponAttribute: 0
 --- !u!1 &1076569351
 GameObject:
   m_ObjectHideFlags: 0
@@ -13097,11 +13134,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f2a93dc68cfaa9f47a8c3e21039d54f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemName: 
-  quantity: 0
-  sprite: {fileID: 0}
-  itemDescription: 
-  itemType: 0
+  itemName: Silence Potion
+  quantity: 10
+  sprite: {fileID: 1371023039, guid: a30ee0e177b20dc4fb4fe54ec980bb04, type: 3}
+  itemDescription: Removes the silence effect from the player.
+  effectToRemove: 0
+  itemType: 1
+  weaponAttribute: 0
 --- !u!1 &1093238528
 GameObject:
   m_ObjectHideFlags: 0
@@ -13154,11 +13193,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f2a93dc68cfaa9f47a8c3e21039d54f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemName: 
-  quantity: 0
-  sprite: {fileID: 0}
-  itemDescription: 
-  itemType: 0
+  itemName: Burn Potion
+  quantity: 10
+  sprite: {fileID: -2093261378, guid: a30ee0e177b20dc4fb4fe54ec980bb04, type: 3}
+  itemDescription: Removes the burn effect from the player.
+  effectToRemove: 0
+  itemType: 1
+  weaponAttribute: 0
 --- !u!1 &1102602738
 GameObject:
   m_ObjectHideFlags: 0
@@ -13229,7 +13270,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 2.87
-  m_Text: 100
+  m_Text: 10
 --- !u!222 &1102602741
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -13680,11 +13721,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f2a93dc68cfaa9f47a8c3e21039d54f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemName: 
-  quantity: 0
-  sprite: {fileID: 0}
-  itemDescription: 
-  itemType: 0
+  itemName: Freeze Potion
+  quantity: 10
+  sprite: {fileID: -2001951530, guid: a30ee0e177b20dc4fb4fe54ec980bb04, type: 3}
+  itemDescription: Removes the freeze effect from the player.
+  effectToRemove: 0
+  itemType: 1
+  weaponAttribute: 0
 --- !u!1 &1142534106
 GameObject:
   m_ObjectHideFlags: 0
@@ -14320,17 +14363,81 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   equipmentSO:
-  - {fileID: 11400000, guid: bc0297c383de5dd44b68b586d12d26e3, type: 2}
-  - {fileID: 11400000, guid: cf3612cb453c71d48b739ef33987d831, type: 2}
-  - {fileID: 11400000, guid: 3ad158bb533e46f44a260691a47221e9, type: 2}
-  - {fileID: 11400000, guid: 6e93057cdf7e71f479c9a908361a653f, type: 2}
-  - {fileID: 11400000, guid: 3f903922abc32114aaef1acaee53e585, type: 2}
-  - {fileID: 11400000, guid: 31746925db179684e92bbc9db958f42c, type: 2}
-  - {fileID: 11400000, guid: e5217431b24de1c4ea92a8f53866ad71, type: 2}
-  - {fileID: 11400000, guid: 25a092c962ae14b468ee6995b7104b4d, type: 2}
-  - {fileID: 11400000, guid: 30b520986e96cd24a95e4e87c9709fbe, type: 2}
-  - {fileID: 11400000, guid: 759e986bff8082849af2f943cad3ba13, type: 2}
-  - {fileID: 11400000, guid: 5f09c373356431b4b851489d78420019, type: 2}
+  - {fileID: 11400000, guid: 45a643100788774468c60ea4a69d17b6, type: 2}
+  - {fileID: 11400000, guid: 5d94decee656c4b4caf36eb23aa070d7, type: 2}
+  - {fileID: 11400000, guid: 4d874160e01b4724680b9863cecf77da, type: 2}
+  - {fileID: 11400000, guid: 26c7b1de281256141baa744771985499, type: 2}
+  - {fileID: 11400000, guid: d3606134d5d970647807a77770db2dbf, type: 2}
+  - {fileID: 11400000, guid: c017e9e135bcf854aa15e789dc5f9d8e, type: 2}
+  - {fileID: 11400000, guid: 65483b68d61b0df45aa48025b1052304, type: 2}
+  - {fileID: 11400000, guid: 1b001c071f4eb944491a798a597d064c, type: 2}
+  - {fileID: 11400000, guid: 6a9b0aeaadc48c444bbc2abc466c8afe, type: 2}
+  - {fileID: 11400000, guid: 95305c128718f1f4fb8977f78b6bd192, type: 2}
+  - {fileID: 11400000, guid: ca7017b790f8143479a45aa90cca1ca1, type: 2}
+  - {fileID: 11400000, guid: d73be18f37315334da5f355165dd3aad, type: 2}
+  - {fileID: 11400000, guid: b732c22a865670946969968982d5869a, type: 2}
+  - {fileID: 11400000, guid: f990103c25e671348bf44fd7235e3fac, type: 2}
+  - {fileID: 11400000, guid: b0733a5cf82b288469897dadd762b39a, type: 2}
+  - {fileID: 11400000, guid: b52a1941e810830468d3668ba5c19256, type: 2}
+  - {fileID: 11400000, guid: 53886e7d39bb8c24482ce514aae4a8a6, type: 2}
+  - {fileID: 11400000, guid: 316a0f50e710ca8478071760318a2ea3, type: 2}
+  - {fileID: 11400000, guid: 1baab89b1ff4ffb43b3d05f3c5e5f814, type: 2}
+  - {fileID: 11400000, guid: fa2151e599a9e104d976f8a4409182a1, type: 2}
+  - {fileID: 11400000, guid: e36673b2fdc413a44955866f9e726abf, type: 2}
+  - {fileID: 11400000, guid: 371991ca910805c47a1af0a336ba3c20, type: 2}
+  - {fileID: 11400000, guid: 7a0929d60a147f44a87b8ed2b34ba8b8, type: 2}
+  - {fileID: 11400000, guid: 9a1c9d2633b7a264d81b3f3215d3bebf, type: 2}
+  - {fileID: 11400000, guid: 0e2326c86f696804393a59dd442ad081, type: 2}
+  - {fileID: 11400000, guid: 5080372b30c226243bcfab4ebde3e4db, type: 2}
+  - {fileID: 11400000, guid: 38f09cb7d458b254a9b7c3d29a46419e, type: 2}
+  - {fileID: 11400000, guid: 873a4799838b29b4d8c029428f625c33, type: 2}
+  - {fileID: 11400000, guid: c2880932246ddfc4eb7f0c1a374b6ab2, type: 2}
+  - {fileID: 11400000, guid: 9166fc220604a9e4caba03a1aba6c036, type: 2}
+  - {fileID: 11400000, guid: 36ed0d4bb5b35b14590ecac632c3d017, type: 2}
+  - {fileID: 11400000, guid: e0759dd99b885e648b9a147ea43cefbe, type: 2}
+  - {fileID: 11400000, guid: c1877055cbfde0447aecdbb98e6b1f68, type: 2}
+  - {fileID: 11400000, guid: 576da621b811a52429949fa67351e05d, type: 2}
+  - {fileID: 11400000, guid: 8ac5b322ec5d4ed49b2dcbed6caecf14, type: 2}
+  - {fileID: 11400000, guid: c42e8dfa51ae84849b87f90a3ea992f7, type: 2}
+  - {fileID: 11400000, guid: 304da1e398508064585ff9a022d0c520, type: 2}
+  - {fileID: 11400000, guid: 5edfa78bb0e4fec44a6003fd31483498, type: 2}
+  - {fileID: 11400000, guid: 513987251e5ebf6458cd4404842e514b, type: 2}
+  - {fileID: 11400000, guid: 5390e61db13806740af625855176e6f7, type: 2}
+  - {fileID: 11400000, guid: 1418656fd78883d40926db11fd66d444, type: 2}
+  - {fileID: 11400000, guid: b56c2b3d5f6994046b0804bdbec8b157, type: 2}
+  - {fileID: 11400000, guid: 0de41748f4a0f284cb112418be46bb94, type: 2}
+  - {fileID: 11400000, guid: 2d823dffdb1f8694db7c566eb6b0b8a4, type: 2}
+  - {fileID: 11400000, guid: f50866f164277ad47ae7fc23f275fdd1, type: 2}
+  - {fileID: 11400000, guid: a508dae35b01dc648a9ca22a87ede31a, type: 2}
+  - {fileID: 11400000, guid: 6f56fa748e7ede4448574d597df141ba, type: 2}
+  - {fileID: 11400000, guid: ab721d43750a75e4f8ccf880d7f782b3, type: 2}
+  - {fileID: 11400000, guid: 15b8eee0a220f574d80553247ffb8d1e, type: 2}
+  - {fileID: 11400000, guid: 246fbfe315f55654da8568acb91e2dfb, type: 2}
+  - {fileID: 11400000, guid: 6d54dde3962786a4cacb2ea6a6bb2377, type: 2}
+  - {fileID: 11400000, guid: 7a4e022a9559e43468996cf16b839ace, type: 2}
+  - {fileID: 11400000, guid: d6f6dc335b35cf24391391088f0f40ea, type: 2}
+  - {fileID: 11400000, guid: 4614c953ac551e145b0869de63f06c24, type: 2}
+  - {fileID: 11400000, guid: 0e927ef414546d946832e32cc19b843b, type: 2}
+  - {fileID: 11400000, guid: 0e1e8dc943bcbaa468e7b15efcb1c824, type: 2}
+  - {fileID: 11400000, guid: 64c734a31ebd0e544946c5a0801a973d, type: 2}
+  - {fileID: 11400000, guid: fc7c7a6e1789e8a44b0fab06c475b19c, type: 2}
+  - {fileID: 11400000, guid: 45808ae2685c97241b6c0f521e44541e, type: 2}
+  - {fileID: 11400000, guid: e17cc4da92807474e8617200a424d3be, type: 2}
+  - {fileID: 11400000, guid: 8599b8f66b13d8544838c559b6b8b4ca, type: 2}
+  - {fileID: 11400000, guid: 0a00601db34421242816b39e0137658b, type: 2}
+  - {fileID: 11400000, guid: 6c0b79559c48b174ea6148ae5c11b2cf, type: 2}
+  - {fileID: 11400000, guid: 81c3e10092e513d4b94ec9bc912188a1, type: 2}
+  - {fileID: 11400000, guid: 9098271e0ae46c246a99a073f5f8a8de, type: 2}
+  - {fileID: 11400000, guid: bee50a5271c5ec1458924f8da4bd9356, type: 2}
+  - {fileID: 11400000, guid: 0e518fc432bd74f44b5b1934c0b16fb4, type: 2}
+  - {fileID: 11400000, guid: 70540be30e1509c4db454941597ff3aa, type: 2}
+  - {fileID: 11400000, guid: ab05952b1d6dbcc42944003c172c7a97, type: 2}
+  - {fileID: 11400000, guid: 2b0001c612c398a4b8311a7d9522deec, type: 2}
+  - {fileID: 11400000, guid: 9ab121f874125b04e8f313622e0a9973, type: 2}
+  - {fileID: 11400000, guid: a49dce0b0754b674bb02a3ab779cdc53, type: 2}
+  - {fileID: 11400000, guid: 4ef402aee9f78fb4ea31ec14ea7ee6ab, type: 2}
+  - {fileID: 11400000, guid: dfe2537ee1d76654d9fbacf2f019a6af, type: 2}
+  - {fileID: 11400000, guid: 38edc64fd50cf0b4ca3dcf40749ca85d, type: 2}
 --- !u!114 &1202110325
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14446,11 +14553,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f2a93dc68cfaa9f47a8c3e21039d54f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemName: 
-  quantity: 0
-  sprite: {fileID: 0}
-  itemDescription: 
-  itemType: 0
+  itemName: Teleport Scroll
+  quantity: 10
+  sprite: {fileID: -1033014994, guid: a30ee0e177b20dc4fb4fe54ec980bb04, type: 3}
+  itemDescription: Allows you to escape from combat with 100% chance.
+  effectToRemove: 0
+  itemType: 1
+  weaponAttribute: 0
 --- !u!224 &1211763326 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 5138414013412762299, guid: f2ee3e08f5e9716439adbb5a3eca3693, type: 3}
@@ -16055,7 +16164,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 2.87
-  m_Text: 100
+  m_Text: 10
 --- !u!222 &1396595286
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -16470,7 +16579,9 @@ MonoBehaviour:
   quantity: 0
   sprite: {fileID: 0}
   itemDescription: 
+  effectToRemove: 0
   itemType: 0
+  weaponAttribute: 0
 --- !u!1 &1448448748
 GameObject:
   m_ObjectHideFlags: 0
@@ -16523,11 +16634,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f2a93dc68cfaa9f47a8c3e21039d54f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemName: 
-  quantity: 0
-  sprite: {fileID: 0}
-  itemDescription: 
-  itemType: 0
+  itemName: Poison Potion
+  quantity: 10
+  sprite: {fileID: 510165544, guid: a30ee0e177b20dc4fb4fe54ec980bb04, type: 3}
+  itemDescription: Removes the poison effect from the player.
+  effectToRemove: 0
+  itemType: 1
+  weaponAttribute: 0
 --- !u!1 &1456407388
 GameObject:
   m_ObjectHideFlags: 0
@@ -17463,7 +17576,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 68160d428d370254483c1d5d6e0fe812, type: 3}
+  m_Sprite: {fileID: 321323158, guid: a30ee0e177b20dc4fb4fe54ec980bb04, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -17968,11 +18081,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f2a93dc68cfaa9f47a8c3e21039d54f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemName: 
-  quantity: 0
-  sprite: {fileID: 0}
-  itemDescription: 
-  itemType: 0
+  itemName: Paralyze Potion
+  quantity: 10
+  sprite: {fileID: 474774596, guid: a30ee0e177b20dc4fb4fe54ec980bb04, type: 3}
+  itemDescription: Removes the paralysis effect from the player.
+  effectToRemove: 0
+  itemType: 1
+  weaponAttribute: 0
 --- !u!224 &1551564778 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 5327727578549805051, guid: e482e007b11308b449eb46918dbdc411, type: 3}
@@ -19222,7 +19337,9 @@ MonoBehaviour:
   quantity: 0
   sprite: {fileID: 0}
   itemDescription: 
+  effectToRemove: 0
   itemType: 0
+  weaponAttribute: 0
 --- !u!1 &1658530360
 GameObject:
   m_ObjectHideFlags: 0
@@ -19902,11 +20019,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f2a93dc68cfaa9f47a8c3e21039d54f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemName: 
-  quantity: 0
-  sprite: {fileID: 0}
-  itemDescription: 
-  itemType: 0
+  itemName: Healing bandages
+  quantity: 10
+  sprite: {fileID: 321323158, guid: a30ee0e177b20dc4fb4fe54ec980bb04, type: 3}
+  itemDescription: Restores 10 health to the player.
+  effectToRemove: 0
+  itemType: 1
+  weaponAttribute: 0
 --- !u!224 &1698177261 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 5327727578549805051, guid: e482e007b11308b449eb46918dbdc411, type: 3}
@@ -20037,7 +20156,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 68160d428d370254483c1d5d6e0fe812, type: 3}
+  m_Sprite: {fileID: -2001951530, guid: a30ee0e177b20dc4fb4fe54ec980bb04, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -20618,7 +20737,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 68160d428d370254483c1d5d6e0fe812, type: 3}
+  m_Sprite: {fileID: -2093261378, guid: a30ee0e177b20dc4fb4fe54ec980bb04, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -21902,7 +22021,9 @@ MonoBehaviour:
   quantity: 0
   sprite: {fileID: 0}
   itemDescription: 
+  effectToRemove: 0
   itemType: 0
+  weaponAttribute: 0
 --- !u!1 &1808712141
 GameObject:
   m_ObjectHideFlags: 0
@@ -23858,7 +23979,9 @@ MonoBehaviour:
   quantity: 0
   sprite: {fileID: 0}
   itemDescription: 
+  effectToRemove: 0
   itemType: 0
+  weaponAttribute: 0
 --- !u!224 &1965213470 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 3813070634864294662, guid: 373b49b34c237f944baaf453a8e20eb7, type: 3}
@@ -25778,7 +25901,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 2.87
-  m_Text: 100
+  m_Text: 10
 --- !u!222 &2083327293
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -26159,7 +26282,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 68160d428d370254483c1d5d6e0fe812, type: 3}
+  m_Sprite: {fileID: -1033014994, guid: a30ee0e177b20dc4fb4fe54ec980bb04, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1

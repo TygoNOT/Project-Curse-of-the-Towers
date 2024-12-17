@@ -13,6 +13,8 @@ public class EquippedSlot : MonoBehaviour, IPointerClickHandler
     [SerializeField]
     private TMP_Text sloTName;
 
+    [SerializeField] private EquipmentSO equippedItem;
+
     [SerializeField]
     private ItemType itemType = new ItemType();
     private Attribute attribute = new Attribute();
@@ -38,7 +40,7 @@ public class EquippedSlot : MonoBehaviour, IPointerClickHandler
     public Sprite emptySprite;
     public void OnPointerClick(PointerEventData eventData)
     {
-        if(eventData.button == PointerEventData.InputButton.Left)
+        if (eventData.button == PointerEventData.InputButton.Left)
         {
             OnLeftClick();
         }
@@ -49,7 +51,7 @@ public class EquippedSlot : MonoBehaviour, IPointerClickHandler
     }
     private void Start()
     {
-        inventoryManager =GameObject.Find("InventoryCanvas").GetComponent<InventoryManager>();
+        inventoryManager = GameObject.Find("InventoryCanvas").GetComponent<InventoryManager>();
         equipmentSOLibrary = GameObject.Find("InventoryCanvas").GetComponent<EquipmentSOLibrary>();
     }
     void OnLeftClick()
@@ -90,15 +92,15 @@ public class EquippedSlot : MonoBehaviour, IPointerClickHandler
         {
             if (equipmentSOLibrary.equipmentSO[i].itemName == this.itemName)
             {
-                equipmentSOLibrary.equipmentSO[i].EquipItem();
+                //equipmentSOLibrary.equipmentSO[i].EquipItem();
             }
         }
         slotInUse = true;
-        
+
     }
     private void Update()
     {
-        if(equipmentPanel.activeSelf)
+        if (equipmentPanel.activeSelf)
         {
             for (int j = 0; j < inventoryManager.equipmentSlot.Length; j++)
             {
@@ -153,3 +155,4 @@ public class EquippedSlot : MonoBehaviour, IPointerClickHandler
         }
     }
 }
+
