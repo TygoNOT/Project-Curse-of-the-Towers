@@ -10,24 +10,24 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c40618893667dd445887eda52557b359, type: 3}
-  m_Name: Burn Potion
+  m_Name: Bandage
   m_EditorClassIdentifier: 
-  itemName: Burn Potion
+  itemName: Healing bandages
   itemSprite: {fileID: 0}
   price: 10
-  quantity: 0
-  id: 0
+  quantity: 10
+  id: 1
   statToChange: 0
   amountToChangeStat: 0
   attributesToChange: 0
   amountToChangeAttribute: 0
   itemType: 0
-  effectToRemove: 3
+  effectToRemove: 0
   attribute: 0
-  isHealthPotion: 0
+  isHealthPotion: 1
   hpRecovery: 10
-  isBandage: 0
+  isBandage: 1
   smallheal: 4
   isTeleportationScroll: 0
-  itemDescription: Removes the burn effect from the player.
-  sprite: {fileID: -2093261378, guid: a30ee0e177b20dc4fb4fe54ec980bb04, type: 3}
+  itemDescription: Restores 10 health to the player.
+  sprite: {fileID: 1711089113, guid: a30ee0e177b20dc4fb4fe54ec980bb04, type: 3}

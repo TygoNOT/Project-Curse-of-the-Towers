@@ -13,6 +13,9 @@ MonoBehaviour:
   m_Name: Silence Potion
   m_EditorClassIdentifier: 
   itemName: Silence Potion
+  itemSprite: {fileID: 0}
+  price: 10
+  quantity: 0
   id: 0
   statToChange: 0
   amountToChangeStat: 0
@@ -20,6 +23,7 @@ MonoBehaviour:
   amountToChangeAttribute: 0
   itemType: 0
   effectToRemove: 2
+  attribute: 0
   isHealthPotion: 0
   hpRecovery: 10
   isBandage: 0

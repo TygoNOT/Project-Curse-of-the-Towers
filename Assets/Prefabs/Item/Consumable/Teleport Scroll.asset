@@ -13,6 +13,9 @@ MonoBehaviour:
   m_Name: Teleport Scroll
   m_EditorClassIdentifier: 
   itemName: Teleport Scroll
+  itemSprite: {fileID: 0}
+  price: 10
+  quantity: 0
   id: 0
   statToChange: 0
   amountToChangeStat: 0
@@ -20,6 +23,7 @@ MonoBehaviour:
   amountToChangeAttribute: 0
   itemType: 0
   effectToRemove: 0
+  attribute: 0
   isHealthPotion: 0
   hpRecovery: 10
   isBandage: 0

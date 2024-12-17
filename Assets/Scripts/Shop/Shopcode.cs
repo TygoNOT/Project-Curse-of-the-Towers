@@ -195,8 +195,8 @@ public class Shopcode : MonoBehaviour
 
     public void SelectConsumableItem(int n)
     {
-        ItemSo itemComponent = slotsConsumables[n].GetComponent<ItemSo>();
-        DescriptionImage.sprite = itemComponent.itemSprite;
+        Item itemComponent = slotsConsumables[n].GetComponent<Item>();
+        DescriptionImage.sprite = itemComponent.sprite;
         DescriptionName.text = itemComponent.itemName;
         DescriptionType.text = itemComponent.itemType.ToString();
         DescriptionText.text = itemComponent.itemDescription;
@@ -270,7 +270,7 @@ public class Shopcode : MonoBehaviour
     public void BuyConsumableItem()
     {
         int ItemPriceValue = ConsShopItem[SelectedItemNumber].price;
-        ItemSo itemComponent = slotsConsumables[SelectedItemNumber].GetComponent<ItemSo>();
+        Item itemComponent = slotsConsumables[SelectedItemNumber].GetComponent<Item>();
         if (itemComponent.itemType == ItemType.consumable)
         {
             for (int i = 0; i < inventoryManager.itemSlot.Length; i++)
@@ -279,7 +279,7 @@ public class Shopcode : MonoBehaviour
                 {
                     if (money.PayGold(ItemPriceValue))
                     {
-                        inventoryManager.AddItem(itemComponent.itemName, itemComponent.quantity, itemComponent.itemSprite, itemComponent.itemDescription, itemComponent.itemType, itemComponent.attribute);
+                        inventoryManager.AddItem(itemComponent.itemName, itemComponent.quantity, itemComponent.sprite, itemComponent.itemDescription, itemComponent.itemType, itemComponent.weaponAttribute);
                         DeselectItem();
                         break;
                     }

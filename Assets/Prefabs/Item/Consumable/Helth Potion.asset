@@ -12,7 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c40618893667dd445887eda52557b359, type: 3}
   m_Name: Helth Potion
   m_EditorClassIdentifier: 
-  itemName: Helth Potion
+  itemName: Health Potion
+  itemSprite: {fileID: 0}
+  price: 10
+  quantity: 0
   id: 0
   statToChange: 0
   amountToChangeStat: 0
@@ -20,6 +23,7 @@ MonoBehaviour:
   amountToChangeAttribute: 0
   itemType: 0
   effectToRemove: 0
+  attribute: 0
   isHealthPotion: 1
   hpRecovery: 10
   isBandage: 0
