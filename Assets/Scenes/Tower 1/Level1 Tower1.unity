@@ -2941,12 +2941,12 @@ GameObject:
   m_Component:
   - component: {fileID: 238419899}
   - component: {fileID: 238419898}
-  - component: {fileID: 238419900}
   - component: {fileID: 238419897}
   - component: {fileID: 238419896}
   - component: {fileID: 238419895}
   - component: {fileID: 238419894}
   - component: {fileID: 238419893}
+  - component: {fileID: 238419901}
   m_Layer: 5
   m_Name: InventoryCanvas
   m_TagString: Untagged
@@ -3090,7 +3090,14 @@ MonoBehaviour:
   - {fileID: 484705327}
   - {fileID: 728314212}
   itemSOs:
-  - {fileID: 11400000, guid: 6308d38c83f110441bf65a9bf9c2369c, type: 2}
+  - {fileID: 11400000, guid: d808792776dfe0148beaaf4515d5d9ea, type: 2}
+  - {fileID: 11400000, guid: b1c2ef1d97c29aa4c85d95d708933cfb, type: 2}
+  - {fileID: 11400000, guid: 383170a357bf61e4daffc8b2303b0793, type: 2}
+  - {fileID: 11400000, guid: 2f6b8f94e893a4f48943b3e162613798, type: 2}
+  - {fileID: 11400000, guid: 898d00c62bdfc03489c68829db9f52c8, type: 2}
+  - {fileID: 11400000, guid: 96436d4fc66c6f443ac75f07c8d8e47c, type: 2}
+  - {fileID: 11400000, guid: 9f978641d7610f64284d572e67d759d0, type: 2}
+  - {fileID: 11400000, guid: b68906b3c8e4ec34fac036057213a5b2, type: 2}
   equipmentSlot:
   - {fileID: 475930374}
   - {fileID: 434377804}
@@ -3136,6 +3143,7 @@ MonoBehaviour:
   - {fileID: 1561438242}
   - {fileID: 1414199906}
   - {fileID: 351620998}
+  inventoryLoader: {fileID: 0}
 --- !u!114 &238419896
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3227,7 +3235,7 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
---- !u!114 &238419900
+--- !u!114 &238419901
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -3236,10 +3244,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 238419891}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d0aa42a154a6f5242b91f9c7a49bd61b, type: 3}
+  m_Script: {fileID: 11500000, guid: 780cd6708593a48488cbe3cf6ab8123e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  objectIndex: 0
+  inventoryManager: {fileID: 0}
 --- !u!1 &238462022
 GameObject:
   m_ObjectHideFlags: 0
@@ -9761,6 +9769,56 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 667868207}
   m_CullTransparentMesh: 1
+--- !u!1 &679637496
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 679637498}
+  - component: {fileID: 679637497}
+  m_Layer: 5
+  m_Name: Loader
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &679637497
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 679637496}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 309506e07c818e74995c628ebe750cfa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentInventoryManager: {fileID: 0}
+  equipmentSOLibrary: {fileID: 0}
+--- !u!224 &679637498
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 679637496}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 960, y: 540}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1001 &681626306
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -21829,7 +21887,6 @@ GameObject:
   - component: {fileID: 1681725677}
   - component: {fileID: 1681725676}
   - component: {fileID: 1681725674}
-  - component: {fileID: 1681725678}
   m_Layer: 5
   m_Name: HeadSlot
   m_TagString: Untagged
@@ -21918,19 +21975,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1681725673}
   m_CullTransparentMesh: 1
---- !u!114 &1681725678
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1681725673}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d0aa42a154a6f5242b91f9c7a49bd61b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  objectIndex: 0
 --- !u!224 &1687718574 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 5327727578549805051, guid: e482e007b11308b449eb46918dbdc411, type: 3}
@@ -27743,6 +27787,7 @@ SceneRoots:
   m_Roots:
   - {fileID: 825878864}
   - {fileID: 1829891169}
+  - {fileID: 679637498}
   - {fileID: 1205622260}
   - {fileID: 1961824424}
   - {fileID: 1862968681}

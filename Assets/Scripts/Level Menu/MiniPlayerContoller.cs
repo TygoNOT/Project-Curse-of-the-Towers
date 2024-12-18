@@ -12,7 +12,7 @@ public class MiniPlayerContoller : MonoBehaviour
     public float movespeed = 5f;
     public string nextLevelName;
 
-
+    public Save save;
     private void Start()
     {
         movepoint.parent = null;
@@ -52,7 +52,16 @@ public class MiniPlayerContoller : MonoBehaviour
     {
         if (!string.IsNullOrEmpty(nextLevelName))
         {
-            SceneManager.LoadScene(nextLevelName);
+            save = GameObject.Find("InventoryCanvas").GetComponent<Save>();
+            if (save != null)
+            {
+                save.SaveInventory();
+                SceneManager.LoadScene(nextLevelName);
+            }
+            else
+            {
+                Debug.LogError("Ќе удалось найти InventoryCanvas дл€ сохранени€ данных.");
+            }
         }
         else
         {

@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Bandage
   m_EditorClassIdentifier: 
   itemName: Healing bandages
-  itemSprite: {fileID: 0}
+  itemSprite: {fileID: 321323158, guid: a30ee0e177b20dc4fb4fe54ec980bb04, type: 3}
   price: 10
   quantity: 10
   id: 1

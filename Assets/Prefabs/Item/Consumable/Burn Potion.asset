@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Burn Potion
   m_EditorClassIdentifier: 
   itemName: Burn Potion
-  itemSprite: {fileID: 0}
+  itemSprite: {fileID: -2093261378, guid: a30ee0e177b20dc4fb4fe54ec980bb04, type: 3}
   price: 10
   quantity: 0
   id: 0

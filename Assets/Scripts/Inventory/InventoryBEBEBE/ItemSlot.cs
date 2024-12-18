@@ -19,7 +19,7 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler
     public Sprite emptySprite;
     public ItemType itemType;
     public string slotName;
-
+    public Attribute attribute;
     [SerializeField]
     private int maxNumberOfItems;
 
@@ -168,6 +168,11 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler
                 quantityText.text = this.quantity.ToString();
             }
         }
+    }
+    public void AddImage(Sprite itemKartinka)
+    {
+        itemSprite = itemKartinka;
+        itemImage.sprite = itemKartinka;
     }
     public int AddItem(string itemName, int quantity, Sprite itemSprite, string itemDescription, ItemType itemType)
      {

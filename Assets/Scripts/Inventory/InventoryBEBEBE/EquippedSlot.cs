@@ -8,27 +8,31 @@ using UnityEngine.EventSystems;
 public class EquippedSlot : MonoBehaviour, IPointerClickHandler
 {
     [SerializeField]
-    private Image slotImage;
+    public Image slotImage;
 
     [SerializeField]
-    private TMP_Text sloTName;
+    public TMP_Text sloTName;
 
-    [SerializeField] private EquipmentSO equippedItem;
+    [SerializeField] public EquipmentSO equippedItem;
 
     [SerializeField]
-    private ItemType itemType = new ItemType();
-    private Attribute attribute = new Attribute();
-    private Sprite itemSprite;
-    private string itemName;
-    private string itemDescription;
+    public ItemType itemType = new ItemType();
+    [SerializeField]
+    public Attribute attribute = new Attribute();
+    [SerializeField]
+    public Sprite itemSprite;
+    [SerializeField]
+    public string itemName;
+    [SerializeField]
+    public string itemDescription;
 
-    private InventoryManager inventoryManager;
-    private EquipmentSOLibrary equipmentSOLibrary;
+    public InventoryManager inventoryManager;
+    public EquipmentSOLibrary equipmentSOLibrary;
 
     public GameObject petMenu;
     public GameObject equipmentPanel;
 
-    private bool slotInUse;
+    public bool slotInUse;
 
     [SerializeField]
     public GameObject selectedShader;
@@ -132,6 +136,11 @@ public class EquippedSlot : MonoBehaviour, IPointerClickHandler
 
             }
         }
+    }
+    public void AddImage(Sprite itemKartinka)
+    {
+        itemSprite = itemKartinka;
+        slotImage.sprite = itemKartinka;
     }
     public void UnEquipGear()
     {

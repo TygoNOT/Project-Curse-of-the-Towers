@@ -92,7 +92,7 @@ public class ItemSo : ScriptableObject
     }
 
 
-
+    
 
 
     public enum AttributesToChange

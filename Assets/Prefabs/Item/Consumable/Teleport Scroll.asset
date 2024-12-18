@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Teleport Scroll
   m_EditorClassIdentifier: 
   itemName: Teleport Scroll
-  itemSprite: {fileID: 0}
+  itemSprite: {fileID: -1033014994, guid: a30ee0e177b20dc4fb4fe54ec980bb04, type: 3}
   price: 10
   quantity: 0
   id: 0

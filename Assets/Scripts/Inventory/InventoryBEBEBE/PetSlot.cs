@@ -20,7 +20,7 @@ public class PetSlot : MonoBehaviour, IPointerClickHandler
     public string itemDescription;
     public Sprite emptySprite;
     public ItemType itemType;
-
+    public Attribute attribute;
     public string slotName;
 
     [SerializeField]

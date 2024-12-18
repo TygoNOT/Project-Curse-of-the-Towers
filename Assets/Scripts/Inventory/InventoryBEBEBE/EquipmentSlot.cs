@@ -149,6 +149,10 @@ public class EquipmentSlot : MonoBehaviour, IPointerClickHandler
             thisItemSelected = false;
         }
     }
+    public void AddImage(Sprite itemSprite)
+    {
+        itemImage.sprite = itemSprite;
+    }
     public int AddItem(string itemName, int quantity, Sprite itemSprite, string itemDescription, ItemType itemType, Attribute attribute)
     {
         if (isFull)

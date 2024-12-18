@@ -7,7 +7,6 @@ public class LevelButton : MonoBehaviour
     public string requiredLevelName;
     private SpriteRenderer spriteRenderer;
     private bool isUnlocked;
-
     private void Start()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();

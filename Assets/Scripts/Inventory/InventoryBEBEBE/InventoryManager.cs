@@ -12,11 +12,19 @@ public class InventoryManager : MonoBehaviour
     public EquipmentSlot[] equipmentSlot;
     public EquippedSlot[] equippedSlot;
     public PetSlot[] petSlot;
-    void Start()
+    public InventoryLoader inventoryLoader;
+    private void Start()
     {
-        
+        inventoryLoader = GameObject.Find("Loader").GetComponent<InventoryLoader>();
+        if (inventoryLoader != null)
+        {
+            inventoryLoader.LoadInventory();
+        }
+        else
+        {
+            Debug.LogError("InventoryCanvas не найден!");
+        }
     }
-
     // Update is called once per frame
     void Update()
     {
