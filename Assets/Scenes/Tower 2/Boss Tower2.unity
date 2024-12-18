@@ -3147,6 +3147,7 @@ MonoBehaviour:
   - {fileID: 1561438242}
   - {fileID: 1414199906}
   - {fileID: 351620998}
+  inventoryLoader: {fileID: 0}
 --- !u!114 &238419896
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4511,7 +4512,7 @@ MonoBehaviour:
   - {fileID: 1881323543}
   VictoryMenu: {fileID: 491708915}
   DefeatMenu: {fileID: 1206671148}
-  nextLevel: Level1 Tower3
+  nextLevel: LvlMenuTower3
 --- !u!4 &337451164
 Transform:
   m_ObjectHideFlags: 0
@@ -6769,8 +6770,15 @@ MonoBehaviour:
   sloTName: {fileID: 1502164201}
   equippedItem: {fileID: 0}
   itemType: 3
+  attribute: 0
+  itemSprite: {fileID: 0}
+  itemName: 
+  itemDescription: 
+  inventoryManager: {fileID: 0}
+  equipmentSOLibrary: {fileID: 0}
   petMenu: {fileID: 42493917}
   equipmentPanel: {fileID: 1447948806}
+  slotInUse: 0
   selectedShader: {fileID: 661085440}
   thisItemSelected: 0
   emptySprite: {fileID: 21300000, guid: 1466aeff4dfb516498f2035811465cba, type: 3}
@@ -16214,8 +16222,15 @@ MonoBehaviour:
   sloTName: {fileID: 1880702383}
   equippedItem: {fileID: 0}
   itemType: 6
+  attribute: 0
+  itemSprite: {fileID: 0}
+  itemName: 
+  itemDescription: 
+  inventoryManager: {fileID: 0}
+  equipmentSOLibrary: {fileID: 0}
   petMenu: {fileID: 42493917}
   equipmentPanel: {fileID: 1447948806}
+  slotInUse: 0
   selectedShader: {fileID: 1496627700}
   thisItemSelected: 0
   emptySprite: {fileID: 21300000, guid: 1466aeff4dfb516498f2035811465cba, type: 3}
@@ -17122,8 +17137,15 @@ MonoBehaviour:
   sloTName: {fileID: 238689102}
   equippedItem: {fileID: 0}
   itemType: 5
+  attribute: 0
+  itemSprite: {fileID: 0}
+  itemName: 
+  itemDescription: 
+  inventoryManager: {fileID: 0}
+  equipmentSOLibrary: {fileID: 0}
   petMenu: {fileID: 42493917}
   equipmentPanel: {fileID: 1447948806}
+  slotInUse: 0
   selectedShader: {fileID: 938980438}
   thisItemSelected: 0
   emptySprite: {fileID: 21300000, guid: 1466aeff4dfb516498f2035811465cba, type: 3}
@@ -21026,8 +21048,15 @@ MonoBehaviour:
   sloTName: {fileID: 1306469004}
   equippedItem: {fileID: 0}
   itemType: 7
+  attribute: 0
+  itemSprite: {fileID: 0}
+  itemName: 
+  itemDescription: 
+  inventoryManager: {fileID: 0}
+  equipmentSOLibrary: {fileID: 0}
   petMenu: {fileID: 42493917}
   equipmentPanel: {fileID: 1447948806}
+  slotInUse: 0
   selectedShader: {fileID: 524477959}
   thisItemSelected: 0
   emptySprite: {fileID: 21300000, guid: 1466aeff4dfb516498f2035811465cba, type: 3}
@@ -21292,8 +21321,15 @@ MonoBehaviour:
   sloTName: {fileID: 302203580}
   equippedItem: {fileID: 0}
   itemType: 2
+  attribute: 0
+  itemSprite: {fileID: 0}
+  itemName: 
+  itemDescription: 
+  inventoryManager: {fileID: 0}
+  equipmentSOLibrary: {fileID: 0}
   petMenu: {fileID: 42493917}
   equipmentPanel: {fileID: 1447948806}
+  slotInUse: 0
   selectedShader: {fileID: 37578780}
   thisItemSelected: 0
   emptySprite: {fileID: 21300000, guid: 1466aeff4dfb516498f2035811465cba, type: 3}
@@ -24595,8 +24631,15 @@ MonoBehaviour:
   sloTName: {fileID: 79644154}
   equippedItem: {fileID: 0}
   itemType: 4
+  attribute: 0
+  itemSprite: {fileID: 0}
+  itemName: 
+  itemDescription: 
+  inventoryManager: {fileID: 0}
+  equipmentSOLibrary: {fileID: 0}
   petMenu: {fileID: 42493917}
   equipmentPanel: {fileID: 1447948806}
+  slotInUse: 0
   selectedShader: {fileID: 1510079935}
   thisItemSelected: 0
   emptySprite: {fileID: 21300000, guid: 1466aeff4dfb516498f2035811465cba, type: 3}
