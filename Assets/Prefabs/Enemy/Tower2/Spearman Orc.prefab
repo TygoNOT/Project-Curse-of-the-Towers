@@ -265,7 +265,7 @@ GameObject:
   - component: {fileID: 3647497091038658826}
   - component: {fileID: 8842472138156977026}
   m_Layer: 0
-  m_Name: Orc Tank 1
+  m_Name: Spearman Orc
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -353,14 +353,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   EnemyName: Spearman Orc
   healthBar: {fileID: 2754000572705164814}
-  maxhealth: 100
-  health: 100
-  minBaseDamage: 2
-  maxBaseDamage: 5
+  maxhealth: 31
+  health: 31
+  minBaseDamage: 7
+  maxBaseDamage: 14
   critChance: 2
   critDamage: 1.5
   speed: 12
-  enemyAttribute: 0
+  enemyAttribute: 2
   canApplyParalysis: 0
   paralysisChance: 30
   canApplyBurn: 0

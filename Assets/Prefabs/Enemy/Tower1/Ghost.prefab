@@ -353,13 +353,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   EnemyName: Ghost
   healthBar: {fileID: 7472488013399686200}
-  maxhealth: 100
-  health: 100
+  maxhealth: 15
+  health: 15
   minBaseDamage: 2
   maxBaseDamage: 5
-  critChance: 2
+  critChance: 1
   critDamage: 1.5
   speed: 12
+  enemyAttribute: 1
   canApplyParalysis: 0
   paralysisChance: 30
   canApplyBurn: 0

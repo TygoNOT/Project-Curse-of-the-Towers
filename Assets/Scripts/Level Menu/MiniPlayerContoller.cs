@@ -85,4 +85,9 @@ public class MiniPlayerContoller : MonoBehaviour
             nextLevelName = "";
         }
     }
+
+    public void MainMenuScene()
+    {
+        SceneManager.LoadScene("Menu");
+    }
 }

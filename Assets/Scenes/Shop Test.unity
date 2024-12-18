@@ -1104,6 +1104,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   slotImage: {fileID: 1844375936}
   sloTName: {fileID: 610465933}
+  equippedItem: {fileID: 0}
   itemType: 5
   petMenu: {fileID: 1072078268}
   equipmentPanel: {fileID: 1345816916}
@@ -4005,7 +4006,7 @@ MonoBehaviour:
       m_Calls: []
   m_Sprite: {fileID: 474774596, guid: a30ee0e177b20dc4fb4fe54ec980bb04, type: 3}
   m_Type: 0
-  m_PreserveAspect: 0
+  m_PreserveAspect: 1
   m_FillCenter: 1
   m_FillMethod: 4
   m_FillAmount: 1
@@ -8510,7 +8511,7 @@ MonoBehaviour:
       m_Calls: []
   m_Sprite: {fileID: 1371023039, guid: a30ee0e177b20dc4fb4fe54ec980bb04, type: 3}
   m_Type: 0
-  m_PreserveAspect: 0
+  m_PreserveAspect: 1
   m_FillCenter: 1
   m_FillMethod: 4
   m_FillAmount: 1
@@ -10003,7 +10004,7 @@ MonoBehaviour:
       m_Calls: []
   m_Sprite: {fileID: 510165544, guid: a30ee0e177b20dc4fb4fe54ec980bb04, type: 3}
   m_Type: 0
-  m_PreserveAspect: 0
+  m_PreserveAspect: 1
   m_FillCenter: 1
   m_FillMethod: 4
   m_FillAmount: 1
@@ -10441,7 +10442,7 @@ MonoBehaviour:
       m_Calls: []
   m_Sprite: {fileID: 1711089113, guid: a30ee0e177b20dc4fb4fe54ec980bb04, type: 3}
   m_Type: 0
-  m_PreserveAspect: 0
+  m_PreserveAspect: 1
   m_FillCenter: 1
   m_FillMethod: 4
   m_FillAmount: 1
@@ -11685,6 +11686,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   slotImage: {fileID: 1274939619}
   sloTName: {fileID: 1028296303}
+  equippedItem: {fileID: 0}
   itemType: 2
   petMenu: {fileID: 1072078268}
   equipmentPanel: {fileID: 1345816916}
@@ -13983,6 +13985,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   slotImage: {fileID: 1012276632}
   sloTName: {fileID: 1628051116}
+  equippedItem: {fileID: 0}
   itemType: 7
   petMenu: {fileID: 1072078268}
   equipmentPanel: {fileID: 1345816916}
@@ -15899,6 +15902,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   slotImage: {fileID: 2078267706}
   sloTName: {fileID: 2011808000}
+  equippedItem: {fileID: 0}
   itemType: 6
   petMenu: {fileID: 1072078268}
   equipmentPanel: {fileID: 1345816916}
@@ -17418,6 +17422,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   slotImage: {fileID: 802015312}
   sloTName: {fileID: 900905609}
+  equippedItem: {fileID: 0}
   itemType: 4
   petMenu: {fileID: 1072078268}
   equipmentPanel: {fileID: 1345816916}
@@ -17578,7 +17583,7 @@ MonoBehaviour:
       m_Calls: []
   m_Sprite: {fileID: 321323158, guid: a30ee0e177b20dc4fb4fe54ec980bb04, type: 3}
   m_Type: 0
-  m_PreserveAspect: 0
+  m_PreserveAspect: 1
   m_FillCenter: 1
   m_FillMethod: 4
   m_FillAmount: 1
@@ -20158,7 +20163,7 @@ MonoBehaviour:
       m_Calls: []
   m_Sprite: {fileID: -2001951530, guid: a30ee0e177b20dc4fb4fe54ec980bb04, type: 3}
   m_Type: 0
-  m_PreserveAspect: 0
+  m_PreserveAspect: 1
   m_FillCenter: 1
   m_FillMethod: 4
   m_FillAmount: 1
@@ -20578,7 +20583,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -609.64, y: 529.99}
+  m_AnchoredPosition: {x: -609.64, y: 484.37}
   m_SizeDelta: {x: 769.063, y: 111.261}
   m_Pivot: {x: 0.45556518, y: 0.49999994}
 --- !u!222 &1744099816
@@ -20739,7 +20744,7 @@ MonoBehaviour:
       m_Calls: []
   m_Sprite: {fileID: -2093261378, guid: a30ee0e177b20dc4fb4fe54ec980bb04, type: 3}
   m_Type: 0
-  m_PreserveAspect: 0
+  m_PreserveAspect: 1
   m_FillCenter: 1
   m_FillMethod: 4
   m_FillAmount: 1
@@ -25712,6 +25717,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   slotImage: {fileID: 970580856}
   sloTName: {fileID: 2023218068}
+  equippedItem: {fileID: 0}
   itemType: 3
   petMenu: {fileID: 1072078268}
   equipmentPanel: {fileID: 1345816916}
@@ -26284,7 +26290,7 @@ MonoBehaviour:
       m_Calls: []
   m_Sprite: {fileID: -1033014994, guid: a30ee0e177b20dc4fb4fe54ec980bb04, type: 3}
   m_Type: 0
-  m_PreserveAspect: 0
+  m_PreserveAspect: 1
   m_FillCenter: 1
   m_FillMethod: 4
   m_FillAmount: 1

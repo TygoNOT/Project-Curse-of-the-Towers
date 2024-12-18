@@ -353,13 +353,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   EnemyName: Shadow Warrior
   healthBar: {fileID: 3095284267658436364}
-  maxhealth: 100
-  health: 100
-  minBaseDamage: 2
-  maxBaseDamage: 5
+  maxhealth: 28
+  health: 28
+  minBaseDamage: 1
+  maxBaseDamage: 3
   critChance: 2
   critDamage: 1.5
-  speed: 22
+  speed: 2
+  enemyAttribute: 1
   canApplyParalysis: 0
   paralysisChance: 30
   canApplyBurn: 0

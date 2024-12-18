@@ -6,9 +6,42 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/Inventory.unity
-    guid: 2cda990e2423bbf4892e6590ba056729
+    path: Assets/Scenes/Menu.unity
+    guid: 098b579567602074d954ba51e3c3b4c4
   - enabled: 1
-    path: Assets/Scenes/Tower 1/Battle Scene.unity
+    path: Assets/Scenes/Tower 1/Level1 Tower1.unity
     guid: 70b8af96f729cf143ad35f0791f5523e
+  - enabled: 1
+    path: Assets/Scenes/Tower 1/Level2 Tower1.unity
+    guid: 2f6cfdefc04e8ce468f3f84d9ffa1214
+  - enabled: 1
+    path: Assets/Scenes/Tower 1/Level3 Tower1.unity
+    guid: 1a1fb563fd7cac643a6051e163258492
+  - enabled: 1
+    path: Assets/Scenes/Tower 1/Level4 Tower1.unity
+    guid: 6259e9da6042fdd49bd673e6996e8698
+  - enabled: 1
+    path: Assets/Scenes/Tower 1/Boss Tower1.unity
+    guid: 7d644a09750dfd64187ccfc8c9fbfd36
+  - enabled: 1
+    path: Assets/Scenes/Tower 2/Level1 Tower2.unity
+    guid: e0a031b401282234eab9bf14ec6691fa
+  - enabled: 1
+    path: Assets/Scenes/Tower 2/Level2 Tower2.unity
+    guid: 9567444d7de9d3a49be52eef66356ba0
+  - enabled: 1
+    path: Assets/Scenes/Tower 2/Level3 Tower2.unity
+    guid: 872f9f2e7f2a72a428d100523b9e425d
+  - enabled: 1
+    path: Assets/Scenes/Tower 2/Level4 Tower2.unity
+    guid: f0c926f4807747847a5da201826a41e9
+  - enabled: 1
+    path: Assets/Scenes/Tower 3/Level1 Tower3.unity
+    guid: 8d3b871bd6ebbf74f99c5f222c8e71f2
+  - enabled: 1
+    path: Assets/Scenes/Tower 3/Level4 Tower3.unity
+    guid: 26976bd94b0baeb40a0a8e51471d2ea1
+  - enabled: 1
+    path: Assets/Scenes/LvlMenuTower1.unity
+    guid: 8a5564e1606037b449dfdbc41156d9dd
   m_configObjects: {}

@@ -215,7 +215,6 @@ public class PlayerController : MonoBehaviour
         {
             Debug.Log("Escape failed! Enemy turn begins.");
             combatController.combatState.text = "Escape failed! Enemy turn begins.";
-            combatController.TogglePlayerTurn();
         }
         else
         {
@@ -445,7 +444,7 @@ public class PlayerController : MonoBehaviour
             maxhealth = playerStats.hp;
             currentHP = playerStats.hp;
             speed = playerStats.speed;
-            minBaseDamage = playerStats.attack - 10;
+            minBaseDamage = playerStats.attack - Mathf.CeilToInt(playerStats.attack * 0.1f);
             maxBaseDamage = playerStats.attack;
             critChance = playerStats.critChance;
             critDamage = playerStats.critDmg;

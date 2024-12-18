@@ -250,15 +250,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   EnemyName: Lord of Lightning
   healthBar: {fileID: 7532331177258258875}
-  maxhealth: 100
+  maxhealth: 25
   health: 100
-  minBaseDamage: 2
-  maxBaseDamage: 5
+  minBaseDamage: 11
+  maxBaseDamage: 17
   critChance: 2
   critDamage: 1.5
-  speed: 12
-  enemyAttribute: 0
-  canApplyParalysis: 0
+  speed: 13
+  enemyAttribute: 4
+  canApplyParalysis: 1
   paralysisChance: 30
   canApplyBurn: 0
   burnChance: 20

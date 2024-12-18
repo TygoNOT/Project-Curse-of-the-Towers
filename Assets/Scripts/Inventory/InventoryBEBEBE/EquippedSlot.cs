@@ -92,7 +92,7 @@ public class EquippedSlot : MonoBehaviour, IPointerClickHandler
         {
             if (equipmentSOLibrary.equipmentSO[i].itemName == this.itemName)
             {
-                //equipmentSOLibrary.equipmentSO[i].EquipItem();
+                equipmentSOLibrary.equipmentSO[i].EquipItem();
             }
         }
         slotInUse = true;

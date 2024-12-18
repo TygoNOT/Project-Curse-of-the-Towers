@@ -183,6 +183,18 @@ public class EquipmentSO : ScriptableObject
         
     }
 
+    public void EquipItem()
+    {
+        PlayerStats playerStats = GameObject.Find("StatsManager").GetComponent<PlayerStats>();
+        playerStats.attack += attack;
+        playerStats.hp += hp;
+        playerStats.speed += speed;
+        playerStats.critDmg += critDmg;
+        playerStats.critChance += critChance;
+        playerStats.attribute = attribute;
+        playerStats.UpdateEquipmentStats();
+    }
+
 
     public void UnEquipItem()
     {

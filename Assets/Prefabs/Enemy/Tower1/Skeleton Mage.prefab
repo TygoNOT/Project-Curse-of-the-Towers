@@ -278,13 +278,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   EnemyName: Skeleton Mage
   healthBar: {fileID: 8219087492370580640}
-  maxhealth: 100
-  health: 100
-  minBaseDamage: 2
-  maxBaseDamage: 5
-  critChance: 2
+  maxhealth: 18
+  health: 18
+  minBaseDamage: 4
+  maxBaseDamage: 7
+  critChance: 1
   critDamage: 1.5
   speed: 22
+  enemyAttribute: 1
   canApplyParalysis: 0
   paralysisChance: 30
   canApplyBurn: 0

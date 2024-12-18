@@ -100,16 +100,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   EnemyName: Fiery Chaos
   healthBar: {fileID: 7255958154547474381}
-  maxhealth: 100
-  health: 100
-  minBaseDamage: 2
-  maxBaseDamage: 5
+  maxhealth: 20
+  health: 20
+  minBaseDamage: 12
+  maxBaseDamage: 16
   critChance: 2
   critDamage: 1.5
   speed: 12
-  enemyAttribute: 0
-  canApplyParalysis: 0
-  paralysisChance: 30
+  enemyAttribute: 4
+  canApplyParalysis: 1
+  paralysisChance: 15
   canApplyBurn: 0
   burnChance: 20
   canApplyPoison: 0
