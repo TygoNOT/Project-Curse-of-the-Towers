@@ -1,15 +1,19 @@
 using JetBrains.Annotations;
 using System;
 using System.Collections.Generic;
+using Unity.VisualScripting.Antlr3.Runtime.Misc;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class InventoryLoader : MonoBehaviour
 {
+    public PlayerStats stats;
     public InventoryManager currentInventoryManager;
     public EquipmentSOLibrary equipmentSOLibrary;
     private void Start()
     {
+        stats = null;
+        stats = GameObject.Find("StatsManager").GetComponent<PlayerStats>();
         currentInventoryManager = null;
         equipmentSOLibrary = GameObject.Find("InventoryCanvas").GetComponent<EquipmentSOLibrary>();
         currentInventoryManager = GameObject.Find("InventoryCanvas").GetComponent<InventoryManager>();
@@ -17,32 +21,34 @@ public class InventoryLoader : MonoBehaviour
     private void Update()
     {
         currentInventoryManager = GameObject.Find("InventoryCanvas").GetComponent<InventoryManager>();
+        stats = GameObject.Find("StatsManager").GetComponent<PlayerStats>();
     }
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
         // Присваиваем новые объекты
         equipmentSOLibrary = GameObject.Find("InventoryCanvas").GetComponent<EquipmentSOLibrary>();
         currentInventoryManager = GameObject.Find("InventoryCanvas")?.GetComponent<InventoryManager>();
-        
-        
+        stats = GameObject.Find("StatsManager").GetComponent<PlayerStats>();
 
-        
+
+
         // Загружаем данные из PlayerPrefs
-        string jsonEp = PlayerPrefs.GetString("EquippableSlotsData");
-        string jsonEq = PlayerPrefs.GetString("EquipmentSlotsData");
-        string jsonIt = PlayerPrefs.GetString("ItemSlotsData");
-        string jsonPe = PlayerPrefs.GetString("PetSlotsData");
-        Debug.Log(jsonEp);
-        List<SerializedEquippableSlot> savedEquippableSlots = JsonUtility.FromJson<Wrapper<List<SerializedEquippableSlot>>>(jsonEp).data;
-        List<SerializedSlot> savedEquipSlots = JsonUtility.FromJson<Wrapper<List<SerializedSlot>>>(jsonEq).data;
-        List<SerializedSlot> savedItemSlots = JsonUtility.FromJson<Wrapper<List<SerializedSlot>>>(jsonIt).data;
-        List<SerializedSlot> savedPetSlots = JsonUtility.FromJson<Wrapper<List<SerializedSlot>>>(jsonPe).data;
-        Debug.Log(savedEquippableSlots);
+        string jsonStat = PlayerPrefs.GetString("PlayerStatsSaves");
+        string jsonEquipped = PlayerPrefs.GetString("EquippableSlotsData");
+        string jsonEquip = PlayerPrefs.GetString("EquipmentSlotsData");
+        string jsonItem = PlayerPrefs.GetString("ItemSlotsData");
+        string jsonPet = PlayerPrefs.GetString("PetSlotsData");
+        List<SerializedEquippableSlot> savedEquippableSlots = JsonUtility.FromJson<Wrapper<List<SerializedEquippableSlot>>>(jsonEquipped).data;
+        List<SerializedSlot> savedEquipSlots = JsonUtility.FromJson<Wrapper<List<SerializedSlot>>>(jsonEquip).data;
+        List<SerializedSlot> savedItemSlots = JsonUtility.FromJson<Wrapper<List<SerializedSlot>>>(jsonItem).data;
+        List<SerializedSlot> savedPetSlots = JsonUtility.FromJson<Wrapper<List<SerializedSlot>>>(jsonPet).data;
+        PlayerStatsSave savedStats = JsonUtility.FromJson<Wrapper<PlayerStatsSave>>(jsonStat).data;
         Debug.Log("Before Load");
         ApplyEquippedData(savedEquippableSlots, currentInventoryManager.equippedSlot, equipmentSOLibrary.equipmentSO);
         ApplyEquipData(savedEquipSlots, currentInventoryManager?.equipmentSlot, equipmentSOLibrary.equipmentSO);
         ApplyItemData(savedItemSlots, currentInventoryManager?.itemSlot, currentInventoryManager.itemSOs);
         ApplyPetData(savedPetSlots, currentInventoryManager?.petSlot);
+        //ApplyStatsData(savedStats, stats);
         Debug.Log("Данные инвентаря загружены!");
     }
     public void LoadInventory()
@@ -96,6 +102,15 @@ public class InventoryLoader : MonoBehaviour
 
             slots[i].isFull = savedSlot.isFull;
         }
+    }
+
+    private void ApplyStatsData(PlayerStatsSave savedStats, PlayerStats playerStats)
+    {
+            playerStats.attack=savedStats.attack;
+            playerStats.hp=savedStats.hp;
+            playerStats.speed=savedStats.speed;
+            playerStats.critChance=savedStats.critChance;
+            playerStats.critDmg=savedStats.critDmg;
     }
     private void ApplyItemData(List<SerializedSlot> savedSlots, ItemSlot[] slots, ItemSo[] itemSo)
     {
@@ -170,21 +185,23 @@ public class InventoryLoader : MonoBehaviour
         slot.slotInUse = true;
         slot.AddImage(equipment.itemSprite);
 
-        if (slot.sloTName != null)
-        {
-            slot.sloTName.enabled = false;
-        }
+        //if (slot.sloTName != null)
+        //{
+        //    slot.sloTName.enabled = false;
+        //}
 
         // Использование данных из SerializedEquippableSlot
+        slot.sloTName.enabled = false;
         slot.itemName = savedSlot.itemName;
         slot.itemDescription = savedSlot.itemDescription;
-        slot.attribute = savedSlot.attribute;
-        slot.itemType = savedSlot.itemType;
+        string savedSlotAttribute = savedSlot.attribute;
+        slot.attribute = (Attribute)Enum.Parse(typeof(Attribute), savedSlotAttribute);
+        string savedItemType = savedSlot.itemType;
+        slot.itemType = (ItemType)Enum.Parse(typeof(ItemType), savedItemType);
 
         Debug.Log($"Loaded slot data for: {equipment.itemName}, " +
                   $"Name: {savedSlot.itemName}, " +
                   $"Description: {savedSlot.itemDescription}, " +
-                  $"Quantity: {savedSlot.quantity}, " +
                   $"Attribute: {savedSlot.attribute}, " +
                   $"Type: {savedSlot.itemType}");
     }
@@ -195,36 +212,36 @@ public class InventoryLoader : MonoBehaviour
             Debug.LogError("Invalid input to ApplyEquippedData.");
             return;
         }
-
+        EquipmentSO loadedEquipment=null;
         foreach (var savedSlot in savedSlots)
         {
-            var loadedEquipment = FindEquipmentSOByName(savedSlot.equipmentSOName, equipmentSOArray);
-            if (loadedEquipment == null)
+            for (int i = 0; i < equipmentSOArray.Length; i++)
             {
-                Debug.LogWarning($"EquipmentSO not found for: {savedSlot.equipmentSOName}");
-                continue;
+                if (savedSlot.itemName == equipmentSOArray[i].itemName)
+                {
+                    loadedEquipment = equipmentSOArray[i];
+                }
             }
 
-            EquippedSlot slotToLoad;
             switch (loadedEquipment.itemType)
             {
                 case ItemType.weapon:
-                    slotToLoad = slots[4];
+                    LoadSlotData(slots[4], loadedEquipment, savedSlot);
                     break;
                 case ItemType.headArmor:
-                    slotToLoad = slots[0];
+                    LoadSlotData(slots[0], loadedEquipment, savedSlot);
                     break;
                 case ItemType.pet:
-                    slotToLoad = slots[5];
+                    LoadSlotData(slots[5], loadedEquipment, savedSlot);
                     break;
                 case ItemType.legsArmor:
-                    slotToLoad = slots[2];
+                    LoadSlotData(slots[2], loadedEquipment, savedSlot);
                     break;
                 case ItemType.chestArmor:
-                    slotToLoad = slots[1];
+                    LoadSlotData(slots[1], loadedEquipment, savedSlot);
                     break;
                 case ItemType.footArmor:
-                    slotToLoad = slots[3];
+                    LoadSlotData(slots[3], loadedEquipment, savedSlot);
                     break;
                 default:
                     Debug.LogWarning($"Unknown item type: {loadedEquipment.itemType}");
@@ -232,7 +249,7 @@ public class InventoryLoader : MonoBehaviour
             }
 
             // Передаём savedSlot в LoadSlotData
-            LoadSlotData(slotToLoad, loadedEquipment, savedSlot);
+            
         }
     }
     private void ApplyPetData(List<SerializedSlot> savedSlots, PetSlot[] slots)

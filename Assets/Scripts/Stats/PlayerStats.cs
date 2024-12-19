@@ -10,22 +10,22 @@ public class PlayerStats : MonoBehaviour
     public float critDmg;
     public Attribute attribute;
     [SerializeField]
-    private TMP_Text attackText, hpText, speedText, critDmgText, critChanceText, attributeText;
+    public TMP_Text attackText, hpText, speedText, critDmgText, critChanceText, attributeText;
 
     [SerializeField]
-    private TMP_Text attackPreText, hpPreText, speedPreText, critDmgPreText, critChancePreText, attributePreText;
+    public TMP_Text attackPreText, hpPreText, speedPreText, critDmgPreText, critChancePreText, attributePreText;
 
     [SerializeField]
-    private Image previewImage;
+    public Image previewImage;
 
     [SerializeField]
-    private GameObject selectedItemStats;
+    public GameObject selectedItemStats;
 
     [SerializeField]
-    private GameObject selectedItemImage;
-    void Start()
+    public GameObject selectedItemImage;
+    void Update()
     {
-        //UpdateEquipmentStats();
+        UpdateEquipmentStats();
     }
 
     public void UpdateEquipmentStats()
