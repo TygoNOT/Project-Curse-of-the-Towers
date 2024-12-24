@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -17,16 +18,18 @@ public class CombatController : MonoBehaviour
     public Button[] enemyAttackButtons;
     public GameObject VictoryMenu;
     public GameObject DefeatMenu;
+    public Save save;
 
     [Header("Attribute")]
     bool isPlayerTurn = true;
     private int enemyIndex = -1;
     public string nextLevel = "Inventory";
     private PlayerController playerController;
-
+    
     void Start()
     {
         playerController = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
+        save = GameObject.Find("InventoryCanvas").GetComponent<Save>();
 
         combatState.text = "PLAYER TURN";
         EmptyPanel.SetActive(false);
@@ -198,10 +201,12 @@ public class CombatController : MonoBehaviour
             Debug.Log("You won the battle!");
 
             VictoryMenu.SetActive(true);
+            save.SaveInventory();
             SaveProgress();
         }
         else
         {
+            save.SaveInventory();
             DefeatMenu.SetActive(true);
             Debug.Log("You lost the battle!");
         }

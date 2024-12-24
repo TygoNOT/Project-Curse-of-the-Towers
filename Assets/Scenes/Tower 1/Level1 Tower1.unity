@@ -2794,8 +2794,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -90}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 659, y: -116}
-  m_SizeDelta: {x: -1771.7, y: -543.4742}
+  m_AnchoredPosition: {x: 654, y: -111}
+  m_SizeDelta: {x: -1771.7, y: -926.7991}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &218712884
 GameObject:
@@ -3248,6 +3248,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   inventoryManager: {fileID: 0}
+  stats: {fileID: 0}
 --- !u!1 &238462022
 GameObject:
   m_ObjectHideFlags: 0
@@ -4691,6 +4692,7 @@ MonoBehaviour:
   - {fileID: 1308839891}
   VictoryMenu: {fileID: 491708915}
   DefeatMenu: {fileID: 1206671148}
+  save: {fileID: 0}
   nextLevel: Level2 Tower1
 --- !u!4 &337451164
 Transform:
@@ -6949,8 +6951,15 @@ MonoBehaviour:
   sloTName: {fileID: 1502164201}
   equippedItem: {fileID: 0}
   itemType: 3
+  attribute: 0
+  itemSprite: {fileID: 0}
+  itemName: 
+  itemDescription: 
+  inventoryManager: {fileID: 0}
+  equipmentSOLibrary: {fileID: 0}
   petMenu: {fileID: 42493917}
   equipmentPanel: {fileID: 1447948806}
+  slotInUse: 0
   selectedShader: {fileID: 661085440}
   thisItemSelected: 0
   emptySprite: {fileID: 21300000, guid: 1466aeff4dfb516498f2035811465cba, type: 3}
@@ -9798,6 +9807,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 309506e07c818e74995c628ebe750cfa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  stats: {fileID: 0}
   currentInventoryManager: {fileID: 0}
   equipmentSOLibrary: {fileID: 0}
 --- !u!224 &679637498
@@ -16569,8 +16579,15 @@ MonoBehaviour:
   sloTName: {fileID: 1880702383}
   equippedItem: {fileID: 0}
   itemType: 6
+  attribute: 0
+  itemSprite: {fileID: 0}
+  itemName: 
+  itemDescription: 
+  inventoryManager: {fileID: 0}
+  equipmentSOLibrary: {fileID: 0}
   petMenu: {fileID: 42493917}
   equipmentPanel: {fileID: 1447948806}
+  slotInUse: 0
   selectedShader: {fileID: 1496627700}
   thisItemSelected: 0
   emptySprite: {fileID: 21300000, guid: 1466aeff4dfb516498f2035811465cba, type: 3}
@@ -17643,8 +17660,15 @@ MonoBehaviour:
   sloTName: {fileID: 238689102}
   equippedItem: {fileID: 0}
   itemType: 5
+  attribute: 0
+  itemSprite: {fileID: 0}
+  itemName: 
+  itemDescription: 
+  inventoryManager: {fileID: 0}
+  equipmentSOLibrary: {fileID: 0}
   petMenu: {fileID: 42493917}
   equipmentPanel: {fileID: 1447948806}
+  slotInUse: 0
   selectedShader: {fileID: 938980438}
   thisItemSelected: 0
   emptySprite: {fileID: 21300000, guid: 1466aeff4dfb516498f2035811465cba, type: 3}
@@ -21644,8 +21668,15 @@ MonoBehaviour:
   sloTName: {fileID: 1306469004}
   equippedItem: {fileID: 0}
   itemType: 7
+  attribute: 0
+  itemSprite: {fileID: 0}
+  itemName: 
+  itemDescription: 
+  inventoryManager: {fileID: 0}
+  equipmentSOLibrary: {fileID: 0}
   petMenu: {fileID: 42493917}
   equipmentPanel: {fileID: 1447948806}
+  slotInUse: 0
   selectedShader: {fileID: 524477959}
   thisItemSelected: 0
   emptySprite: {fileID: 21300000, guid: 1466aeff4dfb516498f2035811465cba, type: 3}
@@ -21910,8 +21941,15 @@ MonoBehaviour:
   sloTName: {fileID: 302203580}
   equippedItem: {fileID: 0}
   itemType: 2
+  attribute: 0
+  itemSprite: {fileID: 0}
+  itemName: 
+  itemDescription: 
+  inventoryManager: {fileID: 0}
+  equipmentSOLibrary: {fileID: 0}
   petMenu: {fileID: 42493917}
   equipmentPanel: {fileID: 1447948806}
+  slotInUse: 0
   selectedShader: {fileID: 37578780}
   thisItemSelected: 0
   emptySprite: {fileID: 21300000, guid: 1466aeff4dfb516498f2035811465cba, type: 3}
@@ -25221,8 +25259,15 @@ MonoBehaviour:
   sloTName: {fileID: 79644154}
   equippedItem: {fileID: 0}
   itemType: 4
+  attribute: 0
+  itemSprite: {fileID: 0}
+  itemName: 
+  itemDescription: 
+  inventoryManager: {fileID: 0}
+  equipmentSOLibrary: {fileID: 0}
   petMenu: {fileID: 42493917}
   equipmentPanel: {fileID: 1447948806}
+  slotInUse: 0
   selectedShader: {fileID: 1510079935}
   thisItemSelected: 0
   emptySprite: {fileID: 21300000, guid: 1466aeff4dfb516498f2035811465cba, type: 3}

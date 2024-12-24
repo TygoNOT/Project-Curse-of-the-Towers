@@ -218,6 +218,7 @@ public class PlayerController : MonoBehaviour
         }
         else
         {
+            combatController.save.SaveInventory();
             Debug.Log("Escape successful! Loading new scene...");
             combatController.combatState.text = "Escape successful!";
             Invoke("LoadEscapeScene", 1f);
@@ -225,6 +226,8 @@ public class PlayerController : MonoBehaviour
     }
     public void TeleportationScroll()
     {
+        CombatController combatController = FindObjectOfType<CombatController>();
+        combatController.save.SaveInventory();
         Debug.Log("Escape successful! Loading new scene...");
         combatController.combatState.text = "Escape successful!";
         Invoke("LoadEscapeScene", 1f);
