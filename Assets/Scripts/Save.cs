@@ -28,7 +28,7 @@ public class Save : MonoBehaviour
         List<SerializedSlot> itemSlots = new();
         List<SerializedSlot> petSlots = new();
         List<SerializedEquippableSlot> equippableSlots = new List<SerializedEquippableSlot>();
-        PlayerStatsSave playerStats = new();
+        List<PlayerStatsSave> playerStats = new();
         // Сохраняем данные из всех массивов
         SaveEquipmentSlots(inventoryManager.equipmentSlot, equipmentSlots);
         SaveItemSlots(inventoryManager.itemSlot, itemSlots);
@@ -40,7 +40,7 @@ public class Save : MonoBehaviour
         string jsonItem = JsonUtility.ToJson(new Wrapper<List<SerializedSlot>> { data = itemSlots });
         string jsonPet = JsonUtility.ToJson(new Wrapper<List<SerializedSlot>> { data = petSlots });
         string jsonEquippable = JsonUtility.ToJson(new Wrapper<List<SerializedEquippableSlot>> { data = equippableSlots });
-        string jsonStats = JsonUtility.ToJson(new Wrapper<PlayerStatsSave> { data = playerStats });
+        string jsonStats = JsonUtility.ToJson(new Wrapper<List<PlayerStatsSave>> { data = playerStats });
 
 
         // Сериализация и сохранение данных
@@ -72,10 +72,10 @@ public class Save : MonoBehaviour
             }
         }
     }
-    private void SavePlayerStat(PlayerStats playerStats, PlayerStatsSave allSlots)
+    private void SavePlayerStat(PlayerStats playerStats, List<PlayerStatsSave> allSlots)
     {
 
-        new PlayerStatsSave
+        allSlots.Add(new PlayerStatsSave
         {
             hp = playerStats.hp,
             attack = playerStats.attack,
@@ -83,16 +83,14 @@ public class Save : MonoBehaviour
             critChance = playerStats.critChance,
             critDmg = playerStats.critDmg,
             attribute = playerStats.attribute.ToString()
-        };
+        });
     }
     private void SaveEquippedSlots(EquippedSlot[] slots, List<SerializedEquippableSlot> allSlots)
     {
-        Debug.Log("SAVING STARTED");
         foreach (var slot in slots)
         {
             if (slot.slotInUse)
             {
-                Debug.Log(slot.itemName + "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
                 allSlots.Add(new SerializedEquippableSlot
                 {
                     isEquipped = slot.slotInUse,

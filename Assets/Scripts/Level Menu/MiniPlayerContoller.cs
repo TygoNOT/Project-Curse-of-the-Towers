@@ -53,15 +53,9 @@ public class MiniPlayerContoller : MonoBehaviour
         if (!string.IsNullOrEmpty(nextLevelName))
         {
             save = GameObject.Find("InventoryCanvas").GetComponent<Save>();
-            if (save != null)
-            {
+
                 save.SaveInventory();
                 SceneManager.LoadScene(nextLevelName);
-            }
-            else
-            {
-                Debug.LogError("Ќе удалось найти InventoryCanvas дл€ сохранени€ данных.");
-            }
         }
         else
         {

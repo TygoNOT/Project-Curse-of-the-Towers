@@ -42,13 +42,13 @@ public class InventoryLoader : MonoBehaviour
         List<SerializedSlot> savedEquipSlots = JsonUtility.FromJson<Wrapper<List<SerializedSlot>>>(jsonEquip).data;
         List<SerializedSlot> savedItemSlots = JsonUtility.FromJson<Wrapper<List<SerializedSlot>>>(jsonItem).data;
         List<SerializedSlot> savedPetSlots = JsonUtility.FromJson<Wrapper<List<SerializedSlot>>>(jsonPet).data;
-        PlayerStatsSave savedStats = JsonUtility.FromJson<Wrapper<PlayerStatsSave>>(jsonStat).data;
+        List<PlayerStatsSave> savedStats = JsonUtility.FromJson<Wrapper<List<PlayerStatsSave>>>(jsonStat).data;
         Debug.Log("Before Load");
         ApplyEquippedData(savedEquippableSlots, currentInventoryManager.equippedSlot, equipmentSOLibrary.equipmentSO);
         ApplyEquipData(savedEquipSlots, currentInventoryManager?.equipmentSlot, equipmentSOLibrary.equipmentSO);
         ApplyItemData(savedItemSlots, currentInventoryManager?.itemSlot, currentInventoryManager.itemSOs);
         ApplyPetData(savedPetSlots, currentInventoryManager?.petSlot);
-        //ApplyStatsData(savedStats, stats);
+        ApplyStatsData(savedStats, stats);
         Debug.Log("Данные инвентаря загружены!");
     }
     public void LoadInventory()
@@ -62,10 +62,6 @@ public class InventoryLoader : MonoBehaviour
         for (int i = 0; i < Mathf.Min(slots.Length, savedSlots.Count); i++)
         {
             var savedSlot = savedSlots[i];
-
-            // Логирование для отладки
-            Debug.Log($"Применение данных к слоту {i}: itemName = {savedSlot.itemName}, itemSpriteName = {savedSlot.itemSpriteName}");
-
             // Применение данных к слоту
             slots[i].itemName = savedSlot.itemName;
             slots[i].itemDescription = savedSlot.itemDescription;
@@ -73,7 +69,6 @@ public class InventoryLoader : MonoBehaviour
             {
                 if (equipmentSO[j].itemName == savedSlot.itemName)
                 {
-                    Debug.Log("Item Name Correct!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
                     slots[i].itemSprite = equipmentSO[j].itemSprite;
                     slots[i].AddImage(equipmentSO[j].itemSprite);
                 }
@@ -88,7 +83,6 @@ public class InventoryLoader : MonoBehaviour
             }
             else
             {
-                Debug.LogWarning($"Не удалось преобразовать itemType: {savedSlot.itemType}");
             }
 
             if (Enum.TryParse(savedSlot.attribute, out Attribute attribute))
@@ -97,29 +91,29 @@ public class InventoryLoader : MonoBehaviour
             }
             else
             {
-                Debug.LogWarning($"Не удалось преобразовать attribute: {savedSlot.attribute}");
             }
 
             slots[i].isFull = savedSlot.isFull;
         }
     }
 
-    private void ApplyStatsData(PlayerStatsSave savedStats, PlayerStats playerStats)
+    private void ApplyStatsData(List<PlayerStatsSave> savedStats, PlayerStats playerStats)
     {
-            playerStats.attack=savedStats.attack;
-            playerStats.hp=savedStats.hp;
-            playerStats.speed=savedStats.speed;
-            playerStats.critChance=savedStats.critChance;
-            playerStats.critDmg=savedStats.critDmg;
+        for (int i = 0; i < savedStats.Count; i++)
+        {
+            playerStats.attack = savedStats[i].attack;
+            playerStats.hp = savedStats[i].hp;
+            playerStats.speed = savedStats[i].speed;
+            playerStats.critChance = savedStats[i].critChance;
+            playerStats.critDmg = savedStats[i].critDmg;
+            playerStats.UpdateEquipmentStats();
+        }
     }
     private void ApplyItemData(List<SerializedSlot> savedSlots, ItemSlot[] slots, ItemSo[] itemSo)
     {
         for (int i = 0; i < Mathf.Min(slots.Length, savedSlots.Count); i++)
         {
             var savedSlot = savedSlots[i];
-
-            // Логирование для отладки
-            Debug.Log($"Применение данных к слоту {i}: itemName = {savedSlot.itemName}, itemSpriteName = {savedSlot.itemSpriteName}");
 
             // Применение данных к слоту
             slots[i].itemName = savedSlot.itemName;
@@ -130,7 +124,6 @@ public class InventoryLoader : MonoBehaviour
             {
                 if (itemSo[j].itemName == savedSlot.itemName)
                 {
-                    Debug.Log("Item Name Correct!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
                     slots[i].itemSprite = itemSo[j].itemSprite;
                     slots[i].AddImage(itemSo[j].itemSprite);
                 }
@@ -145,7 +138,6 @@ public class InventoryLoader : MonoBehaviour
             }
             else
             {
-                Debug.LogWarning($"Не удалось преобразовать itemType: {savedSlot.itemType}");
             }
 
             if (Enum.TryParse(savedSlot.attribute, out Attribute attribute))
@@ -154,29 +146,15 @@ public class InventoryLoader : MonoBehaviour
             }
             else
             {
-                Debug.LogWarning($"Не удалось преобразовать attribute: {savedSlot.attribute}");
             }
 
             slots[i].isFull = savedSlot.isFull;
         }
     }
-    private EquipmentSO FindEquipmentSOByName(string equipmentName, EquipmentSO[] equipmentArray)
-    {
-        foreach (var equipment in equipmentArray)
-        {
-            if (equipment.itemName == equipmentName)
-            {
-                Debug.Log("Item Name Correct!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
-                return equipment;
-            }
-        }
-        return null;
-    }
     private void LoadSlotData(EquippedSlot slot, EquipmentSO equipment, SerializedEquippableSlot savedSlot)
     {
         if (slot == null || equipment == null || savedSlot == null)
         {
-            Debug.LogWarning("Invalid input to LoadSlotData.");
             return;
         }
 
@@ -199,17 +177,11 @@ public class InventoryLoader : MonoBehaviour
         string savedItemType = savedSlot.itemType;
         slot.itemType = (ItemType)Enum.Parse(typeof(ItemType), savedItemType);
 
-        Debug.Log($"Loaded slot data for: {equipment.itemName}, " +
-                  $"Name: {savedSlot.itemName}, " +
-                  $"Description: {savedSlot.itemDescription}, " +
-                  $"Attribute: {savedSlot.attribute}, " +
-                  $"Type: {savedSlot.itemType}");
     }
     private void ApplyEquippedData(List<SerializedEquippableSlot> savedSlots, EquippedSlot[] slots, EquipmentSO[] equipmentSOArray)
     {
         if (savedSlots == null || slots == null || equipmentSOArray == null)
         {
-            Debug.LogError("Invalid input to ApplyEquippedData.");
             return;
         }
         EquipmentSO loadedEquipment=null;
@@ -244,7 +216,6 @@ public class InventoryLoader : MonoBehaviour
                     LoadSlotData(slots[3], loadedEquipment, savedSlot);
                     break;
                 default:
-                    Debug.LogWarning($"Unknown item type: {loadedEquipment.itemType}");
                     continue;
             }
 
@@ -259,7 +230,6 @@ public class InventoryLoader : MonoBehaviour
             var savedSlot = savedSlots[i];
 
             // Логирование для отладки
-            Debug.Log($"Применение данных к слоту {i}: itemName = {savedSlot.itemName}, itemSpriteName = {savedSlot.itemSpriteName}");
 
             // Применение данных к слоту
             slots[i].itemName = savedSlot.itemName;
@@ -273,7 +243,6 @@ public class InventoryLoader : MonoBehaviour
             }
             else
             {
-                Debug.LogWarning($"Не удалось загрузить спрайт: {savedSlot.itemSpriteName}");
                 slots[i].itemSprite = null; // Присваиваем null, если спрайт не найден
             }
 
@@ -286,7 +255,6 @@ public class InventoryLoader : MonoBehaviour
             }
             else
             {
-                Debug.LogWarning($"Не удалось преобразовать itemType: {savedSlot.itemType}");
             }
 
             if (Enum.TryParse(savedSlot.attribute, out Attribute attribute))
@@ -295,7 +263,6 @@ public class InventoryLoader : MonoBehaviour
             }
             else
             {
-                Debug.LogWarning($"Не удалось преобразовать attribute: {savedSlot.attribute}");
             }
 
             slots[i].isFull = savedSlot.isFull;
