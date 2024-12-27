@@ -21,6 +21,14 @@ public class EquipmentSlot : MonoBehaviour, IPointerClickHandler
     public ItemType itemType;
     public Attribute attribute;
     public string slotName;
+    public string[] SetCounter = new string[5];
+    public Text setBonus;
+
+    int Setattack = 0;
+    int Sethp = 0;
+    int Setspeed = 0;
+    int SetcritChance = 0;
+    int SetcritDmg = 0;
 
     [SerializeField]
     private Image itemImage;
@@ -38,6 +46,7 @@ public class EquipmentSlot : MonoBehaviour, IPointerClickHandler
     {
         inventoryManager = GameObject.Find("InventoryCanvas").GetComponent<InventoryManager>();
         equipmentSOLibrary = GameObject.Find("InventoryCanvas").GetComponent<EquipmentSOLibrary>();
+        setBonus = GameObject.Find("StatsManager").GetComponent<PlayerStats>().SetBonus;
     }
 
     public void OnPointerClick(PointerEventData eventData)
@@ -87,15 +96,65 @@ public class EquipmentSlot : MonoBehaviour, IPointerClickHandler
     private void EquipGear()
     {
         if (itemType == ItemType.headArmor)
+        {
             headArmorSlot.EquipGear(itemSprite, itemName, itemDescription);
+            for (int i = 0; i < equipmentSOLibrary.equipmentSO.Length; i++)
+            {
+                if (equipmentSOLibrary.equipmentSO[i].itemName == itemName)
+                {
+                    SetCounter[0] = equipmentSOLibrary.equipmentSO[i].setName;
+                    AddSetBonus();
+                }
+            }
+        }
         if (itemType == ItemType.chestArmor)
+        {
             chestArmorSlot.EquipGear(itemSprite, itemName, itemDescription);
+            for (int i = 0; i < equipmentSOLibrary.equipmentSO.Length; i++)
+            {
+                if (equipmentSOLibrary.equipmentSO[i].itemName == itemName)
+                {
+                    SetCounter[1] = equipmentSOLibrary.equipmentSO[i].setName;
+                    AddSetBonus();
+                }
+            }
+        }
         if (itemType == ItemType.legsArmor)
+        {
             legsArmorSlot.EquipGear(itemSprite, itemName, itemDescription);
+            for (int i = 0; i < equipmentSOLibrary.equipmentSO.Length; i++)
+            {
+                if (equipmentSOLibrary.equipmentSO[i].itemName == itemName)
+                {
+                    SetCounter[2] = equipmentSOLibrary.equipmentSO[i].setName;
+                    AddSetBonus();
+                }
+            }
+        }
         if (itemType == ItemType.footArmor)
+        {
             footArmorSlot.EquipGear(itemSprite, itemName, itemDescription);
+            for (int i = 0; i < equipmentSOLibrary.equipmentSO.Length; i++)
+            {
+                if (equipmentSOLibrary.equipmentSO[i].itemName == itemName)
+                {
+                    SetCounter[3] = equipmentSOLibrary.equipmentSO[i].setName;
+                    AddSetBonus();
+                }
+            }
+        }
         if (itemType == ItemType.weapon)
+        {
             weaponSlot.EquipGear(itemSprite, itemName, itemDescription);
+            for (int i = 0; i < equipmentSOLibrary.equipmentSO.Length; i++)
+            {
+                if (equipmentSOLibrary.equipmentSO[i].itemName == itemName)
+                {
+                    SetCounter[4] = equipmentSOLibrary.equipmentSO[i].setName;
+                    AddSetBonus();
+                }
+            }
+        }
 
         EmptySlot();
     }
@@ -167,9 +226,181 @@ public class EquipmentSlot : MonoBehaviour, IPointerClickHandler
         this.attribute = attribute;
 
 
-        this.quantity =1;
+        this.quantity = 1;
         isFull = true;
         return 0;
     }
+
+    public void AddSetBonus()
+    {
+        if (SetCounter[0] != null && SetCounter[0] == SetCounter[1] && SetCounter[0] == SetCounter[2] && SetCounter[0] == SetCounter[3] && SetCounter[0] == SetCounter[4])
+        {
+
+            PlayerStats playerStats = GameObject.Find("StatsManager").GetComponent<PlayerStats>();
+
+            if (SetCounter[0] == "Bebe Set")
+            {
+                Setattack = 2;
+                Sethp = 0;
+                Setspeed = 0;
+                SetcritChance = 0;
+                SetcritDmg = 0;
+                setBonus.text = "Set bonus: +2 Attack";
+            }
+            if (SetCounter[0] == "Common Set2")
+            {
+                Setattack = 0;
+                Sethp = 0;
+                Setspeed = 2;
+                SetcritChance = 0;
+                SetcritDmg = 0;
+                setBonus.text = "Set bonus: +2 Speed";
+            }
+            if (SetCounter[0] == "Common Set3")
+            {
+                Setattack = 0;
+                Sethp = 2;
+                Setspeed = 0;
+                SetcritChance = 0;
+                SetcritDmg = 0;
+                setBonus.text = "Set bonus: +2 HP";
+            }
+            if (SetCounter[0] == "Common Set4")
+            {
+                Setattack = 2;
+                Setspeed = 2;
+                Sethp = 2;
+                SetcritChance = 0;
+                SetcritDmg = 0;
+                setBonus.text = "Set bonus: +2 Attack,Speed,HP";
+            }
+            if (SetCounter[0] == "Rare Set1")
+            {
+                Setattack = 6;
+                Sethp = 0;
+                Setspeed = 6;
+                SetcritChance = 0;
+                SetcritDmg = 0;
+                setBonus.text = "Set bonus: +6 Attack,Speed";
+            }
+            if (SetCounter[0] == "Rare Set2")
+            {
+                Setattack = 0;
+                Sethp = 15;
+                Setspeed = 0;
+                SetcritChance = 0;
+                SetcritDmg = 0;
+                setBonus.text = "Set bonus: +15 HP";
+            }
+            if (SetCounter[0] == "Epic Set1")
+            {
+                Setattack = 0;
+                Sethp = 11;
+                Setspeed = 0;
+                SetcritChance = 11;
+                SetcritDmg = 0;
+                setBonus.text = "Set bonus: +11 HP, +11% CritChance";
+            }
+            if (SetCounter[0] == "Common Set5")
+            {
+                Setattack = 5;
+                Setspeed = 5;
+                Sethp = 5;
+                SetcritChance = 0;
+                SetcritDmg = 0;
+                setBonus.text = "Set bonus: +5 Attack,Speed,HP";
+            }
+            if (SetCounter[0] == "Golden Boy")
+            {
+                Setattack = -3;
+                Sethp = 0;
+                Setspeed = 10;
+                SetcritChance = 0;
+                SetcritDmg = 0;
+                setBonus.text = "Set bonus: -3 Attack, +10 Speed";
+            }
+            if (SetCounter[0] == "Demon Set")
+            {
+                Setattack = 13;
+                Sethp = 0;
+                Setspeed = 0;
+                SetcritChance = 5;
+                SetcritDmg = 0;
+                setBonus.text = "Set bonus: +13 Attack, +5% CritChance";
+            }
+            if (SetCounter[0] == "Holy Demon Set")
+            {
+                Setattack = 0;
+                Sethp = 13;
+                Setspeed = 0;
+                SetcritChance = 0;
+                SetcritDmg = 1;
+                setBonus.text = "Set bonus: +13 HP, +100% CritDamage";
+            }
+            if (SetCounter[0] == "Golden Wyvern")
+            {
+                Setattack = 15;
+                Sethp = 0;
+                Setspeed = 15;
+                SetcritChance = 50;
+                SetcritDmg = 0;
+                setBonus.text = "Set bonus: +15 Attack, Speed, +50% CritChance";
+            }
+            if (SetCounter[0] == "Dark Knight")
+            {
+                Setattack = 20;
+                Sethp = 20;
+                Setspeed = 20;
+                SetcritChance = 52;
+                SetcritDmg = 0;
+                setBonus.text = "Set bonus: +20 Attack,Speed,HP, +100% CritChance";
+            }
+            if (SetCounter[0] == "Holy Knight")
+            {
+                Setattack = 0;
+                Sethp = 50;
+                Setspeed = 0;
+                SetcritChance = 22;
+                SetcritDmg = 2;
+                setBonus.text = "Set bonus: +50 HP, +22% CritChance, +200% CritDamage";
+            }
+            if (SetCounter[0] == "Void Dragon")
+            {
+                Setattack = 40;
+                Sethp = 40;
+                Setspeed = 40;
+                SetcritChance = 100;
+                SetcritDmg = 2;
+                setBonus.text = "Set bonus: +40 Attack,Speed,HP, +100% CritChance, +200% CritDamage";
+            }
+            playerStats.attack += Setattack;
+            playerStats.hp += Sethp;
+            playerStats.speed += Setspeed;
+            playerStats.critDmg += SetcritDmg;
+            playerStats.critChance += SetcritChance;
+            playerStats.UpdateEquipmentStats();
+
+        }
+
+    }
+
+    public void RemoveSetBonus()
+    {
+        PlayerStats playerStats = GameObject.Find("StatsManager").GetComponent<PlayerStats>();
+        playerStats.attack -= Setattack;
+        playerStats.hp -= Sethp;
+        playerStats.speed -= Setspeed;
+        playerStats.critDmg -= SetcritDmg;
+        playerStats.critChance -= SetcritChance;
+        Setattack = 0;
+        Sethp = 0;
+        Setspeed = 0;
+        SetcritChance = 0;
+        SetcritDmg = 0;
+        setBonus.text = "Set bonus: None";
+        playerStats.UpdateEquipmentStats();
+    }
+
+
 }
 

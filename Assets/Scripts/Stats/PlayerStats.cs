@@ -22,6 +22,9 @@ public class PlayerStats : MonoBehaviour
     public GameObject selectedItemStats;
 
     [SerializeField]
+    public Text SetBonus;
+
+    [SerializeField]
     public GameObject selectedItemImage;
     void Update()
     {

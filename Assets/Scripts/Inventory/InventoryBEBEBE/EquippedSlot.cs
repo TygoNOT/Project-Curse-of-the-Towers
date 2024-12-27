@@ -24,10 +24,13 @@ public class EquippedSlot : MonoBehaviour, IPointerClickHandler
     [SerializeField]
     public string itemName;
     [SerializeField]
+    public string itemSet;
+    [SerializeField]
     public string itemDescription;
 
     public InventoryManager inventoryManager;
     public EquipmentSOLibrary equipmentSOLibrary;
+    public EquipmentSlot equipmentSlot;
 
     public GameObject petMenu;
     public GameObject equipmentPanel;
@@ -57,6 +60,7 @@ public class EquippedSlot : MonoBehaviour, IPointerClickHandler
     {
         inventoryManager = GameObject.Find("InventoryCanvas").GetComponent<InventoryManager>();
         equipmentSOLibrary = GameObject.Find("InventoryCanvas").GetComponent<EquipmentSOLibrary>();
+        equipmentSlot = GameObject.Find("InventoryCanvas").GetComponent<EquipmentSlot>();
     }
     void OnLeftClick()
     {
@@ -156,7 +160,26 @@ public class EquippedSlot : MonoBehaviour, IPointerClickHandler
             for (int i = 0; i < equipmentSOLibrary.equipmentSO.Length; i++)
             {
                 if (equipmentSOLibrary.equipmentSO[i].itemName == this.itemName)
+                { 
                     equipmentSOLibrary.equipmentSO[i].UnEquipItem();
+                    equipmentSlot.RemoveSetBonus();
+                    for (int z = 0; z < equipmentSOLibrary.equipmentSO.Length; z++)
+                    {
+                        if (equipmentSOLibrary.equipmentSO[z].itemName == itemName)
+                        {
+                            itemSet = equipmentSOLibrary.equipmentSO[z].setName;
+                        }
+                    }
+                    for (int x = 0; x < equipmentSlot.SetCounter.Length; x++)
+                    {
+                        if (equipmentSlot.SetCounter[x] == itemSet)
+                        {
+                            equipmentSlot.SetCounter[x] = null;
+                            break;
+                        }
+                    }
+                }
+
             }
             slotInUse = false;
 
