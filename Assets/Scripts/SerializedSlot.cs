@@ -8,4 +8,7 @@ public class SerializedSlot
     public string itemType; // Хранить как строку
     public string attribute; // Хранить как строку
     public bool isFull;
+    public bool isTeleportationScroll = false;
+    public bool isHealthPotion = false;
+    public bool isBandage = false;
 }

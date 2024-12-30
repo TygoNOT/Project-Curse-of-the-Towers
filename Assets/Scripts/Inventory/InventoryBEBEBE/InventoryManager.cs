@@ -84,7 +84,7 @@ public class InventoryManager : MonoBehaviour
         }
         return false;
     }
-    public int AddItem(string itemName, int quantity, Sprite itemSprite, string itemDescription, ItemType itemType, Attribute attribute)
+    public int AddItem(string itemName, int quantity, Sprite itemSprite, string itemDescription, ItemType itemType, Attribute attribute, bool isBandage, bool isHealthPotion, bool isTeleportationScroll)
     {
         if (itemType == ItemType.weapon || itemType == ItemType.headArmor || itemType == ItemType.chestArmor || itemType == ItemType.legsArmor || itemType == ItemType.footArmor)
         {
@@ -95,7 +95,7 @@ public class InventoryManager : MonoBehaviour
                 {
                     int leftOverItems = equipmentSlot[i].AddItem(itemName, quantity, itemSprite, itemDescription, itemType, attribute);
                     if (leftOverItems > 0)
-                        leftOverItems = AddItem(itemName, leftOverItems, itemSprite, itemDescription, itemType, attribute);
+                        leftOverItems = AddItem(itemName, leftOverItems, itemSprite, itemDescription, itemType, attribute, isBandage, isHealthPotion, isTeleportationScroll);
                     return leftOverItems;
                 }
             }
@@ -107,9 +107,9 @@ public class InventoryManager : MonoBehaviour
             {
                 if (itemSlot[i].isFull == false && itemSlot[i].itemName == itemName || itemSlot[i].quantity == 0)
                 {
-                    int leftOverItems = itemSlot[i].AddItem(itemName, quantity, itemSprite, itemDescription, itemType);
+                    int leftOverItems = itemSlot[i].AddItem(itemName, quantity, itemSprite, itemDescription, itemType, isBandage, isHealthPotion, isTeleportationScroll);
                     if (leftOverItems > 0)
-                        leftOverItems = AddItem(itemName, leftOverItems, itemSprite, itemDescription, itemType, attribute);
+                        leftOverItems = AddItem(itemName, leftOverItems, itemSprite, itemDescription, itemType, attribute, isBandage, isHealthPotion, isTeleportationScroll);
                     return leftOverItems;
                 }
             }
@@ -123,7 +123,7 @@ public class InventoryManager : MonoBehaviour
                 {
                     int leftOverItems = petSlot[i].AddItem(itemName, quantity, itemSprite, itemDescription, itemType);
                     if (leftOverItems > 0)
-                        leftOverItems = AddItem(itemName, leftOverItems, itemSprite, itemDescription, itemType, attribute); 
+                        leftOverItems = AddItem(itemName, leftOverItems, itemSprite, itemDescription, itemType, attribute, isBandage, isHealthPotion, isTeleportationScroll); 
                     return leftOverItems;
                 }
             }
