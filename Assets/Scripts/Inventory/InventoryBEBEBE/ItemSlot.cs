@@ -19,18 +19,19 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler
     public Sprite emptySprite;
     public ItemType itemType;
     public string slotName;
-    public Attribute attribute;
+    public Attribute attribute = Attribute.None;
     [SerializeField]
     private int maxNumberOfItems;
 
     [SerializeField]
-    private TMP_Text quantityText;
+    public TMP_Text quantityText;
 
     [SerializeField]
     private Image itemImage;
 
-
-
+    public bool isTeleportationScroll = false;
+    public bool isHealthPotion = false;
+    public bool isBandage = false;
     public Image ItemDescriptionImage;
     public TMP_Text ItemDescriptionNameText;
     public TMP_Text ItemDescriptionText;
@@ -174,7 +175,7 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler
         itemSprite = itemKartinka;
         itemImage.sprite = itemKartinka;
     }
-    public int AddItem(string itemName, int quantity, Sprite itemSprite, string itemDescription, ItemType itemType)
+    public int AddItem(string itemName, int quantity, Sprite itemSprite, string itemDescription, ItemType itemType, bool isBandage, bool isHealthPotion, bool isTeleportationScroll)
      {
         if (isFull)
             return quantity;
@@ -185,6 +186,9 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler
         itemImage.sprite = itemSprite;
         this.itemDescription = itemDescription;
         this.itemType = itemType;
+        this.isBandage = isBandage;
+        this.isHealthPotion = isHealthPotion;
+        this.isTeleportationScroll = isTeleportationScroll;
 
 
 
