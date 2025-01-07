@@ -200,6 +200,7 @@ public class PlayerController : MonoBehaviour
         float healthPercentage = (float)currentHP / maxhealth;
         float newWidth = healthPercentage * originalHealthBarWidth;
         healthBar.GetComponent<RectTransform>().sizeDelta = new Vector2(newWidth, healthBar.GetComponent<RectTransform>().sizeDelta.y);
+        combatController.PlayerMessageObject.SetActive(true);
         CloseInventoryInBattle();
         FindObjectOfType<CombatController>().TogglePlayerTurn();
     }
@@ -249,6 +250,7 @@ public class PlayerController : MonoBehaviour
     }
     public void TeleportationScroll()
     {
+        combatController.PlayerMessageObject.SetActive(true);
         CloseInventoryInBattle();
         Debug.Log("Escape successful! Loading new scene...");
         combatController.PlayerMessage.text = "Escape successful!";
@@ -626,6 +628,7 @@ public class PlayerController : MonoBehaviour
                 Debug.LogWarning("BEBE effect!!");
                 break;
         }
+        combatController.PlayerMessageObject.SetActive(true);
         CloseInventoryInBattle();
         FindObjectOfType<CombatController>().TogglePlayerTurn();
     }
