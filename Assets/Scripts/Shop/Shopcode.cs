@@ -235,7 +235,7 @@ public class Shopcode : MonoBehaviour
                     {
                         if (money.PayGold(ItemPriceValue))
                         {
-                            inventoryManager.AddItem(itemComponent.itemName, itemComponent.quantity, itemComponent.sprite, itemComponent.itemDescription, itemComponent.itemType, itemComponent.weaponAttribute, itemComponent.isBandage, itemComponent.isHealthPotion, itemComponent.isTeleportationScroll);
+                            inventoryManager.AddItem(itemComponent.itemName, itemComponent.quantity, itemComponent.sprite, itemComponent.itemDescription, itemComponent.itemType, itemComponent.weaponAttribute);
                             //itemNames[SelectedItemNumber].text = "Sold!";
                             itemPrices[SelectedItemNumber].text = "Sold!";
                             ShopItem[SelectedItemNumber] = null;
@@ -254,7 +254,7 @@ public class Shopcode : MonoBehaviour
                     {
                         if (money.PayGold(ItemPriceValue))
                         {
-                            inventoryManager.AddItem(itemComponent.itemName, itemComponent.quantity, itemComponent.sprite, itemComponent.itemDescription, itemComponent.itemType, itemComponent.weaponAttribute, itemComponent.isBandage, itemComponent.isHealthPotion, itemComponent.isTeleportationScroll);
+                            inventoryManager.AddItem(itemComponent.itemName, itemComponent.quantity, itemComponent.sprite, itemComponent.itemDescription, itemComponent.itemType, itemComponent.weaponAttribute);
                             //itemNames[SelectedItemNumber].text = "Sold!";
                             itemPrices[SelectedItemNumber].text = "Sold!";
                             ShopItem[SelectedItemNumber] = null;
@@ -279,7 +279,7 @@ public class Shopcode : MonoBehaviour
                 {
                     if (money.PayGold(ItemPriceValue))
                     {
-                        inventoryManager.AddItem(itemComponent.itemName, itemComponent.quantity, itemComponent.sprite, itemComponent.itemDescription, itemComponent.itemType, itemComponent.weaponAttribute, itemComponent.isBandage, itemComponent.isHealthPotion, itemComponent.isTeleportationScroll);
+                        inventoryManager.AddItem(itemComponent.itemName, itemComponent.quantity, itemComponent.sprite, itemComponent.itemDescription, itemComponent.itemType, itemComponent.weaponAttribute);
                         DeselectItem();
                         break;
                     }

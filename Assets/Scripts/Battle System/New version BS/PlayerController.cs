@@ -242,7 +242,6 @@ public class PlayerController : MonoBehaviour
         }
         else
         {
-            combatController.save.SaveInventory();
             Debug.Log("Escape successful! Loading new scene...");
             combatController.PlayerMessage.text = "Escape successful!";
             Invoke("LoadEscapeScene", 1f);
@@ -250,8 +249,6 @@ public class PlayerController : MonoBehaviour
     }
     public void TeleportationScroll()
     {
-        CombatController combatController = FindObjectOfType<CombatController>();
-        combatController.save.SaveInventory();
         CloseInventoryInBattle();
         Debug.Log("Escape successful! Loading new scene...");
         combatController.PlayerMessage.text = "Escape successful!";
@@ -511,7 +508,7 @@ public class PlayerController : MonoBehaviour
         }
         else
         {
-            Debug.LogWarning("PlayerStats Г­ГҐ Г­Г Г©Г¤ГҐГ­, ГЁГ±ГЇГ®Г«ГјГ§ГіГ©ГІГҐ Г§Г­Г Г·ГҐГ­ГЁГї ГЇГ® ГіГ¬Г®Г«Г·Г Г­ГЁГѕ.");
+            Debug.LogWarning("PlayerStats не найден, используйте значения по умолчанию.");
         }
         UpdateStats = false;
     }
@@ -576,7 +573,7 @@ public class PlayerController : MonoBehaviour
                     Paralyze.SetActive(false);
                     speed = Mathf.RoundToInt(originalSpeed);
                     combatController.PlayerMessage.text = $"{playername} is no longer paralyzed!";
-                    Debug.Log($"{playername} ГЎГ®Г«ГјГёГҐ Г­ГҐ ГЇГ Г°Г Г«ГЁГ§Г®ГўГ Г­!");
+                    Debug.Log($"{playername} больше не парализован!");
                 }
                 break;
 

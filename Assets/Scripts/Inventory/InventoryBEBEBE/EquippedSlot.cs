@@ -33,9 +33,7 @@ public class EquippedSlot : MonoBehaviour, IPointerClickHandler
     public GameObject equipmentPanel;
 
     public bool slotInUse;
-    public bool isTeleportationScroll = false;
-    public bool isHealthPotion = false;
-    public bool isBandage = false;
+
     [SerializeField]
     public GameObject selectedShader;
 
@@ -150,7 +148,7 @@ public class EquippedSlot : MonoBehaviour, IPointerClickHandler
         {
             inventoryManager.DeselectAllSlots();
 
-            inventoryManager.AddItem(itemName, 1, itemSprite, itemDescription, itemType, attribute, isBandage, isHealthPotion, isTeleportationScroll);
+            inventoryManager.AddItem(itemName, 1, itemSprite, itemDescription, itemType, attribute);
             this.itemSprite = emptySprite;
             slotImage.sprite = this.emptySprite;
             sloTName.enabled = true;

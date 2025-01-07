@@ -2094,9 +2094,6 @@ MonoBehaviour:
   effectToRemove: 0
   itemType: 1
   weaponAttribute: 0
-  isTeleportationScroll: 0
-  isHealthPotion: 0
-  isBandage: 0
 --- !u!1 &55399087
 GameObject:
   m_ObjectHideFlags: 0
@@ -2841,9 +2838,6 @@ MonoBehaviour:
   effectToRemove: 0
   itemType: 1
   weaponAttribute: 0
-  isTeleportationScroll: 0
-  isHealthPotion: 0
-  isBandage: 0
 --- !u!1 &106152554
 GameObject:
   m_ObjectHideFlags: 0
@@ -4031,9 +4025,6 @@ MonoBehaviour:
   petMenu: {fileID: 187209133}
   equipmentPanel: {fileID: 629054196}
   slotInUse: 0
-  isTeleportationScroll: 0
-  isHealthPotion: 0
-  isBandage: 0
   selectedShader: {fileID: 116854016}
   thisItemSelected: 0
   emptySprite: {fileID: 21300000, guid: 1466aeff4dfb516498f2035811465cba, type: 3}
@@ -4119,9 +4110,6 @@ MonoBehaviour:
   petMenu: {fileID: 187209133}
   equipmentPanel: {fileID: 629054196}
   slotInUse: 0
-  isTeleportationScroll: 0
-  isHealthPotion: 0
-  isBandage: 0
   selectedShader: {fileID: 476073782}
   thisItemSelected: 0
   emptySprite: {fileID: 21300000, guid: 1466aeff4dfb516498f2035811465cba, type: 3}
@@ -4839,9 +4827,6 @@ MonoBehaviour:
   petMenu: {fileID: 187209133}
   equipmentPanel: {fileID: 629054196}
   slotInUse: 0
-  isTeleportationScroll: 0
-  isHealthPotion: 0
-  isBandage: 0
   selectedShader: {fileID: 163620836}
   thisItemSelected: 0
   emptySprite: {fileID: 21300000, guid: 1466aeff4dfb516498f2035811465cba, type: 3}
@@ -5607,7 +5592,7 @@ GameObject:
   - component: {fileID: 327837845}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Player
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -7042,9 +7027,6 @@ MonoBehaviour:
   effectToRemove: 0
   itemType: 0
   weaponAttribute: 0
-  isTeleportationScroll: 0
-  isHealthPotion: 0
-  isBandage: 0
 --- !u!1001 &437822844
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7222,9 +7204,6 @@ MonoBehaviour:
   petMenu: {fileID: 187209133}
   equipmentPanel: {fileID: 629054196}
   slotInUse: 0
-  isTeleportationScroll: 0
-  isHealthPotion: 0
-  isBandage: 0
   selectedShader: {fileID: 417705811}
   thisItemSelected: 0
   emptySprite: {fileID: 21300000, guid: 1466aeff4dfb516498f2035811465cba, type: 3}
@@ -7713,9 +7692,6 @@ MonoBehaviour:
   effectToRemove: 0
   itemType: 1
   weaponAttribute: 0
-  isTeleportationScroll: 0
-  isHealthPotion: 0
-  isBandage: 0
 --- !u!1 &484371007
 GameObject:
   m_ObjectHideFlags: 0
@@ -9628,9 +9604,6 @@ MonoBehaviour:
   effectToRemove: 0
   itemType: 1
   weaponAttribute: 0
-  isTeleportationScroll: 0
-  isHealthPotion: 0
-  isBandage: 0
 --- !u!1 &613486989
 GameObject:
   m_ObjectHideFlags: 0
@@ -16948,9 +16921,6 @@ MonoBehaviour:
   effectToRemove: 0
   itemType: 1
   weaponAttribute: 0
-  isTeleportationScroll: 0
-  isHealthPotion: 0
-  isBandage: 0
 --- !u!1 &961638422
 GameObject:
   m_ObjectHideFlags: 0
@@ -17861,9 +17831,6 @@ MonoBehaviour:
   effectToRemove: 0
   itemType: 1
   weaponAttribute: 0
-  isTeleportationScroll: 0
-  isHealthPotion: 0
-  isBandage: 0
 --- !u!1 &1011421691
 GameObject:
   m_ObjectHideFlags: 0
@@ -18849,9 +18816,6 @@ MonoBehaviour:
   effectToRemove: 0
   itemType: 0
   weaponAttribute: 0
-  isTeleportationScroll: 0
-  isHealthPotion: 0
-  isBandage: 0
 --- !u!1 &1099417849
 GameObject:
   m_ObjectHideFlags: 0
@@ -19771,9 +19735,6 @@ MonoBehaviour:
   petMenu: {fileID: 187209133}
   equipmentPanel: {fileID: 629054196}
   slotInUse: 0
-  isTeleportationScroll: 0
-  isHealthPotion: 0
-  isBandage: 0
   selectedShader: {fileID: 319357987}
   thisItemSelected: 0
   emptySprite: {fileID: 21300000, guid: 1466aeff4dfb516498f2035811465cba, type: 3}
@@ -21878,9 +21839,6 @@ MonoBehaviour:
   effectToRemove: 0
   itemType: 0
   weaponAttribute: 0
-  isTeleportationScroll: 0
-  isHealthPotion: 0
-  isBandage: 0
 --- !u!1 &1281320054
 GameObject:
   m_ObjectHideFlags: 0
@@ -22222,9 +22180,6 @@ MonoBehaviour:
   effectToRemove: 0
   itemType: 1
   weaponAttribute: 0
-  isTeleportationScroll: 0
-  isHealthPotion: 0
-  isBandage: 0
 --- !u!1 &1295261437
 GameObject:
   m_ObjectHideFlags: 0
@@ -23005,9 +22960,6 @@ MonoBehaviour:
   petMenu: {fileID: 187209133}
   equipmentPanel: {fileID: 629054196}
   slotInUse: 0
-  isTeleportationScroll: 0
-  isHealthPotion: 0
-  isBandage: 0
   selectedShader: {fileID: 794271086}
   thisItemSelected: 0
   emptySprite: {fileID: 21300000, guid: 1466aeff4dfb516498f2035811465cba, type: 3}
@@ -23476,8 +23428,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -90}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 695, y: -117}
-  m_SizeDelta: {x: -1771.7, y: -919.9742}
+  m_AnchoredPosition: {x: 699.2999, y: -112.599976}
+  m_SizeDelta: {x: -1771.7, y: -543.4742}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1407834078
 GameObject:
@@ -23615,9 +23567,6 @@ MonoBehaviour:
   effectToRemove: 0
   itemType: 0
   weaponAttribute: 0
-  isTeleportationScroll: 0
-  isHealthPotion: 0
-  isBandage: 0
 --- !u!1 &1417394332
 GameObject:
   m_ObjectHideFlags: 0
@@ -26689,9 +26638,6 @@ MonoBehaviour:
   effectToRemove: 0
   itemType: 0
   weaponAttribute: 0
-  isTeleportationScroll: 0
-  isHealthPotion: 0
-  isBandage: 0
 --- !u!1 &1655463414
 GameObject:
   m_ObjectHideFlags: 0
@@ -30552,9 +30498,6 @@ MonoBehaviour:
   effectToRemove: 0
   itemType: 1
   weaponAttribute: 0
-  isTeleportationScroll: 0
-  isHealthPotion: 0
-  isBandage: 0
 --- !u!1 &1966670136
 GameObject:
   m_ObjectHideFlags: 0
@@ -30760,10 +30703,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1943753329}
     m_Modifications:
-    - target: {fileID: 1965716251183788057, guid: 373b49b34c237f944baaf453a8e20eb7, type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 3813070634864294662, guid: 373b49b34c237f944baaf453a8e20eb7, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
