@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -18,21 +19,28 @@ public class CombatController : MonoBehaviour
     public Button[] enemyAttackButtons;
     public GameObject VictoryMenu;
     public GameObject DefeatMenu;
+    public Save save;
     public Text GameMessage;
     public Text PlayerMessage;
     private PetController petController;
     public GameObject PlayerMessageObject;
+
 
     [Header("Attribute")]
     bool isPlayerTurn = true;
     private int enemyIndex = -1;
     public string nextLevel = "Inventory";
     private PlayerController playerController;
+
+   
+
+
     public int money;
     void Start()
     {
         playerController = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
         PlayerMessageObject = GameObject.Find("Player Message");
+        save = GameObject.Find("InventoryCanvas").GetComponent<Save>();
         combatState.text = "PLAYER TURN";
         EmptyPanel.SetActive(false);
         CanvasPlayer.GetComponent<GraphicRaycaster>().enabled = true;
@@ -212,10 +220,12 @@ public class CombatController : MonoBehaviour
             Debug.Log("You won the battle!");
 
             VictoryMenu.SetActive(true);
+            save.SaveInventory();
             SaveProgress();
         }
         else
         {
+            save.SaveInventory();
             DefeatMenu.SetActive(true);
             Debug.Log("You lost the battle!");
         }

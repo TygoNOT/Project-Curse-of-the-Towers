@@ -203,7 +203,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_margin: {x: 104.67871, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -308,9 +308,13 @@ MonoBehaviour:
   emptySprite: {fileID: 21300000, guid: db3a38683be37c440af1350191aaf6a1, type: 3}
   itemType: 0
   slotName: 
+  attribute: 0
   maxNumberOfItems: 99
   quantityText: {fileID: 1965716251183788057}
   itemImage: {fileID: 2321226507750371885}
+  isTeleportationScroll: 0
+  isHealthPotion: 0
+  isBandage: 0
   ItemDescriptionImage: {fileID: 0}
   ItemDescriptionNameText: {fileID: 0}
   ItemDescriptionText: {fileID: 0}

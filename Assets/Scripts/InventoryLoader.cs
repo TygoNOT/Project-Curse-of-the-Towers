@@ -1,6 +1,7 @@
 using JetBrains.Annotations;
 using System;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using Unity.VisualScripting.Antlr3.Runtime.Misc;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -128,9 +129,12 @@ public class InventoryLoader : MonoBehaviour
                     slots[i].AddImage(itemSo[j].itemSprite);
                 }
             }
-
+            slots[i].isHealthPotion = savedSlot.isHealthPotion;
+            slots[i].isTeleportationScroll = savedSlot.isTeleportationScroll;
+            slots[i].isBandage = savedSlot.isBandage;
             slots[i].quantity = savedSlot.quantity;
-
+            slots[i].quantityText.text = savedSlot.quantity.ToString();
+            slots[i].quantityText.enabled = true;
             // Преобразуем строковые значения в соответствующие типы
             if (Enum.TryParse(savedSlot.itemType, out ItemType itemType))
             {

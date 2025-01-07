@@ -25,7 +25,9 @@ public class Item : MonoBehaviour
 
     public ItemType itemType;
     public Attribute weaponAttribute;
-
+    public bool isTeleportationScroll = false;
+    public bool isHealthPotion = false;
+    public bool isBandage = false;
     void Start()
     {
         inventoryManager = GameObject.Find("InventoryCanvas").GetComponent<InventoryManager>();
@@ -33,7 +35,7 @@ public class Item : MonoBehaviour
 
     private void OnMouseDown()
     {
-            int leftOverItems=inventoryManager.AddItem(itemName, quantity, sprite, itemDescription, itemType, weaponAttribute);
+            int leftOverItems=inventoryManager.AddItem(itemName, quantity, sprite, itemDescription, itemType, weaponAttribute, isBandage, isHealthPotion, isTeleportationScroll);
         if(leftOverItems<=0)
             Destroy(gameObject);
         else 

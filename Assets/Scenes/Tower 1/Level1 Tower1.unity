@@ -2820,8 +2820,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -90}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 659, y: -116}
-  m_SizeDelta: {x: -1771.7, y: -543.4742}
+  m_AnchoredPosition: {x: 654, y: -111}
+  m_SizeDelta: {x: -1771.7, y: -926.7991}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &218712884
 GameObject:
@@ -4723,9 +4723,6 @@ MonoBehaviour:
   - {fileID: 1308839891}
   VictoryMenu: {fileID: 491708915}
   DefeatMenu: {fileID: 1206671148}
-  GameMessage: {fileID: 204791984}
-  PlayerMessage: {fileID: 899870748}
-  PlayerMessageObject: {fileID: 0}
   nextLevel: Level2 Tower1
   money: 0
 --- !u!4 &337451164

@@ -116,7 +116,10 @@ public class Save : MonoBehaviour
                     quantity = slot.quantity,
                     itemType = slot.itemType.ToString(),
                     attribute = slot.attribute.ToString(),
-                    isFull = slot.isFull
+                    isFull = slot.isFull,
+                    isHealthPotion=slot.isHealthPotion,
+                    isTeleportationScroll = slot.isTeleportationScroll,
+                    isBandage = slot.isBandage
                 });
             }
         }
