@@ -351,8 +351,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f1b8472bb887ada4cafcd9ef787497a4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  combatController: {fileID: 0}
   EnemyName: Ghost
   healthBar: {fileID: 7472488013399686200}
+  originalHealthBarWidth: 0
   maxhealth: 15
   health: 15
   minBaseDamage: 2
@@ -360,6 +362,7 @@ MonoBehaviour:
   critChance: 1
   critDamage: 1.5
   speed: 12
+  money: 2
   enemyAttribute: 1
   canApplyParalysis: 0
   paralysisChance: 30

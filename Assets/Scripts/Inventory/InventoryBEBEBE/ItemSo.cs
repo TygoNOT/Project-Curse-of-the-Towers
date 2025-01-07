@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using static UnityEditor.Progress;
 
@@ -47,6 +48,7 @@ public class ItemSo : ScriptableObject
     {
         if (itemType == ItemType.consumable)
         {
+
             if (effectToRemove != EffectType.None)
             {
                 PlayerController player = GameObject.FindWithTag("Player").GetComponent<PlayerController>();
@@ -92,7 +94,7 @@ public class ItemSo : ScriptableObject
     }
 
 
-    
+
 
 
     public enum AttributesToChange

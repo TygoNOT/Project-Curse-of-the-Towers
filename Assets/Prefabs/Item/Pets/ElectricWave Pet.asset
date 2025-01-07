@@ -1,0 +1,36 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5692d28b37a5e1c4aae76fdb638d3e31, type: 3}
+  m_Name: ElectricWave Pet
+  m_EditorClassIdentifier: 
+  rarity: 2
+  itemName: ElectricWave Pet
+  id: b7090546be9bb69419c8cdec202a35f6
+  setName: El PEt
+  SetCounter:
+  - 
+  - 
+  - 
+  - 
+  - 
+  price: 20
+  attack: 0
+  hp: 0
+  speed: 0
+  critChance: 0
+  critDmg: 0
+  attribute: 0
+  SetBonus: {fileID: 0}
+  itemType: 7
+  itemSprite: {fileID: 21300000, guid: 1e7fa44ce4e09db4a864d41df669151c, type: 3}
+  itemDescription: Sends an electric wave that paralyzes a random enemy
+  petPrefab: {fileID: 5863207114159748015, guid: f1fcd5e7967390646b5e0b5377db4be9, type: 3}

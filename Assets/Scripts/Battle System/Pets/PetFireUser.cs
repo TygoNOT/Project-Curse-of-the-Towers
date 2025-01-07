@@ -18,6 +18,7 @@ public class PetFireUser : PetController
 
         else
         {
+            //combatController.PlayerMessage.text = $"{petName} is not ready for use. Waiting for {currentCooldownTurns} turn(s).";
             Debug.Log($"{petName} is not ready for use. Waiting for {currentCooldownTurns} turn(s).");
         }
     }
@@ -28,6 +29,7 @@ public class PetFireUser : PetController
             if (enemy.gameObject.activeSelf)
             {
                 int fireballDamage = Random.Range(minFireBallDamage, maxFireBallDamage);
+                //combatController.PlayerMessage.text = $"{petName} uses Fireball!";
                 Debug.Log($"{petName} uses Fireball on {enemy.EnemyName}, dealing {fireballDamage} damage!");
 
                 enemy.TakeDamage(fireballDamage);
@@ -35,6 +37,7 @@ public class PetFireUser : PetController
                 if (Random.Range(0, 100) < BurnChance)
                 {
                     enemy.ApplyBurn(BurnTurns);
+                    //combatController.PlayerMessage.text = $"{enemy.EnemyName} is burned for 3 turns!";
                     Debug.Log($"{enemy.EnemyName} is burned for 3 turns!");
                 }
             }

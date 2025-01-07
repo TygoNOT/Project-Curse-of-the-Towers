@@ -276,8 +276,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f1b8472bb887ada4cafcd9ef787497a4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  combatController: {fileID: 0}
   EnemyName: Orc Tank
   healthBar: {fileID: 2264248041067320992}
+  originalHealthBarWidth: 0
   maxhealth: 35
   health: 35
   minBaseDamage: 4
@@ -285,6 +287,7 @@ MonoBehaviour:
   critChance: 2
   critDamage: 1.5
   speed: 5
+  money: 5
   enemyAttribute: 2
   canApplyParalysis: 0
   paralysisChance: 30

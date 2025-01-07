@@ -57,12 +57,15 @@ public class EquipmentSlot : MonoBehaviour, IPointerClickHandler
         {
             if (thisItemSelected)
             {
-                EquipGear();
                 CombatController combatController = FindObjectOfType<CombatController>();
                 if (combatController != null)
                 {
+                    CloseInventoryInBattle();
                     combatController.TogglePlayerTurn();
+                    combatController.PlayerMessageObject.SetActive(true);
                 }
+                EquipGear();
+                
             }
             else
             {
@@ -84,8 +87,24 @@ public class EquipmentSlot : MonoBehaviour, IPointerClickHandler
             thisItemSelected = true;
         }
     }
+
+    public void CloseInventoryInBattle()
+    {
+        inventoryManager.InventoryMenu.SetActive(false);
+        inventoryManager.EquipmentMenu.SetActive(false);
+        inventoryManager.PetMenu.SetActive(false);
+        inventoryManager.InventoryDescription.SetActive(false);
+        inventoryManager.InventoryNavigation.SetActive(false);
+        inventoryManager.StatPanel.SetActive(false);
+        inventoryManager.PlayerEquipmentPanel.SetActive(false);
+
+        GameObject.Find("CloseInv").SetActive(false);
+    }
+
     private void EquipGear()
     {
+        var playerController = FindObjectOfType<PlayerController>();
+        playerController.UpdateStats = true;
         if (itemType == ItemType.headArmor)
             headArmorSlot.EquipGear(itemSprite, itemName, itemDescription);
         if (itemType == ItemType.chestArmor)
@@ -95,8 +114,7 @@ public class EquipmentSlot : MonoBehaviour, IPointerClickHandler
         if (itemType == ItemType.footArmor)
             footArmorSlot.EquipGear(itemSprite, itemName, itemDescription);
         if (itemType == ItemType.weapon)
-            weaponSlot.EquipGear(itemSprite, itemName, itemDescription);
-
+            weaponSlot.EquipGear(itemSprite, itemName, itemDescription);            
         EmptySlot();
     }
 

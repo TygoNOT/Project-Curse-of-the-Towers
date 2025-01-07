@@ -35,12 +35,12 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler
     public TMP_Text ItemDescriptionNameText;
     public TMP_Text ItemDescriptionText;
 
-
     public GameObject inventoryDescription;
     public GameObject selectedShader;
     public bool thisItemSelected;
     private InventoryManager inventoryManager;
     public GameObject deleteAcceptance;
+
     private void Start()
     {
         inventoryManager = GameObject.Find("InventoryCanvas").GetComponent<InventoryManager>();

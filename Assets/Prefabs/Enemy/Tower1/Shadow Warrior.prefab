@@ -351,8 +351,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f1b8472bb887ada4cafcd9ef787497a4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  combatController: {fileID: 0}
   EnemyName: Shadow Warrior
   healthBar: {fileID: 3095284267658436364}
+  originalHealthBarWidth: 0
   maxhealth: 28
   health: 28
   minBaseDamage: 1
@@ -360,6 +362,7 @@ MonoBehaviour:
   critChance: 2
   critDamage: 1.5
   speed: 2
+  money: 4
   enemyAttribute: 1
   canApplyParalysis: 0
   paralysisChance: 30

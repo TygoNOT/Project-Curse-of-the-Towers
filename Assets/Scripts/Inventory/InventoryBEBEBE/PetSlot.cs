@@ -11,8 +11,6 @@ using UnityEngine.UI;
 
 public class PetSlot : MonoBehaviour, IPointerClickHandler
 {
-
-    public PetItemSO petSO;
     public string itemName;
     public int quantity;
     public Sprite itemSprite;
@@ -58,12 +56,15 @@ public class PetSlot : MonoBehaviour, IPointerClickHandler
         {
             if (thisItemSelected)
             {
-                EquipGear();
                 CombatController combatController = FindObjectOfType<CombatController>();
                 if (combatController != null)
                 {
+                    CloseInventoryInBattle();
                     combatController.TogglePlayerTurn();
+                    combatController.PlayerMessageObject.SetActive(true);
                 }
+                EquipGear();
+
             }
             else
             {
@@ -85,9 +86,25 @@ public class PetSlot : MonoBehaviour, IPointerClickHandler
             thisItemSelected = true;
         }
     }
+
+    public void CloseInventoryInBattle()
+    {
+        inventoryManager.InventoryMenu.SetActive(false);
+        inventoryManager.EquipmentMenu.SetActive(false);
+        inventoryManager.PetMenu.SetActive(false);
+        inventoryManager.InventoryDescription.SetActive(false);
+        inventoryManager.InventoryNavigation.SetActive(false);
+        inventoryManager.StatPanel.SetActive(false);
+        inventoryManager.PlayerEquipmentPanel.SetActive(false);
+
+        GameObject.Find("CloseInv").SetActive(false);
+    }
+
     private void EquipGear()
     {
-        if(itemType== ItemType.pet)
+        var playerController = FindObjectOfType<PlayerController>();
+        playerController.UpdateStats = true;
+        if (itemType== ItemType.pet)
             petSlot.EquipGear(itemSprite, itemName, itemDescription);
 
         EmptySlot();

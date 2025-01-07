@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PetHealer : PetController
 {
@@ -7,6 +8,7 @@ public class PetHealer : PetController
     public int regenAmount = 5;
     public int regenTurns = 3;
     private int currentRegenTurns = 0;
+
 
     public override void UseAbility(PlayerController player)
     {
@@ -21,11 +23,13 @@ public class PetHealer : PetController
             player.healthBar.GetComponent<RectTransform>().sizeDelta = new Vector2(newWidth, player.healthBar.GetComponent<RectTransform>().sizeDelta.y);
             currentRegenTurns = regenTurns;
             currentCooldownTurns = cooldownTurns;
-
+            
+            //combatController.PlayerMessage.text = $"{petName} heals the {player.playername} on {healingAmount}";
             Debug.Log($"{petName} heals the {player.playername} on {healingAmount}");
         }
         else
         {
+            //combatController.PlayerMessage.text = $"{petName} is not ready for use. Waiting for {currentCooldownTurns} turn(s).";
             Debug.Log($"{petName} is not ready for use. Waiting for {currentCooldownTurns} turn(s).");
         }
     }
@@ -36,6 +40,7 @@ public class PetHealer : PetController
         {
             player.TakeDamage(-regenAmount);
             currentRegenTurns--;
+            //combatController.PlayerMessage.text = $"{petName} regenerates the {player.playername} with {regenAmount} hp";
             Debug.Log($"{petName} regenerates the {player.playername} with {regenAmount} hp");
         }
     }

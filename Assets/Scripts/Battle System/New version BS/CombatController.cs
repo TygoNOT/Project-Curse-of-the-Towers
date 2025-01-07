@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,25 +18,34 @@ public class CombatController : MonoBehaviour
     public Button[] enemyAttackButtons;
     public GameObject VictoryMenu;
     public GameObject DefeatMenu;
+    public Text GameMessage;
+    public Text PlayerMessage;
+    private PetController petController;
+    public GameObject PlayerMessageObject;
 
     [Header("Attribute")]
     bool isPlayerTurn = true;
     private int enemyIndex = -1;
     public string nextLevel = "Inventory";
     private PlayerController playerController;
-
+    public int money;
     void Start()
     {
         playerController = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
-
+        PlayerMessageObject = GameObject.Find("Player Message");
         combatState.text = "PLAYER TURN";
         EmptyPanel.SetActive(false);
         CanvasPlayer.GetComponent<GraphicRaycaster>().enabled = true;
 
         VictoryMenu.SetActive(false);
         DefeatMenu.SetActive(false);
+        petController = playerController.petController;
     }
 
+    private void Update()
+    {
+        petController = playerController.petController;
+    }
 
     public void TogglePlayerTurn()
     {
@@ -73,11 +83,13 @@ public class CombatController : MonoBehaviour
             {
                 if (enemy.isFrozen)
                 {
+                    GameMessage.text = $"{enemy.EnemyName} is frozen and cannot act this turn.";
                     Debug.Log($"{enemy.EnemyName} is frozen and cannot act this turn.");
                     enemy.freezeTurns--;
                     if (enemy.freezeTurns <= 0)
                     {
                         enemy.isFrozen = false;
+                        GameMessage.text = $"{enemy.EnemyName} is no longer frozen.";
                         Debug.Log($"{enemy.EnemyName} is no longer frozen.");
                     }
                 }
@@ -91,6 +103,8 @@ public class CombatController : MonoBehaviour
                 }
                 else if (!enemy.CanAct())
                 {
+                    GameMessage.text = $"{enemy.EnemyName} skips the turn due to paralysis.";
+
                     Debug.Log(enemy.EnemyName + " skips the turn due to paralysis.");
                 }
 
@@ -114,6 +128,8 @@ public class CombatController : MonoBehaviour
         playerController.ApplyPetRegeneration();
         TogglePlayerTurn();
         Debug.Log("ResolveTurnOrder completed");
+        PlayerMessage.text = "Player takes action";
+        petController.EndTurn();
     }
 
 
@@ -132,7 +148,6 @@ public class CombatController : MonoBehaviour
             TogglePlayerTurn();
             return;
         }
-        combatState.text = enemies[enemyIndex].EnemyName + " is preparing for attack";
         StartCoroutine(WaitForAttack(enemies[enemyIndex]));
     }
 
@@ -149,7 +164,6 @@ public class CombatController : MonoBehaviour
             yield break;
         }
 
-        combatState.text = enemies[enemyIndex].EnemyName + " is preparing to attack";
         yield return new WaitForSeconds(3f);
         combatState.text = "";
         ec.Attack();
@@ -255,4 +269,5 @@ public class CombatController : MonoBehaviour
     {
         SceneManager.LoadScene("LvlMenuTower1");
     }
+
 }
