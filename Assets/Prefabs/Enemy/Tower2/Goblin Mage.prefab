@@ -201,8 +201,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f1b8472bb887ada4cafcd9ef787497a4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  combatController: {fileID: 0}
   EnemyName: Goblin Mage
   healthBar: {fileID: 7811178610402349754}
+  originalHealthBarWidth: 0
   maxhealth: 20
   health: 20
   minBaseDamage: 8
@@ -210,6 +212,7 @@ MonoBehaviour:
   critChance: 2
   critDamage: 1.5
   speed: 12
+  money: 7
   enemyAttribute: 3
   canApplyParalysis: 0
   paralysisChance: 30

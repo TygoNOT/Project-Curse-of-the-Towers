@@ -12,6 +12,7 @@ public class PetWind : PetController
 
     public override void UseAbility(PlayerController player)
     {
+        //combatController.PlayerMessage.text = "WindBuffPet: Applying wind buff.";
         Debug.Log("WindBuffPet: Applying wind buff.");
         player.ApplyWindBuff(buffTurns, speedMultiplier, critChanceIncrease, critDamageMultiplier);
         currentCooldownTurns = cooldownTurns;

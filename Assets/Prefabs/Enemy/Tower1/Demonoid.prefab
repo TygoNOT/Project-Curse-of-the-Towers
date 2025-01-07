@@ -173,8 +173,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f1b8472bb887ada4cafcd9ef787497a4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  combatController: {fileID: 0}
   EnemyName: Demonoid
   healthBar: {fileID: 4298153554599158072}
+  originalHealthBarWidth: 0
   maxhealth: 10
   health: 10
   minBaseDamage: 2
@@ -182,6 +184,7 @@ MonoBehaviour:
   critChance: 0
   critDamage: 0
   speed: 5
+  money: 3
   enemyAttribute: 1
   canApplyParalysis: 0
   paralysisChance: 30

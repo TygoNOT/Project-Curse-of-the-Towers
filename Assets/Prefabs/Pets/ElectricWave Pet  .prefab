@@ -26,7 +26,7 @@ Transform:
   m_GameObject: {fileID: 4365105875120330506}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.84, y: -3.47, z: 0.04579597}
+  m_LocalPosition: {x: -0.76, y: -2.23, z: 0.04579597}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -73,7 +73,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 900448454, guid: 8bad62fa43316534b8c104d7312ef823, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 5cf22332ad13a3e4f8eb5d50c1ef72b3, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -129,6 +129,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 369f7dd02a341454f85d0afbfeee2b65, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  combatController: {fileID: 0}
   petName: BEEEEE
   cooldownTurns: 3
   paralysisTurns: 3

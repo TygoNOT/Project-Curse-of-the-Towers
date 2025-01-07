@@ -9,6 +9,8 @@ public class PlayerController : MonoBehaviour
 {
     [Header("Reference to PlayerStats")]
     public PlayerStats playerStats;
+    public bool UpdateStats = true;
+    private InventoryManager inventoryManager;
 
     [Header("Attribute")]
     public string playername;
@@ -57,9 +59,13 @@ public class PlayerController : MonoBehaviour
 
     private void Start()
     {
-        InitializeStats();
+        if (UpdateStats  == true)
+        {
+            InitializeStats();
+        }
         originalHealthBarWidth = healthBar.GetComponent<RectTransform>().rect.width;
         combatController = FindObjectOfType<CombatController>();
+        inventoryManager = GameObject.Find("InventoryCanvas").GetComponent<InventoryManager>();
     }
 
     public void selectAction(int action)
@@ -92,7 +98,8 @@ public class PlayerController : MonoBehaviour
             minBaseDamage = Mathf.RoundToInt(minBaseDamage * critDamage);
             maxBaseDamage = Mathf.RoundToInt(maxBaseDamage * critDamage);
         }
-        int dmg = Mathf.RoundToInt(Random.Range(minBaseDamage, maxBaseDamage) * damageMultiplier);  
+        int dmg = Mathf.RoundToInt(Random.Range(minBaseDamage, maxBaseDamage) * damageMultiplier);
+        combatController.PlayerMessage.text = $"{playername} attacks the {enemy.name} and deals {dmg} damage";
         Debug.Log("Player damage: " + dmg);
         enemy.GetComponent<EnemyController>().TakeDamage(dmg);
         StartCoroutine(UpdateHealthBarDelayed(enemy));
@@ -108,6 +115,7 @@ public class PlayerController : MonoBehaviour
     public void SelectTarget(GameObject enemy)
     {
         targetEnemy = enemy;
+
         Debug.Log("Target selected: " + enemy.name);
     }
 
@@ -121,14 +129,14 @@ public class PlayerController : MonoBehaviour
             return;
         }
 
-        if (IsSilenced() && (actionselected == 1 || actionselected == 2))
+        else if (IsSilenced() && (actionselected == 1 || actionselected == 2))
         {
             Debug.Log("Player cannot perform this action due to Silence!");
             combatController.TogglePlayerTurn();
             return;
         }
 
-        if (IsActionBlocked() && isFrozen == true)
+        else if (IsActionBlocked() && isFrozen == true)
         {
             Debug.Log("Player action not performed due to freeze!");
             combatController.TogglePlayerTurn();
@@ -155,6 +163,8 @@ public class PlayerController : MonoBehaviour
             }
             else if (actionselected == 3)
             {
+                if (petController == null) combatController.PlayerMessage.text = $"{playername} don't have a pet";
+
                 petController.UseAbility(this);
                 combatController.ActionPanel.SetActive(false);
             }
@@ -190,7 +200,7 @@ public class PlayerController : MonoBehaviour
         float healthPercentage = (float)currentHP / maxhealth;
         float newWidth = healthPercentage * originalHealthBarWidth;
         healthBar.GetComponent<RectTransform>().sizeDelta = new Vector2(newWidth, healthBar.GetComponent<RectTransform>().sizeDelta.y);
-
+        CloseInventoryInBattle();
         FindObjectOfType<CombatController>().TogglePlayerTurn();
     }
 
@@ -199,9 +209,23 @@ public class PlayerController : MonoBehaviour
         if (currentHP <= 0)
         {
             currentHP = 0;
+            combatController.PlayerMessage.text = $"{playername} has been defeated! Game Over!";
             Debug.Log(playername + " has been defeated! Game Over!");
             FindObjectOfType<CombatController>().GameOver(false);
         }
+    }
+
+    public void CloseInventoryInBattle()
+    {
+        inventoryManager.InventoryMenu.SetActive(false);
+        inventoryManager.EquipmentMenu.SetActive(false);
+        inventoryManager.PetMenu.SetActive(false);
+        inventoryManager.InventoryDescription.SetActive(false);
+        inventoryManager.InventoryNavigation.SetActive(false);
+        inventoryManager.StatPanel.SetActive(false);
+        inventoryManager.PlayerEquipmentPanel.SetActive(false);
+
+        GameObject.Find("CloseInv").SetActive(false);
     }
 
     public void AttemptEscape()
@@ -213,14 +237,14 @@ public class PlayerController : MonoBehaviour
 
         if (escapeChance < requiredChance)
         {
+            combatController.PlayerMessage.text = "Escape failed! Enemy turn begins.";
             Debug.Log("Escape failed! Enemy turn begins.");
-            combatController.combatState.text = "Escape failed! Enemy turn begins.";
         }
         else
         {
             combatController.save.SaveInventory();
             Debug.Log("Escape successful! Loading new scene...");
-            combatController.combatState.text = "Escape successful!";
+            combatController.PlayerMessage.text = "Escape successful!";
             Invoke("LoadEscapeScene", 1f);
         }
     }
@@ -228,20 +252,22 @@ public class PlayerController : MonoBehaviour
     {
         CombatController combatController = FindObjectOfType<CombatController>();
         combatController.save.SaveInventory();
+        CloseInventoryInBattle();
         Debug.Log("Escape successful! Loading new scene...");
-        combatController.combatState.text = "Escape successful!";
+        combatController.PlayerMessage.text = "Escape successful!";
         Invoke("LoadEscapeScene", 1f);
     }
 
     private void LoadEscapeScene()
     {
-        SceneManager.LoadScene("SampleScene");
+        SceneManager.LoadScene("LvlMenuTower1");
     }
 
     public void ApplyParalysis()
     {
         if (isPoisoned || isParalyzed || isBurned || isSilenced) return;
 
+        combatController.PlayerMessage.text = $"{playername} subject to paralysis!";
         Debug.Log($"{playername} subject to paralysis!");
         isParalyzed = true;
         Paralyze.SetActive(true);
@@ -253,12 +279,14 @@ public class PlayerController : MonoBehaviour
     {
         if (isFrozen)
         {
+            combatController.PlayerMessage.text = $"{playername} is frozen and cannot act!";
             Debug.Log($"{playername} is frozen and cannot act!");
             return true;
         }
 
         if (isParalyzed && Random.Range(0, 100) < 20)
         {
+            combatController.PlayerMessage.text = $"{playername}'s Your action is blocked!";
             Debug.Log($"{playername}'s Your action is blocked!");
             return true;
         }
@@ -269,6 +297,7 @@ public class PlayerController : MonoBehaviour
     {
         if (isPoisoned || isParalyzed || isBurned || isSilenced) return;
 
+        combatController.PlayerMessage.text = $"{playername} is burned!";
         Debug.Log($"{playername} is burned!");
         isBurned = true;
         Burn.SetActive(true);
@@ -283,6 +312,7 @@ public class PlayerController : MonoBehaviour
         if (isBurned)
         {
             currentHP -= 2;
+            combatController.PlayerMessage.text = $"{playername} takes 2 burn damage due to Burn effect!";
             Debug.Log($"{playername} takes 2 burn damage due to Burn effect!");
             CheckDeath();
         }
@@ -292,6 +322,7 @@ public class PlayerController : MonoBehaviour
     {
         if (isPoisoned || isParalyzed || isBurned || isSilenced) return;
 
+        combatController.PlayerMessage.text = $"{playername} is poisoned!";
         Debug.Log($"{playername} is poisoned!");
         isPoisoned = true;
         Poisen.SetActive(true);
@@ -302,6 +333,7 @@ public class PlayerController : MonoBehaviour
         if (isPoisoned)
         {
             currentHP -= 10;
+            combatController.PlayerMessage.text = $"{playername} takes 10 poison damage due to Poison effect!";
             Debug.Log($"{playername} takes 10 poison damage due to Poison effect!");
             CheckDeath();
         }
@@ -311,6 +343,7 @@ public class PlayerController : MonoBehaviour
     {
         if (isSilenced || isParalyzed || isBurned || isPoisoned) return;
 
+        combatController.PlayerMessage.text = $"{playername} is silenced!";
         Debug.Log($"{playername} is silenced!");
         isSilenced = true;
         Silence.SetActive(true);
@@ -325,6 +358,7 @@ public class PlayerController : MonoBehaviour
     {
         if (isFrozen) return;
 
+        combatController.PlayerMessage.text = $"{playername} is frozen!";
         Debug.Log($"{playername} is frozen!");
         isFrozen = true;
         Frozen.SetActive(true);
@@ -341,6 +375,7 @@ public class PlayerController : MonoBehaviour
             {
                 isFrozen = false;
                 Frozen.SetActive(false);
+                combatController.PlayerMessage.text = $"{playername} is no longer frozen!";
                 Debug.Log($"{playername} is no longer frozen!");
             }
         }
@@ -348,10 +383,26 @@ public class PlayerController : MonoBehaviour
 
     public void RemoveEffects()
     {
-        if (isPoisoned) Debug.Log($"{playername} is no longer poisoned!");
-        if (isSilenced) Debug.Log($"{playername} is no longer silenced!");
-        if (isBurned) Debug.Log($"{playername} is no longer burned!");
-        if (isParalyzed) Debug.Log($"{playername} is no longer paralyzed!");
+        if (isPoisoned)
+        {
+            combatController.PlayerMessage.text = $"{playername} is no longer poisoned!";
+            Debug.Log($"{playername} is no longer poisoned!");
+        }
+        if (isSilenced)
+        {
+            combatController.PlayerMessage.text = $"{playername} is no longer silenced!";
+            Debug.Log($"{playername} is no longer silenced!");
+        }
+        if (isBurned) 
+        {
+            combatController.PlayerMessage.text = $"{playername} is no longer burned!";
+            Debug.Log($"{playername} is no longer burned!");
+        }
+        if (isParalyzed) 
+        {
+            combatController.PlayerMessage.text = $"{playername} is no longer paralyzed!";
+            Debug.Log($"{playername} is no longer paralyzed!");
+        }
 
         isPoisoned = false;
         isSilenced = false;
@@ -411,8 +462,8 @@ public class PlayerController : MonoBehaviour
             speed = Mathf.RoundToInt(speed * speedMultiplier);
             critChance += critChanceIncrease;
             critDamage *= critDamageMultiplier;
+            combatController.PlayerMessage.text = $"Wind buff applied: +{speedMultiplier}x speed, +{critChanceIncrease}% crit chance, +{critDamageMultiplier}x crit damage for {duration} turns.";
             Debug.Log($"Wind buff applied: +{speedMultiplier}x speed, +{critChanceIncrease}% crit chance, +{critDamageMultiplier}x crit damage for {duration} turns.");
-
         }
     }
 
@@ -430,7 +481,9 @@ public class PlayerController : MonoBehaviour
                 speed = Mathf.RoundToInt(originalSpeed);
                 critChance = originalCritChance;
                 critDamage = originalCritDamage;
+                combatController.PlayerMessage.text = $"{playername} is no longer have Wind Buff!";
                 Debug.Log($"{playername} is no longer have Wind Buff!");
+                
             }
         }
     }
@@ -444,19 +497,33 @@ public class PlayerController : MonoBehaviour
 
         if (playerStats != null)
         {
+            int takedamage = maxhealth - currentHP;
             maxhealth = playerStats.hp;
-            currentHP = playerStats.hp;
+            currentHP = maxhealth - takedamage;
+            UpdateHealthBar();
             speed = playerStats.speed;
             minBaseDamage = playerStats.attack - Mathf.CeilToInt(playerStats.attack * 0.1f);
             maxBaseDamage = playerStats.attack;
             critChance = playerStats.critChance;
             critDamage = playerStats.critDmg;
             weaponAttribute = playerStats.attribute;
+            petController = playerStats.petprefab;
         }
         else
         {
-            Debug.LogWarning("PlayerStats íå íàéäåí, èñïîëüçóéòå çíà÷åíèÿ ïî óìîë÷àíèþ.");
+            Debug.LogWarning("PlayerStats Ã­Ã¥ Ã­Ã Ã©Ã¤Ã¥Ã­, Ã¨Ã±Ã¯Ã®Ã«Ã¼Ã§Ã³Ã©Ã²Ã¥ Ã§Ã­Ã Ã·Ã¥Ã­Ã¨Ã¿ Ã¯Ã® Ã³Ã¬Ã®Ã«Ã·Ã Ã­Ã¨Ã¾.");
         }
+        UpdateStats = false;
+    }
+
+    private void UpdateHealthBar()
+    {
+        float healthPercentage = (float)currentHP / maxhealth;
+        float newWidth = healthPercentage * originalHealthBarWidth;
+        healthBar.GetComponent<RectTransform>().sizeDelta = new Vector2(
+            newWidth,
+            healthBar.GetComponent<RectTransform>().sizeDelta.y
+        );
     }
 
     private static readonly Dictionary<Attribute, Attribute> NeutralAttributes = new Dictionary<Attribute, Attribute>
@@ -508,7 +575,8 @@ public class PlayerController : MonoBehaviour
                     isParalyzed = false;
                     Paralyze.SetActive(false);
                     speed = Mathf.RoundToInt(originalSpeed);
-                    Debug.Log($"{playername} áîëüøå íå ïàðàëèçîâàí!");
+                    combatController.PlayerMessage.text = $"{playername} is no longer paralyzed!";
+                    Debug.Log($"{playername} Ã¡Ã®Ã«Ã¼Ã¸Ã¥ Ã­Ã¥ Ã¯Ã Ã°Ã Ã«Ã¨Ã§Ã®Ã¢Ã Ã­!");
                 }
                 break;
 
@@ -519,6 +587,7 @@ public class PlayerController : MonoBehaviour
                     Burn.SetActive(false);
                     minBaseDamage = Mathf.RoundToInt(originalDamage * 2);
                     maxBaseDamage = Mathf.RoundToInt(originalDamage * 2);
+                    combatController.PlayerMessage.text = $"{playername} is no longer burned!";
                     Debug.Log($"{playername} is no longer burned!");
                 }
                 break;
@@ -529,6 +598,7 @@ public class PlayerController : MonoBehaviour
                     isFrozen = false;
                     Frozen.SetActive(false);
                     frozenTurns = 0;
+                    combatController.PlayerMessage.text = $"{playername} is no longer frozen!";
                     Debug.Log($"{playername} is no longer frozen!");
                 }
                 break;
@@ -538,6 +608,7 @@ public class PlayerController : MonoBehaviour
                 {
                     isPoisoned = false;
                     Poisen.SetActive(false);
+                    combatController.PlayerMessage.text = $"{playername} is no longer poisoned!";
                     Debug.Log($"{playername} is no longer poisoned!");
                 }
                 break;
@@ -547,14 +618,21 @@ public class PlayerController : MonoBehaviour
                 {
                     isSilenced = false;
                     Silence.SetActive(false);
+                    combatController.PlayerMessage.text = $"{playername} is no longer silenced!";
                     Debug.Log($"{playername} is no longer silenced!");
                 }
                 break;
 
             default:
+                combatController.PlayerMessage.text = "BEBE effect!!";
+
                 Debug.LogWarning("BEBE effect!!");
                 break;
         }
+        CloseInventoryInBattle();
         FindObjectOfType<CombatController>().TogglePlayerTurn();
     }
+
+ 
+
 }

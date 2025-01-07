@@ -23,6 +23,9 @@ public class PlayerStats : MonoBehaviour
 
     [SerializeField]
     public GameObject selectedItemImage;
+
+    public PetController petprefab;
+
     void Update()
     {
         UpdateEquipmentStats();
@@ -36,9 +39,9 @@ public class PlayerStats : MonoBehaviour
         critDmgText.text = critDmg.ToString();
         critChanceText.text = critChance.ToString();
         attributeText.text = attribute.ToString();
-        
+
         var playerController = FindObjectOfType<PlayerController>();
-        if (playerController != null)
+        if (playerController != null && playerController.UpdateStats ==true)
         {
             playerController.InitializeStats();
         }

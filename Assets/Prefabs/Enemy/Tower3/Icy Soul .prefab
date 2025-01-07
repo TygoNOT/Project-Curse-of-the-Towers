@@ -98,8 +98,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f1b8472bb887ada4cafcd9ef787497a4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  combatController: {fileID: 0}
   EnemyName: Icy Soul
   healthBar: {fileID: 1354877604048749756}
+  originalHealthBarWidth: 0
   maxhealth: 45
   health: 45
   minBaseDamage: 2
@@ -107,6 +109,7 @@ MonoBehaviour:
   critChance: 2
   critDamage: 1.5
   speed: 8
+  money: 9
   enemyAttribute: 3
   canApplyParalysis: 0
   paralysisChance: 30
