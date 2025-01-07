@@ -21,7 +21,7 @@ MonoBehaviour:
   amountToChangeStat: 0
   attributesToChange: 0
   amountToChangeAttribute: 0
-  itemType: 0
+  itemType: 1
   effectToRemove: 1
   attribute: 0
   isHealthPotion: 0

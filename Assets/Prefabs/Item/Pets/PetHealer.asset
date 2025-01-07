@@ -9,20 +9,28 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d7700561655c4a64f892ef2384d640ae, type: 3}
-  m_Name: Pet Healer
+  m_Script: {fileID: 11500000, guid: 5692d28b37a5e1c4aae76fdb638d3e31, type: 3}
+  m_Name: PetHealer
   m_EditorClassIdentifier: 
+  rarity: 2
   itemName: Pet Healer
-  id: 31bd10912af31674ea81d76db2aad6a9
-  setName: 
-  price: 0
+  id: c12c91137b888da499ad053f130f23de
+  setName: Pet Healer
+  SetCounter:
+  - 
+  - 
+  - 
+  - 
+  - 
+  price: 15
   attack: 0
   hp: 0
   speed: 0
   critChance: 0
   critDmg: 0
   attribute: 0
-  rarity: 0
+  SetBonus: {fileID: 0}
   itemType: 7
-  itemSprite: {fileID: 0}
+  itemSprite: {fileID: 21300000, guid: 7a281b9779c8b834e9bc23e28cbe5ff3, type: 3}
+  itemDescription: Heals the player and applies a regeneration effect
   petPrefab: {fileID: 7299776221147611747, guid: a9f05bb535345084d9fd21958d684e42, type: 3}

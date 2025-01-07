@@ -201,8 +201,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f1b8472bb887ada4cafcd9ef787497a4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  combatController: {fileID: 0}
   EnemyName: Scythe
   healthBar: {fileID: 1312536414213302836}
+  originalHealthBarWidth: 0
   maxhealth: 100
   health: 100
   minBaseDamage: 2
@@ -210,6 +212,8 @@ MonoBehaviour:
   critChance: 2
   critDamage: 1.5
   speed: 9
+  money: 3
+  enemyAttribute: 0
   canApplyParalysis: 0
   paralysisChance: 30
   canApplyBurn: 0

@@ -276,8 +276,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f1b8472bb887ada4cafcd9ef787497a4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  combatController: {fileID: 0}
   EnemyName: Skeleton Mage
   healthBar: {fileID: 8219087492370580640}
+  originalHealthBarWidth: 0
   maxhealth: 18
   health: 18
   minBaseDamage: 4
@@ -285,6 +287,7 @@ MonoBehaviour:
   critChance: 1
   critDamage: 1.5
   speed: 22
+  money: 5
   enemyAttribute: 1
   canApplyParalysis: 0
   paralysisChance: 30

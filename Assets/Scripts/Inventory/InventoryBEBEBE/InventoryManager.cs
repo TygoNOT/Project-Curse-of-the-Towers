@@ -7,6 +7,12 @@ public class InventoryManager : MonoBehaviour
     public GameObject InventoryMenu;
     public GameObject EquipmentMenu;
     public GameObject PetMenu;
+
+    public GameObject InventoryDescription;
+    public GameObject InventoryNavigation;
+    public GameObject StatPanel;
+    public GameObject PlayerEquipmentPanel;
+
     public ItemSlot[] itemSlot;
     public ItemSo[] itemSOs;
     public EquipmentSlot[] equipmentSlot;
@@ -80,6 +86,7 @@ public class InventoryManager : MonoBehaviour
             {
                 bool usable = itemSOs[i].UseItem();
                 return usable;
+
             }
         }
         return false;

@@ -39,6 +39,8 @@ public class EquipmentSO : ScriptableObject
     public Sprite itemSprite;
     [SerializeField]
     public string itemDescription;
+    [SerializeField] public PetController petPrefab;
+
     public void PreviewEquipment()
     {
         GameObject.Find("StatsManager").GetComponent<PlayerStats>().
@@ -54,6 +56,10 @@ public class EquipmentSO : ScriptableObject
         playerStats.critDmg += critDmg;
         playerStats.critChance += critChance;
         playerStats.attribute = attribute;
+        if (itemType == ItemType.pet)
+        {
+            playerStats.petprefab = petPrefab;
+        }
         playerStats.UpdateEquipmentStats();
         for (int i = 0; i < SetCounter.Length; i++)
         {
@@ -192,6 +198,7 @@ public class EquipmentSO : ScriptableObject
         playerStats.critDmg += critDmg;
         playerStats.critChance += critChance;
         playerStats.attribute = attribute;
+        playerStats.petprefab = petPrefab;
         playerStats.UpdateEquipmentStats();
     }
 

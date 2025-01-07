@@ -2776,6 +2776,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 309506e07c818e74995c628ebe750cfa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  stats: {fileID: 0}
   currentInventoryManager: {fileID: 0}
   equipmentSOLibrary: {fileID: 0}
 --- !u!1 &98982160
@@ -6771,6 +6772,7 @@ MonoBehaviour:
   previewImage: {fileID: 1637265982}
   selectedItemStats: {fileID: 741430023}
   selectedItemImage: {fileID: 1637265979}
+  petprefab: {fileID: 0}
 --- !u!4 &403365904
 Transform:
   m_ObjectHideFlags: 0
@@ -19271,6 +19273,12 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 4ef402aee9f78fb4ea31ec14ea7ee6ab, type: 2}
   - {fileID: 11400000, guid: dfe2537ee1d76654d9fbacf2f019a6af, type: 2}
   - {fileID: 11400000, guid: 38edc64fd50cf0b4ca3dcf40749ca85d, type: 2}
+  - {fileID: 11400000, guid: fbd07ede2b189a241a664803e13e8319, type: 2}
+  - {fileID: 11400000, guid: c12c91137b888da499ad053f130f23de, type: 2}
+  - {fileID: 11400000, guid: 20f69e7f9f5fe87499784f71ba4180dd, type: 2}
+  - {fileID: 11400000, guid: 1d2ddd82a9c470e449fa7db6efe316b8, type: 2}
+  - {fileID: 11400000, guid: 27075ff0ad3dee44ab911a2284be5da5, type: 2}
+  - {fileID: 11400000, guid: b7090546be9bb69419c8cdec202a35f6, type: 2}
 --- !u!114 &1117579063
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19286,6 +19294,10 @@ MonoBehaviour:
   InventoryMenu: {fileID: 1608939920}
   EquipmentMenu: {fileID: 629054196}
   PetMenu: {fileID: 187209133}
+  InventoryDescription: {fileID: 0}
+  InventoryNavigation: {fileID: 0}
+  StatPanel: {fileID: 0}
+  PlayerEquipmentPanel: {fileID: 0}
   itemSlot:
   - {fileID: 602484896}
   - {fileID: 1982419251}
@@ -19464,6 +19476,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   inventoryManager: {fileID: 0}
+  stats: {fileID: 0}
 --- !u!1 &1117930322
 GameObject:
   m_ObjectHideFlags: 0

@@ -1,0 +1,37 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5692d28b37a5e1c4aae76fdb638d3e31, type: 3}
+  m_Name: Lightning Pet
+  m_EditorClassIdentifier: 
+  rarity: 2
+  itemName: 'Lightning Pet '
+  id: 1d2ddd82a9c470e449fa7db6efe316b8
+  setName: 'Lightning Pet '
+  SetCounter:
+  - 
+  - 
+  - 
+  - 
+  - 
+  price: 35
+  attack: 0
+  hp: 0
+  speed: 0
+  critChance: 0
+  critDmg: 0
+  attribute: 0
+  SetBonus: {fileID: 0}
+  itemType: 7
+  itemSprite: {fileID: 21300000, guid: 5b773911e4f4f104699ec8fa2747751a, type: 3}
+  itemDescription: Strikes a single enemy with a powerful lightning attack, dealing
+    heavy damage
+  petPrefab: {fileID: 2841173424960473106, guid: 8d422e8f86fe28b4b8b1160a61792742, type: 3}

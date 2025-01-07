@@ -17,16 +17,19 @@ public class ElectricWavePet : PetController
 
         else
         {
+            //ombatController.PlayerMessage.text = $"{petName} is not ready for use. Waiting for {currentCooldownTurns} turn(s).";
             Debug.Log($"{petName} is not ready for use. Waiting for {currentCooldownTurns} turn(s).");
         }
     }
 
     public void ElectricWave(PlayerController player)
     {
+        //combatController.PlayerMessage.text = "Pet uses Electric Wave!";
         Debug.Log("Pet uses Electric Wave!");
         var targetEnemy = player.combatController.enemies[Random.Range(0, player.combatController.enemies.Length)];
 
         targetEnemy.ApplyParalysis(paralysisTurns);
+        //combatController.PlayerMessage.text = $"{targetEnemy.EnemyName} is paralyzed!";
         Debug.Log($"{targetEnemy.EnemyName} is paralyzed!");
     }
 }

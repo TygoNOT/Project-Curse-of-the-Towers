@@ -276,8 +276,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f1b8472bb887ada4cafcd9ef787497a4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  combatController: {fileID: 0}
   EnemyName: Master of Curses
   healthBar: {fileID: 8464626551811743458}
+  originalHealthBarWidth: 0
   maxhealth: 35
   health: 35
   minBaseDamage: 7
@@ -285,6 +287,7 @@ MonoBehaviour:
   critChance: 2
   critDamage: 1.5
   speed: 12
+  money: 10
   enemyAttribute: 0
   canApplyParalysis: 0
   paralysisChance: 30

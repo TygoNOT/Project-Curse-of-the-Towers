@@ -4,10 +4,14 @@ using UnityEngine.UI;
 
 public class EnemyController : MonoBehaviour
 {
+    [Header("References")]
+    public CombatController combatController;
+
     [Header("Attribute")]
     public string EnemyName;
     public Image healthBar;
     private PlayerController playerController;
+    public float originalHealthBarWidth;
 
     [Header("Stats")]
     public int maxhealth;
@@ -18,6 +22,7 @@ public class EnemyController : MonoBehaviour
     public float critDamage = 1.5f;
     private int curentDamage;
     public int speed = 8;
+    public int money;
     public Attribute enemyAttribute;
 
 
@@ -50,7 +55,10 @@ public class EnemyController : MonoBehaviour
     private void Start()
     {
         curentDamage = 0;
+        originalHealthBarWidth = healthBar.GetComponent<RectTransform>().rect.width;
         playerController = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
+        combatController = FindObjectOfType<CombatController>();
+
     }
 
     public void Attack()
@@ -64,7 +72,8 @@ public class EnemyController : MonoBehaviour
             minBaseDamage = Mathf.RoundToInt(minBaseDamage * critDamage);
             maxBaseDamage = Mathf.RoundToInt(maxBaseDamage * critDamage);
         }
-        int dmg = Mathf.RoundToInt(Random.Range(minBaseDamage, maxBaseDamage) * damageMultiplier); 
+        int dmg = Mathf.RoundToInt(Random.Range(minBaseDamage, maxBaseDamage) * damageMultiplier);
+        combatController.GameMessage.text = EnemyName + $" attacks for {dmg} damage";
         Debug.Log(EnemyName + " " + dmg);
 
         TryApplyEffects();
@@ -117,9 +126,9 @@ public class EnemyController : MonoBehaviour
         yield return new WaitForSeconds(0.5f);
 
         float healthPercentage = (float)health / maxhealth;
-        float maxBarWidth = healthBar.GetComponent<RectTransform>().rect.width;
+        float maxBarWidth = healthPercentage * originalHealthBarWidth;
         healthBar.GetComponent<RectTransform>().sizeDelta = new Vector2(
-            maxBarWidth * healthPercentage,
+            maxBarWidth,
             healthBar.GetComponent<RectTransform>().sizeDelta.y
         );
     }
@@ -140,11 +149,17 @@ public class EnemyController : MonoBehaviour
         {
             health = 0;
             Debug.Log(EnemyName + " has been defeated!");
-
+            
+            var moneyManager = FindObjectOfType<Money>();
+            if (moneyManager != null)
+            {
+                moneyManager.GainGold(money);
+            }
             StartCoroutine(DeathDelay());
 
         }
     }
+
 
     public IEnumerator DeathDelay()
     {
@@ -161,7 +176,8 @@ public class EnemyController : MonoBehaviour
         if (!isBurned)
         {
             isBurned = true;
-            burnTurns = duration; 
+            burnTurns = duration;
+            combatController.GameMessage.text = $"{EnemyName} is burned for 3 turns!";
             Debug.Log($"{EnemyName} is burned for 3 turns!");
         }
     }
@@ -172,6 +188,7 @@ public class EnemyController : MonoBehaviour
         {
             isFrozen = true;
             freezeTurns = duration;
+            combatController.GameMessage.text = $"{EnemyName} is now frozen for {freezeTurns} turns.";
             Debug.Log(EnemyName + " is now frozen for " + freezeTurns + " turns.");
         }
     }
@@ -182,6 +199,7 @@ public class EnemyController : MonoBehaviour
             isParalyzed = true;
             paralysisTurns = duration;
             speed = Mathf.RoundToInt(speed * 0.5f);
+            combatController.GameMessage.text = $"{EnemyName} is now paralyzed for {paralysisTurns} turns.";
             Debug.Log(EnemyName + " is now paralyzed for " + paralysisTurns + " turns.");
         }
     }
@@ -193,11 +211,13 @@ public class EnemyController : MonoBehaviour
             int burnDamage = 2;
             TakeDamage(burnDamage);
             burnTurns--;
+            combatController.GameMessage.text = $"{EnemyName} takes {burnDamage} burn damage!";
             Debug.Log($"{EnemyName} takes {burnDamage} burn damage!");
 
             if (burnTurns <= 0)
             {
                 isBurned = false;
+                combatController.GameMessage.text = $"{EnemyName} is no longer burned!";
                 Debug.Log($"{EnemyName} is no longer burned!");
             }
         }
@@ -227,6 +247,7 @@ public class EnemyController : MonoBehaviour
     {
         if (isParalyzed && Random.Range(0, 100) < 20)
         {
+            combatController.GameMessage.text = $"{EnemyName} is paralyzed and cannot act this turn!";
             Debug.Log($"{EnemyName} is paralyzed and cannot act this turn!");
             return false;
         }

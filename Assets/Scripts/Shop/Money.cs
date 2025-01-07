@@ -11,6 +11,7 @@ public class Money : MonoBehaviour
 
     void Start()
     {
+        CurrentGold = PlayerPrefs.GetInt("PlayerGold", 0);
         UpdateGoldAmount();
     }
 
@@ -18,6 +19,7 @@ public class Money : MonoBehaviour
     {
         GoldAmount.text = "Gold: " + CurrentGold.ToString();
     }
+
 
     public void SpawnGold(int amount)
     {
@@ -28,16 +30,18 @@ public class Money : MonoBehaviour
 
     public void GainGold(int amount)
     {
-        CurrentGold = CurrentGold + amount;
+        CurrentGold += amount;
         UpdateGoldAmount();
+        SaveGold();
     }
 
     public bool PayGold(int amount)
     {
         if (CurrentGold >= amount)
         {
-            CurrentGold = CurrentGold - amount;
+            CurrentGold -= amount;
             UpdateGoldAmount();
+            SaveGold();
             return true;
         }
         else
@@ -50,6 +54,12 @@ public class Money : MonoBehaviour
     {
         CurrentGold = 0;
         UpdateGoldAmount();
+        SaveGold();
+    }
+    private void SaveGold()
+    {
+        PlayerPrefs.SetInt("PlayerGold", CurrentGold);
+        PlayerPrefs.Save();
     }
 
 }

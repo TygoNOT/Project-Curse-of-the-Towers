@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,8 +6,10 @@ using UnityEngine;
 public class Save : MonoBehaviour
 {
     public InventoryManager inventoryManager;
+    public PlayerStats stats;
     private void Start()
     {
+        stats = GameObject.Find("StatsManager").GetComponent<PlayerStats>();
         inventoryManager = GameObject.Find("InventoryCanvas").GetComponent<InventoryManager>();
     }
     public void SaveInventory()
@@ -16,23 +19,32 @@ public class Save : MonoBehaviour
             Debug.LogError("InventoryManager не найден, невозможно сохранить данные.");
             return;
         }
-        List<SerializedSlot> equipmentSlots = new List<SerializedSlot>();
-        List<SerializedSlot> itemSlots = new List<SerializedSlot>();
-        List<SerializedSlot> petSlots = new List<SerializedSlot>();
+        if (stats == null)
+        {
+            Debug.LogError("StatsManager не найден, невозможно сохранить данные.");
+            return;
+        }
+        List<SerializedSlot> equipmentSlots = new();
+        List<SerializedSlot> itemSlots = new();
+        List<SerializedSlot> petSlots = new();
+        List<SerializedEquippableSlot> equippableSlots = new List<SerializedEquippableSlot>();
+        List<PlayerStatsSave> playerStats = new();
         // —охран€ем данные из всех массивов
         SaveEquipmentSlots(inventoryManager.equipmentSlot, equipmentSlots);
         SaveItemSlots(inventoryManager.itemSlot, itemSlots);
         SavePetSlots(inventoryManager.petSlot, petSlots);
-
+        SaveEquippedSlots(inventoryManager.equippedSlot, equippableSlots);
+        SavePlayerStat(stats, playerStats);
         // —ериализуем данные в JSON
         string jsonEquip = JsonUtility.ToJson(new Wrapper<List<SerializedSlot>> { data = equipmentSlots });
         string jsonItem = JsonUtility.ToJson(new Wrapper<List<SerializedSlot>> { data = itemSlots });
         string jsonPet = JsonUtility.ToJson(new Wrapper<List<SerializedSlot>> { data = petSlots });
-        List<SerializedEquippableSlot> equippableSlots = new List<SerializedEquippableSlot>();
-        SaveEquippedSlots(inventoryManager.equippedSlot, equippableSlots);
+        string jsonEquippable = JsonUtility.ToJson(new Wrapper<List<SerializedEquippableSlot>> { data = equippableSlots });
+        string jsonStats = JsonUtility.ToJson(new Wrapper<List<PlayerStatsSave>> { data = playerStats });
+
 
         // —ериализаци€ и сохранение данных
-        string jsonEquippable = JsonUtility.ToJson(new Wrapper<List<SerializedEquippableSlot>> { data = equippableSlots });
+        PlayerPrefs.SetString("PlayerStatsSaves", jsonStats);
         PlayerPrefs.SetString("EquippableSlotsData", jsonEquippable);
         PlayerPrefs.SetString("EquipmentSlotsData", jsonEquip);
         PlayerPrefs.SetString("ItemSlotsData", jsonItem);
@@ -60,21 +72,32 @@ public class Save : MonoBehaviour
             }
         }
     }
+    private void SavePlayerStat(PlayerStats playerStats, List<PlayerStatsSave> allSlots)
+    {
+
+        allSlots.Add(new PlayerStatsSave
+        {
+            hp = playerStats.hp,
+            attack = playerStats.attack,
+            speed = playerStats.speed,
+            critChance = playerStats.critChance,
+            critDmg = playerStats.critDmg,
+            attribute = playerStats.attribute.ToString()
+        });
+    }
     private void SaveEquippedSlots(EquippedSlot[] slots, List<SerializedEquippableSlot> allSlots)
     {
         foreach (var slot in slots)
         {
-            if (slot != null && slot.equippedItem != null)
+            if (slot.slotInUse)
             {
                 allSlots.Add(new SerializedEquippableSlot
                 {
-                    equipmentSOName = slot.equippedItem.name, // —охран€ем им€ EquipmentSO
-                    itemSpriteName = slot.equippedItem.itemSprite != null ? slot.equippedItem.itemSprite.name : null,
                     isEquipped = slot.slotInUse,
-                    itemName = slot.equippedItem.itemName,
-                    itemDescription = slot.equippedItem.itemDescription,
-                    attribute = slot.equippedItem.attribute,
-                    itemType = slot.equippedItem.itemType
+                    itemName = slot.itemName,
+                    itemDescription = slot.itemDescription,
+                    attribute = slot.attribute.ToString(),
+                    itemType = slot.itemType.ToString()
                 });
             }
         }
