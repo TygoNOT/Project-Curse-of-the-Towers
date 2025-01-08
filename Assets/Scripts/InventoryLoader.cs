@@ -128,9 +128,9 @@ public class InventoryLoader : MonoBehaviour
                     slots[i].AddImage(itemSo[j].itemSprite);
                 }
             }
-
             slots[i].quantity = savedSlot.quantity;
-
+            slots[i].quantityText.text = savedSlot.quantity.ToString();
+            slots[i].quantityText.enabled = true;
             // Преобразуем строковые значения в соответствующие типы
             if (Enum.TryParse(savedSlot.itemType, out ItemType itemType))
             {

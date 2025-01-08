@@ -19294,10 +19294,10 @@ MonoBehaviour:
   InventoryMenu: {fileID: 1608939920}
   EquipmentMenu: {fileID: 629054196}
   PetMenu: {fileID: 187209133}
-  InventoryDescription: {fileID: 0}
-  InventoryNavigation: {fileID: 0}
-  StatPanel: {fileID: 0}
-  PlayerEquipmentPanel: {fileID: 0}
+  InventoryDescription: {fileID: 726957406}
+  InventoryNavigation: {fileID: 1388160795}
+  StatPanel: {fileID: 1962154984}
+  PlayerEquipmentPanel: {fileID: 268885296}
   itemSlot:
   - {fileID: 602484896}
   - {fileID: 1982419251}
@@ -23428,8 +23428,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -90}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 699.2999, y: -112.599976}
-  m_SizeDelta: {x: -1771.7, y: -543.4742}
+  m_AnchoredPosition: {x: 699, y: -115}
+  m_SizeDelta: {x: -1771.7, y: -897.4038}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1407834078
 GameObject:
@@ -23668,7 +23668,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 362.29993, y: -106.599976}
+  m_AnchoredPosition: {x: 83, y: -102}
   m_SizeDelta: {x: -1425.8761, y: -844.0471}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1428004885
@@ -27345,7 +27345,7 @@ MonoBehaviour:
   equipmentPanel: {fileID: 629054196}
   petMenu: {fileID: 187209133}
   inventoryMenu: {fileID: 1608939920}
-  inventoryManager: {fileID: 0}
+  inventoryManager: {fileID: 1117579063}
 --- !u!114 &1686601698
 MonoBehaviour:
   m_ObjectHideFlags: 0

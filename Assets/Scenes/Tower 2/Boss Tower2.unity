@@ -1647,6 +1647,7 @@ MonoBehaviour:
   previewImage: {fileID: 1662656700}
   selectedItemStats: {fileID: 242075573}
   selectedItemImage: {fileID: 1662656697}
+  petprefab: {fileID: 0}
 --- !u!4 &86699125
 Transform:
   m_ObjectHideFlags: 0
@@ -2817,8 +2818,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -90}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 659, y: -116}
-  m_SizeDelta: {x: -1771.7, y: -543.4742}
+  m_AnchoredPosition: {x: 659, y: -120}
+  m_SizeDelta: {x: -1771.7, y: -924.3303}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &218712884
 GameObject:

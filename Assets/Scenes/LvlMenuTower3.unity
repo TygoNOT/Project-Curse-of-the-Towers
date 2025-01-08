@@ -2866,6 +2866,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 309506e07c818e74995c628ebe750cfa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  stats: {fileID: 0}
   currentInventoryManager: {fileID: 0}
   equipmentSOLibrary: {fileID: 0}
 --- !u!1 &98982160
@@ -6861,6 +6862,7 @@ MonoBehaviour:
   previewImage: {fileID: 1637265982}
   selectedItemStats: {fileID: 741430023}
   selectedItemImage: {fileID: 1637265979}
+  petprefab: {fileID: 0}
 --- !u!4 &403365904
 Transform:
   m_ObjectHideFlags: 0
@@ -9591,6 +9593,10 @@ PrefabInstance:
     - target: {fileID: 6739301553852470974, guid: 373b49b34c237f944baaf453a8e20eb7, type: 3}
       propertyPath: m_Name
       value: ItemSlot
+      objectReference: {fileID: 0}
+    - target: {fileID: 6739301553852470974, guid: 373b49b34c237f944baaf453a8e20eb7, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8197584456690027550, guid: 373b49b34c237f944baaf453a8e20eb7, type: 3}
       propertyPath: deleteAcceptance
@@ -19376,6 +19382,10 @@ MonoBehaviour:
   InventoryMenu: {fileID: 1608939920}
   EquipmentMenu: {fileID: 629054196}
   PetMenu: {fileID: 187209133}
+  InventoryDescription: {fileID: 0}
+  InventoryNavigation: {fileID: 0}
+  StatPanel: {fileID: 0}
+  PlayerEquipmentPanel: {fileID: 0}
   itemSlot:
   - {fileID: 602484896}
   - {fileID: 1982419251}
@@ -19554,6 +19564,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   inventoryManager: {fileID: 0}
+  stats: {fileID: 0}
 --- !u!1 &1117930322
 GameObject:
   m_ObjectHideFlags: 0
@@ -23505,8 +23516,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -90}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 699.2999, y: -112.599976}
-  m_SizeDelta: {x: -1771.7, y: -543.4742}
+  m_AnchoredPosition: {x: 701, y: -108}
+  m_SizeDelta: {x: -1771.7, y: -920.0023}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1407834078
 GameObject:

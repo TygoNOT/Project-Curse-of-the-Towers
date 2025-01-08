@@ -24,7 +24,7 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler
     private int maxNumberOfItems;
 
     [SerializeField]
-    private TMP_Text quantityText;
+    public TMP_Text quantityText;
 
     [SerializeField]
     private Image itemImage;

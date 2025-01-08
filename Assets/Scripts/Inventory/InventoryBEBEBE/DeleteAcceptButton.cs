@@ -28,11 +28,18 @@ public class DeleteAcceptButton : MonoBehaviour
         inventoryManager = GameObject.Find("InventoryCanvas").GetComponent<InventoryManager>();
         if (equipmentPanel.activeSelf)
         {
-            equipmentSlot = GameObject.Find(slotName).GetComponent<EquipmentSlot>();
+            Debug.Log("eqip inventory is opened");
+            for (int i=0; inventoryManager.equipmentSlot.Length>i; i++)
+            {
+                if(inventoryManager.equipmentSlot[i].slotName == slotName)
+                    equipmentSlot = inventoryManager.equipmentSlot[i];
+            }
+            //equipmentSlot = GameObject.Find(slotName).GetComponent<EquipmentSlot>();
             equipmentSlot.dropItem();
         }
         else if (petMenu.activeSelf)
         {
+            Debug.Log("eqip inventory is opened");
             foreach (PetSlot petSl in inventoryManager.petSlot)
             {
                 if (petSl.name == slotName)
@@ -44,6 +51,7 @@ public class DeleteAcceptButton : MonoBehaviour
         }
         else if (inventoryMenu.activeSelf)
         {
+            Debug.Log("eqip inventory is opened");
             foreach (ItemSlot itemSl in inventoryManager.itemSlot)
             {
                 if (itemSl.name == slotName)
