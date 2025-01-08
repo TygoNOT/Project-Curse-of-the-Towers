@@ -148,7 +148,6 @@ public class InventoryLoader : MonoBehaviour
             {
             }
 
-            slots[i].isFull = savedSlot.isFull;
         }
     }
     private void LoadSlotData(EquippedSlot slot, EquipmentSO equipment, SerializedEquippableSlot savedSlot)

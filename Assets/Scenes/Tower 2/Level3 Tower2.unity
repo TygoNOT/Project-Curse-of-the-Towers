@@ -1886,7 +1886,6 @@ GameObject:
   - component: {fileID: 109803855}
   - component: {fileID: 109803854}
   - component: {fileID: 109803853}
-  - component: {fileID: 109803852}
   - component: {fileID: 109803851}
   m_Layer: 5
   m_Name: AcceptButton
@@ -1960,26 +1959,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 234.82286, y: 60.60201}
   m_EdgeRadius: 0
---- !u!114 &109803852
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 109803849}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cd7ff140dede57c4ca985cd4c4aaef11, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  slotName: 
-  equipmentSlot: {fileID: 0}
-  petSlot: {fileID: 0}
-  itemSlot: {fileID: 0}
-  equipmentPanel: {fileID: 1447948806}
-  petMenu: {fileID: 42493917}
-  inventoryMenu: {fileID: 1387019395}
-  inventoryManager: {fileID: 0}
 --- !u!114 &109803853
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2023,7 +2002,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 109803854}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 825878865}
+        m_TargetAssemblyTypeName: DeleteAcceptButton, Assembly-CSharp
+        m_MethodName: DropItemButton
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &109803854
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3048,10 +3039,10 @@ GameObject:
   - component: {fileID: 238419898}
   - component: {fileID: 238419897}
   - component: {fileID: 238419896}
+  - component: {fileID: 238419900}
   - component: {fileID: 238419895}
   - component: {fileID: 238419894}
   - component: {fileID: 238419893}
-  - component: {fileID: 238419892}
   m_Layer: 5
   m_Name: InventoryCanvas
   m_TagString: Untagged
@@ -3059,19 +3050,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &238419892
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 238419891}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d0aa42a154a6f5242b91f9c7a49bd61b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  objectIndex: 0
 --- !u!114 &238419893
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3350,6 +3328,20 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &238419900
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 238419891}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 780cd6708593a48488cbe3cf6ab8123e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  inventoryManager: {fileID: 0}
+  stats: {fileID: 0}
 --- !u!1 &238462022
 GameObject:
   m_ObjectHideFlags: 0
@@ -10486,6 +10478,7 @@ GameObject:
   - component: {fileID: 825878864}
   - component: {fileID: 825878863}
   - component: {fileID: 825878862}
+  - component: {fileID: 825878865}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -10567,6 +10560,26 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &825878865
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 825878861}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cd7ff140dede57c4ca985cd4c4aaef11, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  slotName: 
+  equipmentSlot: {fileID: 0}
+  petSlot: {fileID: 0}
+  itemSlot: {fileID: 0}
+  equipmentPanel: {fileID: 1447948806}
+  petMenu: {fileID: 42493917}
+  inventoryMenu: {fileID: 1387019395}
+  inventoryManager: {fileID: 0}
 --- !u!1 &827369227
 GameObject:
   m_ObjectHideFlags: 0
@@ -13043,6 +13056,57 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1051660934}
   m_CullTransparentMesh: 1
+--- !u!1 &1070759298
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1070759300}
+  - component: {fileID: 1070759299}
+  m_Layer: 5
+  m_Name: Loader
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1070759299
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1070759298}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 309506e07c818e74995c628ebe750cfa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stats: {fileID: 0}
+  currentInventoryManager: {fileID: 0}
+  equipmentSOLibrary: {fileID: 0}
+--- !u!224 &1070759300
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1070759298}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 960, y: 540}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1001 &1084539887
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -26164,6 +26228,7 @@ SceneRoots:
   m_Roots:
   - {fileID: 825878864}
   - {fileID: 1829891169}
+  - {fileID: 1070759300}
   - {fileID: 1205622260}
   - {fileID: 1961824424}
   - {fileID: 1862968681}

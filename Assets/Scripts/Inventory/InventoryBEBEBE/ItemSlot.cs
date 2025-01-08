@@ -143,7 +143,7 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler
                 {
                     this.slotName = inventoryManager.itemSlot[i].name;
                     deleteAcceptance.SetActive(true);
-                    GameObject.Find("AcceptButton").GetComponent<DeleteAcceptButton>().slotName = this.slotName;
+                    GameObject.Find("Main Camera").GetComponent<DeleteAcceptButton>().slotName = this.slotName;
                 }
             }
         }

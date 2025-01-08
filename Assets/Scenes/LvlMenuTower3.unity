@@ -14053,6 +14053,7 @@ GameObject:
   - component: {fileID: 755457592}
   - component: {fileID: 755457591}
   - component: {fileID: 755457590}
+  - component: {fileID: 755457593}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -14134,6 +14135,26 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &755457593
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 755457589}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cd7ff140dede57c4ca985cd4c4aaef11, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  slotName: 
+  equipmentSlot: {fileID: 0}
+  petSlot: {fileID: 0}
+  itemSlot: {fileID: 0}
+  equipmentPanel: {fileID: 629054196}
+  petMenu: {fileID: 187209133}
+  inventoryMenu: {fileID: 1608939920}
+  inventoryManager: {fileID: 0}
 --- !u!1 &767368607
 GameObject:
   m_ObjectHideFlags: 0
@@ -27340,7 +27361,6 @@ GameObject:
   - component: {fileID: 1686601700}
   - component: {fileID: 1686601699}
   - component: {fileID: 1686601698}
-  - component: {fileID: 1686601697}
   - component: {fileID: 1686601696}
   m_Layer: 5
   m_Name: AcceptButton
@@ -27414,26 +27434,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 234.82286, y: 60.60201}
   m_EdgeRadius: 0
---- !u!114 &1686601697
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1686601694}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cd7ff140dede57c4ca985cd4c4aaef11, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  slotName: 
-  equipmentSlot: {fileID: 0}
-  petSlot: {fileID: 0}
-  itemSlot: {fileID: 0}
-  equipmentPanel: {fileID: 629054196}
-  petMenu: {fileID: 187209133}
-  inventoryMenu: {fileID: 1608939920}
-  inventoryManager: {fileID: 0}
 --- !u!114 &1686601698
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -27477,7 +27477,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1686601699}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 755457593}
+        m_TargetAssemblyTypeName: DeleteAcceptButton, Assembly-CSharp
+        m_MethodName: DropItemButton
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1686601699
 MonoBehaviour:
   m_ObjectHideFlags: 0

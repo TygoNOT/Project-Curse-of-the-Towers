@@ -23,19 +23,21 @@ public class DeleteAcceptButton : MonoBehaviour
 
     public InventoryManager inventoryManager;
 
-    public void OnMouseDown()
+    public void DropItemButton()
     {
+        Debug.Log("click");
         inventoryManager = GameObject.Find("InventoryCanvas").GetComponent<InventoryManager>();
         if (equipmentPanel.activeSelf)
         {
             Debug.Log("eqip inventory is opened");
-            for (int i=0; inventoryManager.equipmentSlot.Length>i; i++)
+            foreach (EquipmentSlot equipSlot in inventoryManager.equipmentSlot)
             {
-                if(inventoryManager.equipmentSlot[i].slotName == slotName)
-                    equipmentSlot = inventoryManager.equipmentSlot[i];
-            }
-            //equipmentSlot = GameObject.Find(slotName).GetComponent<EquipmentSlot>();
-            equipmentSlot.dropItem();
+                if (equipSlot.name == slotName)
+                {
+                    equipmentSlot = GameObject.Find(slotName).GetComponent<EquipmentSlot>();
+                    equipmentSlot.dropItem();
+                }
+            }           
         }
         else if (petMenu.activeSelf)
         {
