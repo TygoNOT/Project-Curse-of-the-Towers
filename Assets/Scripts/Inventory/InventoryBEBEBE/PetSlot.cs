@@ -163,6 +163,10 @@ public class PetSlot : MonoBehaviour, IPointerClickHandler
             }
         }
     }
+    public void AddImage(Sprite sprite)
+    {
+        itemImage.sprite = sprite;
+    }
     public void dropItem()
     {
         this.quantity -= 1;

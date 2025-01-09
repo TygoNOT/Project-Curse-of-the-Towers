@@ -47,7 +47,7 @@ public class InventoryLoader : MonoBehaviour
         ApplyEquippedData(savedEquippableSlots, currentInventoryManager.equippedSlot, equipmentSOLibrary.equipmentSO);
         ApplyEquipData(savedEquipSlots, currentInventoryManager?.equipmentSlot, equipmentSOLibrary.equipmentSO);
         ApplyItemData(savedItemSlots, currentInventoryManager?.itemSlot, currentInventoryManager.itemSOs);
-        ApplyPetData(savedPetSlots, currentInventoryManager?.petSlot);
+        ApplyPetData(savedPetSlots, currentInventoryManager?.petSlot, equipmentSOLibrary.equipmentSO);
         ApplyStatsData(savedStats, stats);
         Debug.Log("Данные инвентаря загружены!");
     }
@@ -222,7 +222,7 @@ public class InventoryLoader : MonoBehaviour
             
         }
     }
-    private void ApplyPetData(List<SerializedSlot> savedSlots, PetSlot[] slots)
+    private void ApplyPetData(List<SerializedSlot> savedSlots, PetSlot[] slots, EquipmentSO[] equipSo)
     {
         for (int i = 0; i < Mathf.Min(slots.Length, savedSlots.Count); i++)
         {
@@ -233,17 +233,15 @@ public class InventoryLoader : MonoBehaviour
             // Применение данных к слоту
             slots[i].itemName = savedSlot.itemName;
             slots[i].itemDescription = savedSlot.itemDescription;
-
-            // Загружаем спрайт из ресурсов и добавляем проверку на его наличие
-            Sprite loadedSprite = string.IsNullOrEmpty(savedSlot.itemSpriteName) ? null : Resources.Load<Sprite>(savedSlot.itemSpriteName);
-            if (loadedSprite != null)
+            for (int j=0; j<equipSo.Length; j++)
             {
-                slots[i].itemSprite = loadedSprite;
+                if (savedSlot.itemName == equipSo[j].itemName)
+                {
+                    slots[i].AddImage(equipSo[j].itemSprite);
+                    slots[i].itemSprite = equipSo[j].itemSprite;
+                }
             }
-            else
-            {
-                slots[i].itemSprite = null; // Присваиваем null, если спрайт не найден
-            }
+            
 
             slots[i].quantity = savedSlot.quantity;
 

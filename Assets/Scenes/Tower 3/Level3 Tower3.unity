@@ -3153,7 +3153,14 @@ MonoBehaviour:
   - {fileID: 484705327}
   - {fileID: 728314212}
   itemSOs:
-  - {fileID: 11400000, guid: 6308d38c83f110441bf65a9bf9c2369c, type: 2}
+  - {fileID: 11400000, guid: 898d00c62bdfc03489c68829db9f52c8, type: 2}
+  - {fileID: 11400000, guid: 96436d4fc66c6f443ac75f07c8d8e47c, type: 2}
+  - {fileID: 11400000, guid: 9f978641d7610f64284d572e67d759d0, type: 2}
+  - {fileID: 11400000, guid: b68906b3c8e4ec34fac036057213a5b2, type: 2}
+  - {fileID: 11400000, guid: d808792776dfe0148beaaf4515d5d9ea, type: 2}
+  - {fileID: 11400000, guid: b1c2ef1d97c29aa4c85d95d708933cfb, type: 2}
+  - {fileID: 11400000, guid: 383170a357bf61e4daffc8b2303b0793, type: 2}
+  - {fileID: 11400000, guid: 2f6b8f94e893a4f48943b3e162613798, type: 2}
   equipmentSlot:
   - {fileID: 475930374}
   - {fileID: 434377804}
