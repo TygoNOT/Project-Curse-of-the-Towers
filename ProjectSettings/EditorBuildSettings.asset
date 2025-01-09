@@ -50,4 +50,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/LvlMenuTower3.unity
     guid: d5b7a9582b3922b4895067c36eb9b944
+  - enabled: 1
+    path: Assets/Scenes/EndGame.unity
+    guid: 2d87af5c167cc7840a2721f6968e6eaa
   m_configObjects: {}

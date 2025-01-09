@@ -86,6 +86,7 @@ GameObject:
   - component: {fileID: 2366943667994566187}
   - component: {fileID: 6703314633541626670}
   - component: {fileID: 6145631116629588532}
+  - component: {fileID: 8147925676704920475}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -173,6 +174,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b3939901ef485dc4dbfd079fac8df09c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerStats: {fileID: 0}
+  UpdateStats: 1
   playername: Hero
   healthBar: {fileID: 0}
   originalHealthBarWidth: 0
@@ -185,8 +188,36 @@ MonoBehaviour:
   critDamage: 1.5
   speed: 10
   combatController: {fileID: 0}
+  weaponAttribute: 0
   Windbuff: 0
+  Burn: {fileID: 0}
+  Paralyze: {fileID: 0}
+  Poisen: {fileID: 0}
+  Frozen: {fileID: 0}
+  Silence: {fileID: 0}
   petController: {fileID: 0}
+  targetEnemy: {fileID: 0}
+--- !u!95 &8147925676704920475
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1724744478813093492}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: b1be66c3d24618e49989ac828127331a, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &5972692090580168105
 GameObject:
   m_ObjectHideFlags: 0

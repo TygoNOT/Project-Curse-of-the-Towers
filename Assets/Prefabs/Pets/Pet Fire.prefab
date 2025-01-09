@@ -48,8 +48,8 @@ MonoBehaviour:
   combatController: {fileID: 0}
   petName: Be
   cooldownTurns: 3
-  minFireBallDamage: 10
-  maxFireBallDamage: 20
+  minFireBallDamage: 4
+  maxFireBallDamage: 15
   BurnChance: 20
   BurnTurns: 3
 --- !u!1 &5382672042106185186

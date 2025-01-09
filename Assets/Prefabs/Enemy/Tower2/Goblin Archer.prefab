@@ -114,6 +114,7 @@ GameObject:
   - component: {fileID: 9207323918451093308}
   - component: {fileID: 7125830364740312352}
   - component: {fileID: 3199132020886345440}
+  - component: {fileID: 2222227138404240291}
   m_Layer: 0
   m_Name: Goblin Archer
   m_TagString: Enemy
@@ -178,7 +179,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: 21300000, guid: 594cfea09e0f91d4f864745ec73adbb2, type: 3}
+  m_Sprite: {fileID: -869485616, guid: f62ba3374f3b2274cbc6ec2b28b03036, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -230,6 +231,27 @@ MonoBehaviour:
   freezeTurns: 0
   isParalyzed: 0
   paralysisTurns: 0
+--- !u!95 &2222227138404240291
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6128993352952767016}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 009ef40859d81ac4796e6693338b27ad, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &8182502227557639996
 GameObject:
   m_ObjectHideFlags: 0

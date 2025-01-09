@@ -161,6 +161,7 @@ GameObject:
   - component: {fileID: 6581415858928483141}
   - component: {fileID: 29292323562236104}
   - component: {fileID: 8693575322555863856}
+  - component: {fileID: 4431258594930578194}
   m_Layer: 0
   m_Name: 'Lord of Lightning '
   m_TagString: Enemy
@@ -225,7 +226,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: 21300000, guid: 3732a9f5ff60d654a8371e757f877971, type: 3}
+  m_Sprite: {fileID: 1731110428, guid: b91e4628c087c314e884760beeae5fcf, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -277,6 +278,27 @@ MonoBehaviour:
   freezeTurns: 0
   isParalyzed: 0
   paralysisTurns: 0
+--- !u!95 &4431258594930578194
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4641736950931205948}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: d22f6926346e2764a80919bce2e8a4ab, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &4731615826235828115
 GameObject:
   m_ObjectHideFlags: 0

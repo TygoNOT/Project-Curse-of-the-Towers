@@ -13,6 +13,7 @@ public class MiniPlayerContoller : MonoBehaviour
     public string nextLevelName;
 
     public Save save;
+    public Animator anim;
     private void Start()
     {
         movepoint.parent = null;
@@ -24,6 +25,7 @@ public class MiniPlayerContoller : MonoBehaviour
 
         if(Vector3.Distance(transform.position, movepoint.position) <= .05f)
         {
+            anim.SetBool("moving", false);
             if (Mathf.Abs(Input.GetAxisRaw("Horizontal")) == 1f)
             {
                 if(!Physics2D.OverlapCircle(movepoint.position + new Vector3(Input.GetAxisRaw("Horizontal"), 0f, 0f), 0.5f, whatStopsMovement))
@@ -39,6 +41,10 @@ public class MiniPlayerContoller : MonoBehaviour
                     movepoint.position += new Vector3(0f, Input.GetAxisRaw("Vertical"), 0f);
                 }
             }
+        }
+        else
+        {
+            anim.SetBool("moving", true);
         }
 
         if (!string.IsNullOrEmpty(nextLevelName) && Input.GetKeyDown(KeyCode.Return))
