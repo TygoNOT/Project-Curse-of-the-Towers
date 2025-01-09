@@ -11,7 +11,15 @@ public class Money : MonoBehaviour
 
     void Start()
     {
-        CurrentGold = PlayerPrefs.GetInt("PlayerGold", 0);
+        if (!PlayerPrefs.HasKey("PlayerGold"))
+        {
+            CurrentGold = 20; 
+            SaveGold(); 
+        }
+        else
+        {
+            CurrentGold = PlayerPrefs.GetInt("PlayerGold"); 
+        }
         UpdateGoldAmount();
     }
 
@@ -52,7 +60,7 @@ public class Money : MonoBehaviour
 
         public void ResetGold()
     {
-        CurrentGold = 0;
+        CurrentGold = 20;
         UpdateGoldAmount();
         SaveGold();
     }

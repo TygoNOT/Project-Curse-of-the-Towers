@@ -442,9 +442,9 @@ public class PlayerController : MonoBehaviour
     {
         if (isBurned)
         {
-            currentHP -= 2;
-            combatController.PlayerMessage.text = $"{playername} takes 2 burn damage due to Burn effect!";
-            Debug.Log($"{playername} takes 2 burn damage due to Burn effect!");
+            currentHP -= 1;
+            combatController.PlayerMessage.text = $"{playername} takes 1 burn damage due to Burn effect!";
+            Debug.Log($"{playername} takes 1 burn damage due to Burn effect!");
             CheckDeath();
         }
     }
@@ -463,9 +463,9 @@ public class PlayerController : MonoBehaviour
     {
         if (isPoisoned)
         {
-            currentHP -= 10;
-            combatController.PlayerMessage.text = $"{playername} takes 10 poison damage due to Poison effect!";
-            Debug.Log($"{playername} takes 10 poison damage due to Poison effect!");
+            currentHP -= 3;
+            combatController.PlayerMessage.text = $"{playername} takes 3 poison damage due to Poison effect!";
+            Debug.Log($"{playername} takes 3poison damage due to Poison effect!");
             CheckDeath();
         }
     }

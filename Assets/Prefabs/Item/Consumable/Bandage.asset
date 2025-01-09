@@ -24,10 +24,10 @@ MonoBehaviour:
   itemType: 1
   effectToRemove: 0
   attribute: 0
-  isHealthPotion: 1
+  isHealthPotion: 0
   hpRecovery: 10
   isBandage: 1
-  smallheal: 4
+  smallheal: 15
   isTeleportationScroll: 0
   itemDescription: Restores 10 health to the player.
   sprite: {fileID: 1711089113, guid: a30ee0e177b20dc4fb4fe54ec980bb04, type: 3}

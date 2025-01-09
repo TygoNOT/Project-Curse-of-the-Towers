@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemName: Health Potion
   itemSprite: {fileID: 1711089113, guid: a30ee0e177b20dc4fb4fe54ec980bb04, type: 3}
-  price: 10
+  price: 15
   quantity: 0
   id: 0
   statToChange: 0
@@ -25,7 +25,7 @@ MonoBehaviour:
   effectToRemove: 0
   attribute: 0
   isHealthPotion: 1
-  hpRecovery: 10
+  hpRecovery: 50
   isBandage: 0
   smallheal: 4
   isTeleportationScroll: 0

@@ -304,6 +304,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3072666}
   m_CullTransparentMesh: 1
+--- !u!1 &17021697 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 25883529542012766, guid: 83bd65efa2d0aaa4a8d35bc5905523a6, type: 3}
+  m_PrefabInstance: {fileID: 4206642464542574282}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &25859152
 GameObject:
   m_ObjectHideFlags: 0
@@ -4626,7 +4631,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 337451163}
         m_TargetAssemblyTypeName: CombatController, Assembly-CSharp
-        m_MethodName: ButtonLevelMenu
+        m_MethodName: ButtonLevelMenuNew
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -4720,6 +4725,7 @@ MonoBehaviour:
   PlayerMessageObject: {fileID: 0}
   nextLevel: EndGame
   loselevel: LvlMenuTower3
+  lvlMenu: LvlMenuTower3
   money: 0
 --- !u!4 &337451164
 Transform:
@@ -24996,7 +25002,7 @@ MonoBehaviour:
         m_MethodName: SelectTarget
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 3873704934925972458, guid: 094486f7c519e1549947dbbc4b17ca9c, type: 3}
+          m_ObjectArgument: {fileID: 17021697}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
@@ -27748,7 +27754,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1701635200093901413, guid: 83bd65efa2d0aaa4a8d35bc5905523a6, type: 3}
   m_PrefabInstance: {fileID: 4206642464542574282}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 17021697}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f1b8472bb887ada4cafcd9ef787497a4, type: 3}

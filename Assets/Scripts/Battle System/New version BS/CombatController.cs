@@ -28,6 +28,7 @@ public class CombatController : MonoBehaviour
     private int enemyIndex = -1;
     public string nextLevel = "";
     public string loselevel = "";
+    public string lvlMenu = "";
     private PlayerController playerController;
     public int money;
     void Start()
@@ -265,10 +266,14 @@ public class CombatController : MonoBehaviour
     {
         SceneManager.LoadScene(nextLevel);
     }
-    
+
     public void LoseLevel()
     {
         SceneManager.LoadScene(loselevel);
+    }
+    public void ButtonLevelMenuNew()
+    {
+        SceneManager.LoadScene(lvlMenu);
     }
     public void ButtonLevelMenu()
     {

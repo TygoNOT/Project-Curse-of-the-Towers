@@ -11886,6 +11886,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f2ee3e08f5e9716439adbb5a3eca3693, type: 3}
+--- !u!1 &899148995 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3873704934925972458, guid: 094486f7c519e1549947dbbc4b17ca9c, type: 3}
+  m_PrefabInstance: {fileID: 3608682546292692421}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &901452861
 GameObject:
   m_ObjectHideFlags: 0
@@ -24920,7 +24925,7 @@ MonoBehaviour:
         m_MethodName: SelectTarget
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 3873704934925972458, guid: 094486f7c519e1549947dbbc4b17ca9c, type: 3}
+          m_ObjectArgument: {fileID: 899148995}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
@@ -27892,6 +27897,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1419990421071468265, guid: 094486f7c519e1549947dbbc4b17ca9c, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 331.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 2182460582710187177, guid: 094486f7c519e1549947dbbc4b17ca9c, type: 3}
+      propertyPath: health
+      value: 150
+      objectReference: {fileID: 0}
     - target: {fileID: 2182460582710187177, guid: 094486f7c519e1549947dbbc4b17ca9c, type: 3}
       propertyPath: EnemyName
       value: Shadow Fiend
@@ -27958,7 +27971,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 2182460582710187177, guid: 094486f7c519e1549947dbbc4b17ca9c, type: 3}
   m_PrefabInstance: {fileID: 3608682546292692421}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 899148995}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f1b8472bb887ada4cafcd9ef787497a4, type: 3}

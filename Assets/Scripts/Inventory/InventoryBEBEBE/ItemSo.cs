@@ -34,7 +34,7 @@ public class ItemSo : ScriptableObject
     public int hpRecovery = 10;
 
     public bool isBandage = false;
-    public int smallheal = 4;
+    public int smallheal = 10;
 
     public bool isTeleportationScroll = false;
 

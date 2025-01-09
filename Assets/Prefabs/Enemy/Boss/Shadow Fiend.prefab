@@ -207,7 +207,7 @@ MonoBehaviour:
   healthBar: {fileID: 4591347535397010432}
   originalHealthBarWidth: 0
   maxhealth: 150
-  health: 150
+  health: 116
   minBaseDamage: 5
   maxBaseDamage: 12
   critChance: 2
@@ -362,7 +362,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 1531.0002, y: -315.0003}
-  m_SizeDelta: {x: 331.6963, y: 55.2827}
+  m_SizeDelta: {x: 236.35568, y: 55.2827}
   m_Pivot: {x: 0, y: 1}
 --- !u!222 &6806764436892175388
 CanvasRenderer:

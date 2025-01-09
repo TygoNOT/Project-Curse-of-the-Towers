@@ -4930,7 +4930,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 337451163}
         m_TargetAssemblyTypeName: CombatController, Assembly-CSharp
-        m_MethodName: ButtonLevelMenu
+        m_MethodName: ButtonLevelMenuNew
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -5028,6 +5028,7 @@ MonoBehaviour:
   PlayerMessageObject: {fileID: 0}
   nextLevel: Level3 Tower2
   loselevel: LvlMenuTower2
+  lvlMenu: LvlMenuTower2
   money: 0
 --- !u!4 &337451164
 Transform:
