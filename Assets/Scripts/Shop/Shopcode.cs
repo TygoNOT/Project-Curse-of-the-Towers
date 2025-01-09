@@ -67,13 +67,13 @@ public class Shopcode : MonoBehaviour
 
     public void ResetRestockPrice()
     {
-        RestockPriceValue = 25;
+        RestockPriceValue = 5;
         RestockPrice.text = "Price: " + RestockPriceValue.ToString();
     }
 
     public void IncreaseRestockPrice()
     {
-        RestockPriceValue += 25;
+        RestockPriceValue += 5;
         RestockPrice.text = "Price: " + RestockPriceValue.ToString();
     }
 

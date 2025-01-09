@@ -104,7 +104,8 @@ public class EquipmentSlot : MonoBehaviour, IPointerClickHandler
     private void EquipGear()
     {
         var playerController = FindObjectOfType<PlayerController>();
-        playerController.UpdateStats = true;
+        if (playerController != null)
+        { playerController.UpdateStats = true; }
         if (itemType == ItemType.headArmor)
             headArmorSlot.EquipGear(itemSprite, itemName, itemDescription);
         if (itemType == ItemType.chestArmor)
