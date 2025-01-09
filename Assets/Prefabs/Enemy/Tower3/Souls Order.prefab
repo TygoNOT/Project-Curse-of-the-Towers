@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 4826365672602963582}
   - component: {fileID: 6081711313395563204}
   - component: {fileID: 727157383340809867}
+  - component: {fileID: 4987600195665838643}
   m_Layer: 0
   m_Name: Souls Order
   m_TagString: Enemy
@@ -75,9 +76,9 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: 21300000, guid: 0c6b9801402c54d47836323374af6bbf, type: 3}
+  m_Sprite: {fileID: 384469560, guid: f39d37162f0f7b2459226844f5785bf7, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_FlipX: 0
+  m_FlipX: 1
   m_FlipY: 0
   m_DrawMode: 0
   m_Size: {x: 0.5222222, y: 1}
@@ -127,6 +128,27 @@ MonoBehaviour:
   freezeTurns: 0
   isParalyzed: 0
   paralysisTurns: 0
+--- !u!95 &4987600195665838643
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4986546607052620046}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: f63850e02d782d34db83e96d1b3a4bbc, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &7966939954692981397
 GameObject:
   m_ObjectHideFlags: 0

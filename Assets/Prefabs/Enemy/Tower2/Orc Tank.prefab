@@ -189,6 +189,7 @@ GameObject:
   - component: {fileID: 2106611149121711166}
   - component: {fileID: 1603759860499625640}
   - component: {fileID: 7647431580150269159}
+  - component: {fileID: 8384648038346158092}
   m_Layer: 0
   m_Name: Orc Tank
   m_TagString: Enemy
@@ -253,7 +254,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: 21300000, guid: 86ab76de695f84d47bebf78ed647eda8, type: 3}
+  m_Sprite: {fileID: 1787891834, guid: 40b4c8a23a4c0234189c5aa87432879e, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -305,6 +306,27 @@ MonoBehaviour:
   freezeTurns: 0
   isParalyzed: 0
   paralysisTurns: 0
+--- !u!95 &8384648038346158092
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3646905658806913570}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: fa53c494229e20f42b878bd292b5cc57, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &7795124725551355768
 GameObject:
   m_ObjectHideFlags: 0

@@ -264,6 +264,7 @@ GameObject:
   - component: {fileID: 4509601702724246719}
   - component: {fileID: 3647497091038658826}
   - component: {fileID: 8842472138156977026}
+  - component: {fileID: 8519427341167380256}
   m_Layer: 0
   m_Name: Spearman Orc
   m_TagString: Enemy
@@ -328,7 +329,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: 21300000, guid: 333b79e8b433e6c478c00fca10521245, type: 3}
+  m_Sprite: {fileID: -889577599, guid: f408de307c16cfb4f947ba2131dd4454, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -380,3 +381,24 @@ MonoBehaviour:
   freezeTurns: 0
   isParalyzed: 0
   paralysisTurns: 0
+--- !u!95 &8519427341167380256
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7843547155240218553}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 96bb8a3bc17ef5043a2a8c101cf01ed7, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0

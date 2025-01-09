@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 3610016628545645424}
   - component: {fileID: 5771439504018924627}
   - component: {fileID: 9151904848305455235}
+  - component: {fileID: 3004339831127085270}
   m_Layer: 0
   m_Name: 'Icy Soul '
   m_TagString: Enemy
@@ -75,9 +76,9 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: 21300000, guid: e2fe60fe91b730645aaadef8cdbfffe9, type: 3}
+  m_Sprite: {fileID: 1378363871, guid: fc75182aabaa1cf4aa674b0b83a9996b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_FlipX: 0
+  m_FlipX: 1
   m_FlipY: 0
   m_DrawMode: 0
   m_Size: {x: 0.5222222, y: 1}
@@ -127,6 +128,27 @@ MonoBehaviour:
   freezeTurns: 0
   isParalyzed: 0
   paralysisTurns: 0
+--- !u!95 &3004339831127085270
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4177677509509935158}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 221b68608cd79424ab93aa4fed509d88, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &4831437014902036477
 GameObject:
   m_ObjectHideFlags: 0

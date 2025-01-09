@@ -103,7 +103,10 @@ public class PetSlot : MonoBehaviour, IPointerClickHandler
     private void EquipGear()
     {
         var playerController = FindObjectOfType<PlayerController>();
-        playerController.UpdateStats = true;
+        if (playerController != null)
+        {
+            playerController.UpdateStats = true;
+        }
         if (itemType== ItemType.pet)
             petSlot.EquipGear(itemSprite, itemName, itemDescription);
 

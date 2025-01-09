@@ -26,7 +26,8 @@ public class CombatController : MonoBehaviour
     [Header("Attribute")]
     bool isPlayerTurn = true;
     private int enemyIndex = -1;
-    public string nextLevel = "Inventory";
+    public string nextLevel = "";
+    public string loselevel = "";
     private PlayerController playerController;
     public int money;
     void Start()
@@ -264,7 +265,11 @@ public class CombatController : MonoBehaviour
     {
         SceneManager.LoadScene(nextLevel);
     }
-
+    
+    public void LoseLevel()
+    {
+        SceneManager.LoadScene(loselevel);
+    }
     public void ButtonLevelMenu()
     {
         SceneManager.LoadScene("LvlMenuTower1");

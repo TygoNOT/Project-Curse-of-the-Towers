@@ -86,6 +86,7 @@ GameObject:
   - component: {fileID: 8329761722805454380}
   - component: {fileID: 1919054093509055461}
   - component: {fileID: 8461199594484995796}
+  - component: {fileID: 6224166148748780323}
   m_Layer: 0
   m_Name: Demonoid
   m_TagString: Enemy
@@ -177,8 +178,8 @@ MonoBehaviour:
   EnemyName: Demonoid
   healthBar: {fileID: 4298153554599158072}
   originalHealthBarWidth: 0
-  maxhealth: 10
-  health: 10
+  maxhealth: 7
+  health: 7
   minBaseDamage: 2
   maxBaseDamage: 5
   critChance: 0
@@ -202,6 +203,27 @@ MonoBehaviour:
   freezeTurns: 0
   isParalyzed: 0
   paralysisTurns: 0
+--- !u!95 &6224166148748780323
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 985743776175004549}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 2502542fe8a95204b85267e8111d0927, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &4471106774332387635
 GameObject:
   m_ObjectHideFlags: 0

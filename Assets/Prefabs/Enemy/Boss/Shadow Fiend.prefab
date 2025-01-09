@@ -114,6 +114,7 @@ GameObject:
   - component: {fileID: 4908894692307768141}
   - component: {fileID: 8248440896819874573}
   - component: {fileID: 2182460582710187177}
+  - component: {fileID: 4479850390764866017}
   m_Layer: 0
   m_Name: Shadow Fiend
   m_TagString: Enemy
@@ -207,8 +208,8 @@ MonoBehaviour:
   originalHealthBarWidth: 0
   maxhealth: 150
   health: 150
-  minBaseDamage: 7
-  maxBaseDamage: 14
+  minBaseDamage: 5
+  maxBaseDamage: 12
   critChance: 2
   critDamage: 1.5
   speed: 5
@@ -230,6 +231,27 @@ MonoBehaviour:
   freezeTurns: 0
   isParalyzed: 0
   paralysisTurns: 0
+--- !u!95 &4479850390764866017
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3873704934925972458}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: a8a81a4f50951134d80607994bbbc5ab, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &5995530529455059746
 GameObject:
   m_ObjectHideFlags: 0

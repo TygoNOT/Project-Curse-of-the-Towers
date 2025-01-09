@@ -12,6 +12,7 @@ public class EnemyController : MonoBehaviour
     public Image healthBar;
     private PlayerController playerController;
     public float originalHealthBarWidth;
+    private Animator anim;
 
     [Header("Stats")]
     public int maxhealth;
@@ -54,6 +55,7 @@ public class EnemyController : MonoBehaviour
 
     private void Start()
     {
+        anim = GetComponent<Animator>();
         curentDamage = 0;
         originalHealthBarWidth = healthBar.GetComponent<RectTransform>().rect.width;
         playerController = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
@@ -63,6 +65,7 @@ public class EnemyController : MonoBehaviour
 
     public void Attack()
     {
+        anim.SetTrigger("Attack");
         float damageMultiplier = playerController.CalculateAttributeDamageMultiplier(enemyAttribute, playerController.weaponAttribute);
 
 

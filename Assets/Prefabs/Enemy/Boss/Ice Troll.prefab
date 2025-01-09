@@ -189,6 +189,7 @@ GameObject:
   - component: {fileID: 9089444239783174168}
   - component: {fileID: 4864774611800799984}
   - component: {fileID: 5136680514568204455}
+  - component: {fileID: 8252988441704074613}
   m_Layer: 0
   m_Name: Ice Troll
   m_TagString: Enemy
@@ -253,9 +254,9 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: 21300000, guid: 066aec8a4dbdfe74bb5249c4598db41c, type: 3}
+  m_Sprite: {fileID: 2001905683, guid: 3a59a11c82210f44fbfbe5bfc95cbda1, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_FlipX: 0
+  m_FlipX: 1
   m_FlipY: 0
   m_DrawMode: 0
   m_Size: {x: 0.87564766, y: 1}
@@ -283,7 +284,7 @@ MonoBehaviour:
   maxhealth: 242
   health: 242
   minBaseDamage: 7
-  maxBaseDamage: 18
+  maxBaseDamage: 15
   critChance: 2
   critDamage: 1.5
   speed: 5
@@ -305,6 +306,27 @@ MonoBehaviour:
   freezeTurns: 0
   isParalyzed: 0
   paralysisTurns: 0
+--- !u!95 &8252988441704074613
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4654995190997298521}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: a63ebdbbe7ec6ae46a60e9e157207db7, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &6615460600153774180
 GameObject:
   m_ObjectHideFlags: 0

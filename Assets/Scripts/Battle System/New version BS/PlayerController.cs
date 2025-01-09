@@ -56,18 +56,111 @@ public class PlayerController : MonoBehaviour
     public PetController petController;
 
     public GameObject targetEnemy;
+    private Animator anim;
+
+    [Header("Pets anim")]
+    public GameObject PetHealer;
+    private Animator PethealerAnim;
+
+    public GameObject FreezePet;
+    private Animator FreezePetAnim;
+
+    public GameObject PetFire;
+    private Animator PetFireAnim;
+
+    public GameObject LightningPet;
+    private Animator LightningPetAnim;
+
+    public GameObject ElectricWavePet;
+    private Animator ElectricWavePetAnim;
+
+    public GameObject WindBuffPet;
+    private Animator WindBuffPetAnim;
 
     private void Start()
     {
+        anim = GetComponent<Animator>();
+        originalHealthBarWidth = healthBar.GetComponent<RectTransform>().rect.width;
+        Debug.Log("Original health bar width: " + originalHealthBarWidth);
         if (UpdateStats  == true)
         {
             InitializeStats();
         }
-        originalHealthBarWidth = healthBar.GetComponent<RectTransform>().rect.width;
         combatController = FindObjectOfType<CombatController>();
+        Debug.Log("After update health bar width: " + originalHealthBarWidth);
         inventoryManager = GameObject.Find("InventoryCanvas").GetComponent<InventoryManager>();
+
+        PethealerAnim = PetHealer.GetComponent<Animator>();
+        FreezePetAnim = FreezePet.GetComponent<Animator>();
+        PetFireAnim = PetFire.GetComponent<Animator>();
+        LightningPetAnim = LightningPet.GetComponent<Animator>();
+        ElectricWavePetAnim = ElectricWavePet.GetComponent<Animator>();
+        WindBuffPetAnim = WindBuffPet.GetComponent<Animator>();
+
+        if (petController != null)
+        {
+            if (petController is PetHealer)
+            {
+                PetHealer.SetActive(true);
+                FreezePet.SetActive(false);
+                PetFire.SetActive(false);
+                LightningPet.SetActive(false);
+                ElectricWavePet.SetActive(false);
+                WindBuffPet.SetActive(false);
+            }
+
+            else if (petController is FreezePet)
+            {
+                FreezePet.SetActive(true);
+                PetHealer.SetActive(false);
+                PetFire.SetActive(false);
+                LightningPet.SetActive(false);
+                ElectricWavePet.SetActive(false);
+                WindBuffPet.SetActive(false);
+            }
+
+            else if (petController is PetFireUser)
+            {
+                PetFire.SetActive(true);
+                FreezePet.SetActive(false);
+                PetHealer.SetActive(false);
+                LightningPet.SetActive(false);
+                ElectricWavePet.SetActive(false);
+                WindBuffPet.SetActive(false);
+            }
+            else if (petController is LightningPet)
+            {
+                LightningPet.SetActive(true);
+                FreezePet.SetActive(false);
+                PetHealer.SetActive(false);
+                PetFire.SetActive(false);
+                ElectricWavePet.SetActive(false);
+                WindBuffPet.SetActive(false);
+            }
+            else if (petController is ElectricWavePet)
+            {
+                ElectricWavePet.SetActive(true);
+                FreezePet.SetActive(false);
+                PetHealer.SetActive(false);
+                PetFire.SetActive(false);
+                LightningPet.SetActive(false);
+                WindBuffPet.SetActive(false);
+            }
+            else if (petController is PetWind)
+            {
+                WindBuffPet.SetActive(true);
+                FreezePet.SetActive(false);
+                PetHealer.SetActive(false);
+                PetFire.SetActive(false);
+                LightningPet.SetActive(false);
+                ElectricWavePet.SetActive(false);
+            }
+        }
     }
 
+    private void Update()
+    {
+    }
     public void selectAction(int action)
     {
         actionselected = action;
@@ -76,6 +169,7 @@ public class PlayerController : MonoBehaviour
 
     public void Attack(GameObject enemy)
     {
+        anim.SetTrigger("Attack");
         if (IsActionBlocked())
         {
             Debug.Log("Player action not performed due to paralysis!");
@@ -103,6 +197,7 @@ public class PlayerController : MonoBehaviour
         Debug.Log("Player damage: " + dmg);
         enemy.GetComponent<EnemyController>().TakeDamage(dmg);
         StartCoroutine(UpdateHealthBarDelayed(enemy));
+
     }
 
     private IEnumerator UpdateHealthBarDelayed(GameObject enemy)
@@ -164,7 +259,34 @@ public class PlayerController : MonoBehaviour
             else if (actionselected == 3)
             {
                 if (petController == null) combatController.PlayerMessage.text = $"{playername} don't have a pet";
+                if (petController.IsReadyToUse())
+                {
+                    if (petController is PetHealer)
+                    {
+                        PethealerAnim.SetTrigger("Use ability");
+                    }
+                    else if (petController is FreezePet)
+                    {
+                        FreezePetAnim.SetTrigger("Use ability");
+                    }
+                    else if (petController is PetFireUser)
+                    {
+                        PetFireAnim.SetTrigger("Use ability");
+                    }
+                    else if (petController is LightningPet)
+                    {
+                        LightningPetAnim.SetTrigger("Use ability");
+                    }
+                    else if (petController is ElectricWavePet)
+                    {
+                        ElectricWavePetAnim.SetTrigger("Use ability");
+                    }
+                    else if (petController is PetWind)
+                    {
+                        WindBuffPetAnim.SetTrigger("Use ability");
+                    }
 
+                }
                 petController.UseAbility(this);
                 combatController.ActionPanel.SetActive(false);
             }
@@ -212,6 +334,7 @@ public class PlayerController : MonoBehaviour
             currentHP = 0;
             combatController.PlayerMessage.text = $"{playername} has been defeated! Game Over!";
             Debug.Log(playername + " has been defeated! Game Over!");
+            ResetHealthBar();
             FindObjectOfType<CombatController>().GameOver(false);
         }
     }
@@ -259,6 +382,7 @@ public class PlayerController : MonoBehaviour
 
     private void LoadEscapeScene()
     {
+        ResetHealthBar();
         SceneManager.LoadScene("LvlMenuTower1");
     }
 
@@ -496,10 +620,15 @@ public class PlayerController : MonoBehaviour
 
         if (playerStats != null)
         {
+            float maincurrentHP = currentHP;
             int takedamage = maxhealth - currentHP;
             maxhealth = playerStats.hp;
             currentHP = maxhealth - takedamage;
-            UpdateHealthBar();
+            if (currentHP > maincurrentHP)
+            {
+                UpdateHealthBar();
+
+            }
             speed = playerStats.speed;
             minBaseDamage = playerStats.attack - Mathf.CeilToInt(playerStats.attack * 0.1f);
             maxBaseDamage = playerStats.attack;
@@ -507,6 +636,65 @@ public class PlayerController : MonoBehaviour
             critDamage = playerStats.critDmg;
             weaponAttribute = playerStats.attribute;
             petController = playerStats.petprefab;
+            if (petController != null)
+            {
+                if(petController is PetHealer)
+                {
+                    PetHealer.SetActive(true);
+                    FreezePet.SetActive(false);
+                    PetFire.SetActive(false);
+                    LightningPet.SetActive(false);
+                    ElectricWavePet.SetActive(false);
+                    WindBuffPet.SetActive(false);
+                }
+
+                else if (petController is FreezePet)
+                {
+                    FreezePet.SetActive(true);
+                    PetHealer.SetActive(false);
+                    PetFire.SetActive(false);
+                    LightningPet.SetActive(false);
+                    ElectricWavePet.SetActive(false);
+                    WindBuffPet.SetActive(false);
+                }
+
+                else if (petController is PetFireUser)
+                {
+                    PetFire.SetActive(true);
+                    FreezePet.SetActive(false);
+                    PetHealer.SetActive(false);
+                    LightningPet.SetActive(false);
+                    ElectricWavePet.SetActive(false);
+                    WindBuffPet.SetActive(false);
+                }
+                else if (petController is LightningPet)
+                {
+                    LightningPet.SetActive(true);
+                    FreezePet.SetActive(false);
+                    PetHealer.SetActive(false);
+                    PetFire.SetActive(false);
+                    ElectricWavePet.SetActive(false);
+                    WindBuffPet.SetActive(false);
+                }
+                else if (petController is ElectricWavePet)
+                {
+                    ElectricWavePet.SetActive(true);
+                    FreezePet.SetActive(false);
+                    PetHealer.SetActive(false);
+                    PetFire.SetActive(false);
+                    LightningPet.SetActive(false);
+                    WindBuffPet.SetActive(false);
+                }
+                else if (petController is PetWind)
+                {
+                    WindBuffPet.SetActive(true);
+                    FreezePet.SetActive(false);
+                    PetHealer.SetActive(false);
+                    PetFire.SetActive(false);
+                    LightningPet.SetActive(false);
+                    ElectricWavePet.SetActive(false);
+                }
+            }
         }
         else
         {
@@ -514,8 +702,7 @@ public class PlayerController : MonoBehaviour
         }
         UpdateStats = false;
     }
-
-    private void UpdateHealthBar()
+       private void UpdateHealthBar()
     {
         float healthPercentage = (float)currentHP / maxhealth;
         float newWidth = healthPercentage * originalHealthBarWidth;
@@ -633,6 +820,13 @@ public class PlayerController : MonoBehaviour
         FindObjectOfType<CombatController>().TogglePlayerTurn();
     }
 
- 
+    public void ResetHealthBar()
+    {
+        healthBar.GetComponent<RectTransform>().sizeDelta = new Vector2(
+            originalHealthBarWidth,
+            healthBar.GetComponent<RectTransform>().sizeDelta.y
+        );
+        currentHP = maxhealth; 
+    }
 
 }

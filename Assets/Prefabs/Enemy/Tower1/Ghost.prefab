@@ -264,6 +264,7 @@ GameObject:
   - component: {fileID: 648117257373331961}
   - component: {fileID: 995734275004569696}
   - component: {fileID: 6075172825066777718}
+  - component: {fileID: 3070465963293271828}
   m_Layer: 0
   m_Name: Ghost
   m_TagString: Enemy
@@ -355,8 +356,8 @@ MonoBehaviour:
   EnemyName: Ghost
   healthBar: {fileID: 7472488013399686200}
   originalHealthBarWidth: 0
-  maxhealth: 15
-  health: 15
+  maxhealth: 10
+  health: 10
   minBaseDamage: 2
   maxBaseDamage: 5
   critChance: 1
@@ -380,3 +381,24 @@ MonoBehaviour:
   freezeTurns: 0
   isParalyzed: 0
   paralysisTurns: 0
+--- !u!95 &3070465963293271828
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6907404154349758064}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 8910e66a53be56543aeaab39d7acb9f1, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0

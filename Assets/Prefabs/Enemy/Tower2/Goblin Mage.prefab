@@ -114,6 +114,7 @@ GameObject:
   - component: {fileID: 6577280445818187633}
   - component: {fileID: 4665679832772566756}
   - component: {fileID: 7977155156855673049}
+  - component: {fileID: 5693677855584793222}
   m_Layer: 0
   m_Name: Goblin Mage
   m_TagString: Enemy
@@ -178,7 +179,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: 21300000, guid: bfa66cf4b5cd0714fa2a99f5f7e0eb77, type: 3}
+  m_Sprite: {fileID: 1162489399, guid: 2d2e66833dc361240935e262bb9b623c, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -230,6 +231,27 @@ MonoBehaviour:
   freezeTurns: 0
   isParalyzed: 0
   paralysisTurns: 0
+--- !u!95 &5693677855584793222
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1395080134683197983}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: eefbb55a4195c87459aa880f50a295ac, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &2385507345360944552
 GameObject:
   m_ObjectHideFlags: 0
