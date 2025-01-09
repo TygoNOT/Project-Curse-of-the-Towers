@@ -6921,7 +6921,7 @@ MonoBehaviour:
   hp: 20
   speed: 2
   critChance: 0
-  critDmg: 0
+  critDmg: 1.1
   attribute: 0
   attackText: {fileID: 2083754118}
   hpText: {fileID: 1581297009}

@@ -202,7 +202,7 @@ Canvas:
   m_AdditionalShaderChannelsFlag: 0
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 2
   m_TargetDisplay: 0
 --- !u!224 &1445508
 RectTransform:
@@ -1630,7 +1630,7 @@ MonoBehaviour:
   hp: 20
   speed: 2
   critChance: 0
-  critDmg: 0
+  critDmg: 1.1
   attribute: 0
   attackText: {fileID: 1240831710}
   hpText: {fileID: 1092454488}
@@ -23624,7 +23624,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 337451163}
         m_TargetAssemblyTypeName: CombatController, Assembly-CSharp
-        m_MethodName: NextLevel
+        m_MethodName: LoseLevel
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

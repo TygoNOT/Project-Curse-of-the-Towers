@@ -202,7 +202,7 @@ Canvas:
   m_AdditionalShaderChannelsFlag: 0
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 2
   m_TargetDisplay: 0
 --- !u!224 &1445508
 RectTransform:
@@ -1707,7 +1707,7 @@ MonoBehaviour:
   hp: 20
   speed: 2
   critChance: 0
-  critDmg: 0
+  critDmg: 1.1
   attribute: 0
   attackText: {fileID: 1240831710}
   hpText: {fileID: 1092454488}
@@ -3120,15 +3120,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2616640781760609842, guid: dcffecb204bc52e4d970afe103c753e0, type: 3}
       propertyPath: health
-      value: 16
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 2616640781760609842, guid: dcffecb204bc52e4d970afe103c753e0, type: 3}
       propertyPath: maxhealth
-      value: 16
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 2616640781760609842, guid: dcffecb204bc52e4d970afe103c753e0, type: 3}
       propertyPath: poisonChance
       value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 2616640781760609842, guid: dcffecb204bc52e4d970afe103c753e0, type: 3}
+      propertyPath: maxBaseDamage
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 2616640781760609842, guid: dcffecb204bc52e4d970afe103c753e0, type: 3}
+      propertyPath: minBaseDamage
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 2616640781760609842, guid: dcffecb204bc52e4d970afe103c753e0, type: 3}
       propertyPath: canApplyPoison
@@ -4418,11 +4426,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3037736822804995427, guid: 804cd842127321a4bb61d3d6095456fe, type: 3}
       propertyPath: health
-      value: 20
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 3037736822804995427, guid: 804cd842127321a4bb61d3d6095456fe, type: 3}
       propertyPath: maxhealth
-      value: 20
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 3037736822804995427, guid: 804cd842127321a4bb61d3d6095456fe, type: 3}
+      propertyPath: maxBaseDamage
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 3677646701366100364, guid: 804cd842127321a4bb61d3d6095456fe, type: 3}
       propertyPath: m_LocalPosition.x
@@ -22611,7 +22623,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 337451163}
         m_TargetAssemblyTypeName: CombatController, Assembly-CSharp
-        m_MethodName: NextLevel
+        m_MethodName: LoseLevel
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -25751,15 +25763,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2616640781760609842, guid: dcffecb204bc52e4d970afe103c753e0, type: 3}
       propertyPath: health
-      value: 16
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 2616640781760609842, guid: dcffecb204bc52e4d970afe103c753e0, type: 3}
       propertyPath: maxhealth
-      value: 16
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 2616640781760609842, guid: dcffecb204bc52e4d970afe103c753e0, type: 3}
       propertyPath: poisonChance
       value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 2616640781760609842, guid: dcffecb204bc52e4d970afe103c753e0, type: 3}
+      propertyPath: maxBaseDamage
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 2616640781760609842, guid: dcffecb204bc52e4d970afe103c753e0, type: 3}
+      propertyPath: minBaseDamage
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 2616640781760609842, guid: dcffecb204bc52e4d970afe103c753e0, type: 3}
       propertyPath: canApplyFreeze

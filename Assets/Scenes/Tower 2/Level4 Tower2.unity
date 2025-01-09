@@ -202,7 +202,7 @@ Canvas:
   m_AdditionalShaderChannelsFlag: 0
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 2
   m_TargetDisplay: 0
 --- !u!224 &1445508
 RectTransform:
@@ -1632,7 +1632,7 @@ MonoBehaviour:
   hp: 20
   speed: 2
   critChance: 0
-  critDmg: 0
+  critDmg: 1.1
   attribute: 0
   attackText: {fileID: 1240831710}
   hpText: {fileID: 1092454488}
@@ -2874,6 +2874,22 @@ PrefabInstance:
     - target: {fileID: 6577280445818187633, guid: 9e8a4b2d6faa66c418978ea86e52a7d4, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7977155156855673049, guid: 9e8a4b2d6faa66c418978ea86e52a7d4, type: 3}
+      propertyPath: health
+      value: 14
+      objectReference: {fileID: 0}
+    - target: {fileID: 7977155156855673049, guid: 9e8a4b2d6faa66c418978ea86e52a7d4, type: 3}
+      propertyPath: maxhealth
+      value: 14
+      objectReference: {fileID: 0}
+    - target: {fileID: 7977155156855673049, guid: 9e8a4b2d6faa66c418978ea86e52a7d4, type: 3}
+      propertyPath: maxBaseDamage
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 7977155156855673049, guid: 9e8a4b2d6faa66c418978ea86e52a7d4, type: 3}
+      propertyPath: minBaseDamage
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 7977155156855673049, guid: 9e8a4b2d6faa66c418978ea86e52a7d4, type: 3}
       propertyPath: paralysisChance
@@ -7627,6 +7643,22 @@ PrefabInstance:
       propertyPath: m_Name
       value: Spearman Orc
       objectReference: {fileID: 0}
+    - target: {fileID: 8842472138156977026, guid: 1132f193f1dd0c74f8b1895898c20198, type: 3}
+      propertyPath: health
+      value: 22
+      objectReference: {fileID: 0}
+    - target: {fileID: 8842472138156977026, guid: 1132f193f1dd0c74f8b1895898c20198, type: 3}
+      propertyPath: maxhealth
+      value: 22
+      objectReference: {fileID: 0}
+    - target: {fileID: 8842472138156977026, guid: 1132f193f1dd0c74f8b1895898c20198, type: 3}
+      propertyPath: maxBaseDamage
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 8842472138156977026, guid: 1132f193f1dd0c74f8b1895898c20198, type: 3}
+      propertyPath: minBaseDamage
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -8591,6 +8623,22 @@ PrefabInstance:
     - target: {fileID: 6577280445818187633, guid: 9e8a4b2d6faa66c418978ea86e52a7d4, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7977155156855673049, guid: 9e8a4b2d6faa66c418978ea86e52a7d4, type: 3}
+      propertyPath: health
+      value: 14
+      objectReference: {fileID: 0}
+    - target: {fileID: 7977155156855673049, guid: 9e8a4b2d6faa66c418978ea86e52a7d4, type: 3}
+      propertyPath: maxhealth
+      value: 14
+      objectReference: {fileID: 0}
+    - target: {fileID: 7977155156855673049, guid: 9e8a4b2d6faa66c418978ea86e52a7d4, type: 3}
+      propertyPath: maxBaseDamage
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 7977155156855673049, guid: 9e8a4b2d6faa66c418978ea86e52a7d4, type: 3}
+      propertyPath: minBaseDamage
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 7977155156855673049, guid: 9e8a4b2d6faa66c418978ea86e52a7d4, type: 3}
       propertyPath: paralysisChance
@@ -22724,7 +22772,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 337451163}
         m_TargetAssemblyTypeName: CombatController, Assembly-CSharp
-        m_MethodName: NextLevel
+        m_MethodName: LoseLevel
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

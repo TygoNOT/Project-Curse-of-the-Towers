@@ -113,7 +113,7 @@ public class CombatController : MonoBehaviour
             else if (entity is PlayerController player)
             {
                 Debug.Log("Waiting for enemies to finish their turns before player takes action.");
-                yield return new WaitUntil(() => enemyActionsCompleted);
+                //yield return new WaitUntil(() => enemyActionsCompleted);
 
                 Debug.Log("Player takes action");
                 ActionPanel.SetActive(true);

@@ -225,7 +225,7 @@ public class EquipmentSO : ScriptableObject
     }
     public void OnValidate()
     {
-        string path = AssetDatabase.GetAssetPath(this);
-        id = AssetDatabase.AssetPathToGUID(path);
+        //string path = AssetDatabase.GetAssetPath(this);
+        //id = AssetDatabase.AssetPathToGUID(path);
     }
 }

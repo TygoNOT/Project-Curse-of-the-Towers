@@ -202,7 +202,7 @@ Canvas:
   m_AdditionalShaderChannelsFlag: 0
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 2
   m_TargetDisplay: 0
 --- !u!224 &1445508
 RectTransform:
@@ -1763,7 +1763,7 @@ MonoBehaviour:
   hp: 20
   speed: 2
   critChance: 0
-  critDmg: 0
+  critDmg: 1.1
   attribute: 0
   attackText: {fileID: 1240831710}
   hpText: {fileID: 1092454488}
@@ -2998,6 +2998,22 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7977155156855673049, guid: 9e8a4b2d6faa66c418978ea86e52a7d4, type: 3}
+      propertyPath: health
+      value: 14
+      objectReference: {fileID: 0}
+    - target: {fileID: 7977155156855673049, guid: 9e8a4b2d6faa66c418978ea86e52a7d4, type: 3}
+      propertyPath: maxhealth
+      value: 14
+      objectReference: {fileID: 0}
+    - target: {fileID: 7977155156855673049, guid: 9e8a4b2d6faa66c418978ea86e52a7d4, type: 3}
+      propertyPath: maxBaseDamage
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 7977155156855673049, guid: 9e8a4b2d6faa66c418978ea86e52a7d4, type: 3}
+      propertyPath: minBaseDamage
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 7977155156855673049, guid: 9e8a4b2d6faa66c418978ea86e52a7d4, type: 3}
       propertyPath: paralysisChance
       value: 15
       objectReference: {fileID: 0}
@@ -3230,11 +3246,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7647431580150269159, guid: 14c93d77ba5f0d144afdde4f07722b2c, type: 3}
       propertyPath: health
-      value: 25
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 7647431580150269159, guid: 14c93d77ba5f0d144afdde4f07722b2c, type: 3}
       propertyPath: maxhealth
-      value: 25
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 7647431580150269159, guid: 14c93d77ba5f0d144afdde4f07722b2c, type: 3}
+      propertyPath: maxBaseDamage
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 7647431580150269159, guid: 14c93d77ba5f0d144afdde4f07722b2c, type: 3}
       propertyPath: minBaseDamage
@@ -18251,19 +18271,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6902565987532918607, guid: 04aee2bc72131f24d93c7c5e66eae693, type: 3}
       propertyPath: health
-      value: 18
+      value: 13
       objectReference: {fileID: 0}
     - target: {fileID: 6902565987532918607, guid: 04aee2bc72131f24d93c7c5e66eae693, type: 3}
       propertyPath: maxhealth
-      value: 18
+      value: 13
       objectReference: {fileID: 0}
     - target: {fileID: 6902565987532918607, guid: 04aee2bc72131f24d93c7c5e66eae693, type: 3}
       propertyPath: maxBaseDamage
-      value: 7
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 6902565987532918607, guid: 04aee2bc72131f24d93c7c5e66eae693, type: 3}
       propertyPath: minBaseDamage
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 7180555097554704029, guid: 04aee2bc72131f24d93c7c5e66eae693, type: 3}
       propertyPath: m_Name
@@ -22826,7 +22846,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 337451163}
         m_TargetAssemblyTypeName: CombatController, Assembly-CSharp
-        m_MethodName: NextLevel
+        m_MethodName: LoseLevel
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

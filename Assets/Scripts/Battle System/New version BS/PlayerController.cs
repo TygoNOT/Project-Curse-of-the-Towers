@@ -156,6 +156,14 @@ public class PlayerController : MonoBehaviour
                 ElectricWavePet.SetActive(false);
             }
         }
+        else{
+            WindBuffPet.SetActive(false);
+            FreezePet.SetActive(false);
+            PetHealer.SetActive(false);
+            PetFire.SetActive(false);
+            LightningPet.SetActive(false);
+            ElectricWavePet.SetActive(false);
+        }
     }
 
     private void Update()
@@ -624,7 +632,7 @@ public class PlayerController : MonoBehaviour
             int takedamage = maxhealth - currentHP;
             maxhealth = playerStats.hp;
             currentHP = maxhealth - takedamage;
-            if (currentHP > maincurrentHP)
+            if (currentHP > maincurrentHP && currentHP < maincurrentHP)
             {
                 UpdateHealthBar();
 

@@ -202,7 +202,7 @@ Canvas:
   m_AdditionalShaderChannelsFlag: 0
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 2
   m_TargetDisplay: 0
 --- !u!224 &1445508
 RectTransform:
@@ -1632,7 +1632,7 @@ MonoBehaviour:
   hp: 20
   speed: 2
   critChance: 0
-  critDmg: 0
+  critDmg: 1.1
   attribute: 0
   attackText: {fileID: 1240831710}
   hpText: {fileID: 1092454488}
@@ -24315,7 +24315,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 337451163}
         m_TargetAssemblyTypeName: CombatController, Assembly-CSharp
-        m_MethodName: NextLevel
+        m_MethodName: LoseLevel
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -28571,11 +28571,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6075172825066777718, guid: e52c13a0c645c6e40831d3f340077c7b, type: 3}
       propertyPath: health
-      value: 10
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 6075172825066777718, guid: e52c13a0c645c6e40831d3f340077c7b, type: 3}
       propertyPath: maxhealth
-      value: 10
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 6075172825066777718, guid: e52c13a0c645c6e40831d3f340077c7b, type: 3}
       propertyPath: critChance
@@ -28644,11 +28644,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2588644706861075141, guid: ed24137c10a9b27428e19584bf1bce46, type: 3}
       propertyPath: health
-      value: 15
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 2588644706861075141, guid: ed24137c10a9b27428e19584bf1bce46, type: 3}
       propertyPath: maxhealth
-      value: 15
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 2588644706861075141, guid: ed24137c10a9b27428e19584bf1bce46, type: 3}
       propertyPath: critChance
@@ -28660,7 +28660,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2588644706861075141, guid: ed24137c10a9b27428e19584bf1bce46, type: 3}
       propertyPath: minBaseDamage
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 6661174742148492436, guid: ed24137c10a9b27428e19584bf1bce46, type: 3}
       propertyPath: m_AnchoredPosition.x
