@@ -14405,6 +14405,134 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 770519873}
   m_CullTransparentMesh: 1
+--- !u!1 &773798304
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 773798306}
+  - component: {fileID: 773798305}
+  m_Layer: 0
+  m_Name: Audio Source
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!82 &773798305
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 773798304}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 24300002, guid: 6d29d5acd1af4a748814b39909ae07e9, type: 2}
+  m_audioClip: {fileID: 8300000, guid: c988a44e7aeaa6d4985e83eb902639e6, type: 3}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 1
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+--- !u!4 &773798306
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 773798304}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.6785546, y: -0.021560498, z: 3.8915906}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &773820063
 GameObject:
   m_ObjectHideFlags: 0
@@ -19468,7 +19596,7 @@ MonoBehaviour:
   - {fileID: 530258312}
   - {fileID: 2094881159}
   - {fileID: 1212212759}
-  inventoryLoader: {fileID: 0}
+  inventoryLoader: {fileID: 93019265}
 --- !u!114 &1117579064
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -32259,6 +32387,8 @@ MonoBehaviour:
     - Rare Set1
     - Rare Set2
     - Epic Set1
+    - El PEt
+    - Pet Healer
   - level: 2
     rarityChances: 2300000023000000140000000a00000000000000
     allowedSets:
@@ -32275,6 +32405,10 @@ MonoBehaviour:
     - Holy Demon Set
     - Golden Wyvern
     - Dark Knight
+    - El PEt
+    - Pet Healer
+    - Pet Fire
+    - Freeze Pet
   - level: 3
     rarityChances: 0a0000001900000023000000140000000a000000
     allowedSets:
@@ -32293,6 +32427,12 @@ MonoBehaviour:
     - Dark Knight
     - Holy Knight
     - Void Dragon
+    - El PEt
+    - Pet Healer
+    - Pet Fire
+    - Freeze Pet
+    - 'Lightning Pet '
+    - 'Alaala Pet '
   DescriptionImage: {fileID: 1707798142}
   DescriptionName: {fileID: 1539006578}
   DescriptionType: {fileID: 1138956293}
@@ -33857,3 +33997,4 @@ SceneRoots:
   - {fileID: 2059712658}
   - {fileID: 403365904}
   - {fileID: 1099417853}
+  - {fileID: 773798306}

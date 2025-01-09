@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5692d28b37a5e1c4aae76fdb638d3e31, type: 3}
   m_Name: WindBuff Pet
   m_EditorClassIdentifier: 
-  rarity: 2
+  rarity: 4
   itemName: WindBuff Pet
   id: fbd07ede2b189a241a664803e13e8319
   setName: Alaala

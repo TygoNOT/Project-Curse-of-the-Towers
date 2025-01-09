@@ -109,6 +109,7 @@ public class EquipmentSlot : MonoBehaviour, IPointerClickHandler
             playerController.UpdateStats = true;
 
         }
+
         if (itemType == ItemType.headArmor)
             headArmorSlot.EquipGear(itemSprite, itemName, itemDescription);
         if (itemType == ItemType.chestArmor)
